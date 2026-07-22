@@ -1,0 +1,43 @@
+name: Supabase keep-alive
+
+# Supabase auto-pauses free-tier projects after 7 days of inactivity. When that
+# happens the memorial site can't read its data and every battle looks deleted.
+# Any API request counts as activity, so this pings the project every 3 days.
+#
+# Runs on GitHub's servers — it does not depend on any machine being switched on.
+
+on:
+  schedule:
+    - cron: "0 8 */3 * *" # every 3 days at 08:00 UTC
+  workflow_dispatch: {} # also runnable by hand from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API
+        env:
+          SUPABASE_URL: https://szejkimsbjvdamittwlf.supabase.co
+          # Public "anon" key — safe to commit: it is shipped to every visitor's
+          # browser by design. The secret service-role key is NOT used here.
+          SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6ZWpraW1zYmp2ZGFtaXR0d2xmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDAzMDAsImV4cCI6MjA5Nzg3NjMwMH0.FKwE0bcQgPXmfnh-NI9ZErUuSNj1CtmQoD4Uwlw6-LE
+        run: |
+          set -u
+          url="$SUPABASE_URL/rest/v1/battles?select=id&limit=1"
+
+          # Retry a few times so a blip doesn't raise a false alarm.
+          code=000
+          for attempt in 1 2 3; do
+            code=$(curl -s -m 30 -o /dev/null -w "%{http_code}" \
+              "$url" -H "apikey: $SUPABASE_ANON_KEY" || echo 000)
+            echo "attempt $attempt -> HTTP $code"
+            [ "$code" = "200" ] && break
+            sleep 15
+          done
+
+          if [ "$code" != "200" ]; then
+            echo "::error::Supabase returned $code — the project is probably PAUSED. Restore it at https://supabase.com/dashboard (project golani-memorial → Restore). The data is safe; there is a 90-day window."
+            exit 1
+          fi
+
+          echo "✅ Supabase project is awake — inactivity timer reset."
