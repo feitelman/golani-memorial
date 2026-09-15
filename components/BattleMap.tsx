@@ -55,6 +55,8 @@ interface Props {
   tourActive?: boolean;
   /** tour-driven camera framing, decoupled from opening a panel */
   cameraTarget?: CameraTarget | null;
+  /** highlight this marker WITHOUT opening its panel (tour "look here" beat) */
+  spotlightId?: string | null;
 }
 
 export default function BattleMap({
@@ -67,6 +69,7 @@ export default function BattleMap({
   onStartLocation,
   tourActive = false,
   cameraTarget = null,
+  spotlightId = null,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
@@ -87,10 +90,12 @@ export default function BattleMap({
   const activeRef = useRef(activeId);
   const minuteRef = useRef(minute);
   const tourActiveRef = useRef(tourActive);
+  const spotlightRef = useRef(spotlightId);
   visibleRef.current = visibleIds;
   activeRef.current = activeId;
   minuteRef.current = minute;
   tourActiveRef.current = tourActive;
+  spotlightRef.current = spotlightId;
 
   // ── init ──────────────────────────────────────────────
   useEffect(() => {
@@ -303,8 +308,15 @@ export default function BattleMap({
   function syncMarkers() {
     // Class is the single source of truth — CSS drives opacity / hit-testing.
     markersRef.current.forEach(({ el }, id) => {
-      el.classList.toggle("is-active", activeRef.current === id);
-      el.classList.toggle("is-visible", visibleRef.current.has(id));
+      // "spotlight" highlights the marker before its panel opens (tour beat).
+      const highlit =
+        activeRef.current === id || spotlightRef.current === id;
+      el.classList.toggle("is-active", highlit);
+      // A spotlit marker must be shown even a beat before the replay reveals it.
+      el.classList.toggle(
+        "is-visible",
+        visibleRef.current.has(id) || spotlightRef.current === id,
+      );
     });
   }
 
@@ -460,11 +472,11 @@ export default function BattleMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battles]);
 
-  // react to visibility / active changes
+  // react to visibility / active / spotlight changes
   useEffect(() => {
     syncMarkers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleIds, activeId]);
+  }, [visibleIds, activeId, spotlightId]);
 
   // move/reveal event markers as the replay minute advances
   useEffect(() => {

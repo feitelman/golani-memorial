@@ -34,6 +34,17 @@ export function battleSegmentStart(b: Battle): number {
   return pathStarts.length ? Math.min(...pathStarts) : battleOpenMinute(b);
 }
 
+/** The [start, end] minute window of a battle's movement, or null if it doesn't move. */
+export function battleMovementWindow(
+  b: Battle,
+): { start: number; end: number } | null {
+  const paths = (b.timeline ?? []).filter((e) => e.path && e.path.length > 0);
+  if (!paths.length) return null;
+  const starts = paths.map((e) => toMinutes(e.path![0].time));
+  const ends = paths.map((e) => Math.max(...e.path!.map((w) => toMinutes(w.time))));
+  return { start: Math.min(...starts), end: Math.max(...ends) };
+}
+
 /** Group battles into locations by locationName, with a framing center. */
 export function groupLocations(battles: Battle[]): MapLocation[] {
   const byName = new Map<string, Battle[]>();

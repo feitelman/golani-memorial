@@ -353,7 +353,10 @@ body {
   color: #e7e5e4;
   font-size: 12px;
   font-weight: 700;
-  opacity: 0;
+  /* Always visible — the description of the movement rides above the marker as
+     it advances, so viewers can read what the force is doing. */
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
   pointer-events: none;
   transition: opacity 0.25s, transform 0.25s;
   backdrop-filter: blur(6px);
@@ -363,10 +366,6 @@ body {
   font-size: 10px;
   color: #ef4444;
   direction: ltr;
-}
-.event-marker:hover .ev-label {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
 
 /* Numbered, draggable waypoint markers in the admin path editor */

@@ -3,9 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Battle, BattleKind, toMinutes } from "@/lib/types";
+import { Battle, toMinutes } from "@/lib/types";
 import {
   MapLocation,
+  battleMovementWindow,
   battleOpenMinute,
   groupLocations,
 } from "@/lib/locations";
@@ -14,7 +15,6 @@ import { supabase } from "@/lib/supabase";
 import type { CameraTarget } from "./BattleMap";
 import BattlePanel from "./BattlePanel";
 import TimelineSlider from "./TimelineSlider";
-import Filters from "./Filters";
 import AmbientAudio from "./AmbientAudio";
 
 // Map renders client-only (Mapbox/WebGL touch `window`).
@@ -54,32 +54,14 @@ export default function MapExperience({
     () => battles.find((b) => b.id === activeId) ?? null,
     [battles, activeId],
   );
-  const [kinds, setKinds] = useState<Set<BattleKind>>(
-    () => new Set(battles.map((b) => b.kind)),
-  );
-
-  const counts = useMemo(() => {
-    const c = {} as Record<BattleKind, number>;
-    battles.forEach((b) => (c[b.kind] = (c[b.kind] ?? 0) + 1));
-    return c;
-  }, [battles]);
-
-  // A battle is visible when its kind is enabled AND the replay has reached it.
+  // A battle's marker is visible once the replay has reached its time.
   const visibleIds = useMemo(() => {
     const s = new Set<string>();
     battles.forEach((b) => {
-      if (kinds.has(b.kind) && b.startMinute <= minute) s.add(b.id);
+      if (b.startMinute <= minute) s.add(b.id);
     });
     return s;
-  }, [battles, kinds, minute]);
-
-  function toggleKind(k: BattleKind) {
-    setKinds((prev) => {
-      const next = new Set(prev);
-      next.has(k) ? next.delete(k) : next.add(k);
-      return next;
-    });
-  }
+  }, [battles, minute]);
 
   // ── guided tour ────────────────────────────────────────
   const locations = useMemo(() => groupLocations(battles), [battles]);
@@ -87,6 +69,8 @@ export default function MapExperience({
   const [reading, setReading] = useState(false); // panel open + paused for reading
   const [cameraTarget, setCameraTarget] = useState<CameraTarget | null>(null);
   const [toast, setToast] = useState("");
+  // Highlight a marker before its panel opens, so viewers see WHERE it is first.
+  const [spotlightId, setSpotlightId] = useState<string | null>(null);
 
   const tourLoc = useMemo(
     () => (tour ? locations.find((l) => l.name === tour.name) ?? null : null),
@@ -99,7 +83,6 @@ export default function MapExperience({
 
   function startTour(loc: MapLocation) {
     if (loc.battles.length === 0) return;
-    setKinds(new Set(battles.map((b) => b.kind))); // ensure all stations reveal
     setActiveId(null);
     setReading(false);
     setPlaying(false); // the tour drives the clock itself (see runner below)
@@ -113,7 +96,9 @@ export default function MapExperience({
     setTour(null);
     setReading(false);
     setActiveId(null);
+    setSpotlightId(null);
     setPlaying(false);
+    setMinute(range[0]); // reset the clock back to the start (06:29)
     if (center) setCameraTarget({ center, zoom: 13.2, pitch: 24 });
     if (completed) {
       setToast("הסיור הושלם");
@@ -148,25 +133,44 @@ export default function MapExperience({
     const st = stations[tour.index];
     if (!st) return;
 
-    // Continuous, slow clock: advance from wherever we are now to the station's
-    // open-minute — no jumping. The camera flies in parallel; the marker moves
-    // as its movement window is crossed. Open (pause) once we reach the time.
-    const target = battleOpenMinute(st);
+    const target = battleOpenMinute(st); // the battle's own time
     const startMin = minute; // where the previous station left the clock
-    const span = Math.max(0, target - startMin);
-    const PACE = 4; // battle-minutes per real second (slow & cinematic)
-    const dur = Math.min(11000, Math.max(3500, (span / PACE) * 1000));
+
+    // If the battle moves, split the run: normal travel up to the movement, then
+    // a SLOW pass through the movement so the marker crawls (not blinks).
+    const mv = battleMovementWindow(st);
+    const hasMove =
+      !!mv && mv.start < target && mv.end > mv.start && mv.start >= startMin;
+    const moveFrom = hasMove ? mv!.start : target;
+
+    const PACE = 4; // battle-minutes per real second on the travel leg
+    const durTravel = Math.min(
+      10000,
+      Math.max(2200, ((moveFrom - startMin) / PACE) * 1000),
+    );
+    const durMove = hasMove ? 6500 : 0; // slow movement playback
+    const DWELL = 1400; // marker shown & highlighted BEFORE the panel opens
 
     setPlaying(false);
+    setSpotlightId(null);
     focusStation(st); // camera flies in
 
     // setInterval (not rAF) so the tour keeps running if the tab is backgrounded.
     const start = performance.now();
     const id = setInterval(() => {
-      const t = Math.min(1, (performance.now() - start) / dur);
-      setMinute(startMin + span * t);
-      if (t >= 1) {
+      const e = performance.now() - start;
+      if (e < durTravel) {
+        const t = durTravel ? e / durTravel : 1;
+        setMinute(startMin + (moveFrom - startMin) * t);
+      } else if (e < durTravel + durMove) {
+        const t = (e - durTravel) / durMove;
+        setMinute(moveFrom + (target - moveFrom) * t);
+      } else if (e < durTravel + durMove + DWELL) {
+        setMinute(target); // battle marker now revealed — hold so people see it
+        setSpotlightId(st.id); // highlight it before the story opens
+      } else {
         clearInterval(id);
+        setSpotlightId(null);
         setActiveId(st.id);
         setReading(true);
       }
@@ -256,6 +260,7 @@ export default function MapExperience({
         onStartLocation={startTour}
         tourActive={!!tour}
         cameraTarget={cameraTarget}
+        spotlightId={spotlightId}
       />
 
       {/* top HUD */}
@@ -298,13 +303,6 @@ export default function MapExperience({
             </p>
           </div>
           <AmbientAudio />
-        </div>
-      </div>
-
-      {/* filters — bottom-anchored above the timeline */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-[150px] z-30 px-4 sm:px-8">
-        <div className="mx-auto max-w-5xl">
-          <Filters active={kinds} toggle={toggleKind} counts={counts} />
         </div>
       </div>
 
