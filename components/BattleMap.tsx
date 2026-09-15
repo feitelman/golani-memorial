@@ -7,6 +7,7 @@ import {
   KIND_LABEL,
   TimelineEvent,
   eventPositionAt,
+  toMinutes,
 } from "@/lib/types";
 import { MapLocation } from "@/lib/locations";
 import FallbackMap from "./FallbackMap";
@@ -57,6 +58,8 @@ interface Props {
   cameraTarget?: CameraTarget | null;
   /** highlight this marker WITHOUT opening its panel (tour "look here" beat) */
   spotlightId?: string | null;
+  /** tour: play one event's movement by fraction (0→1), decoupled from the clock */
+  movePreview?: { eventId: string; t: number } | null;
 }
 
 export default function BattleMap({
@@ -70,6 +73,7 @@ export default function BattleMap({
   tourActive = false,
   cameraTarget = null,
   spotlightId = null,
+  movePreview = null,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
@@ -91,11 +95,13 @@ export default function BattleMap({
   const minuteRef = useRef(minute);
   const tourActiveRef = useRef(tourActive);
   const spotlightRef = useRef(spotlightId);
+  const movePreviewRef = useRef(movePreview);
   visibleRef.current = visibleIds;
   activeRef.current = activeId;
   minuteRef.current = minute;
   tourActiveRef.current = tourActive;
   spotlightRef.current = spotlightId;
+  movePreviewRef.current = movePreview;
 
   // ── init ──────────────────────────────────────────────
   useEffect(() => {
@@ -387,19 +393,37 @@ export default function BattleMap({
     });
   }
 
-  // Position + show/hide every event marker for the current minute.
+  // Position + show/hide every event marker. In free mode a marker follows the
+  // replay clock. During a tour we ignore the clock: only the event being
+  // previewed shows, positioned by an explicit 0→1 fraction along its path — so
+  // a movement always plays on arrival, even if its times don't match the battle.
   function syncEventMarkers() {
+    const preview = movePreviewRef.current;
+    const touring = tourActiveRef.current;
     movingEvents(battles).forEach(({ ev }) => {
       const marker = eventMarkersRef.current.get(ev.id);
       if (!marker) return;
-      const pos = eventPositionAt(ev, minuteRef.current);
       const el = marker.getElement();
-      if (!pos) {
+
+      if (preview && preview.eventId === ev.id && ev.path && ev.path.length) {
+        const times = ev.path.map((w) => toMinutes(w.time));
+        const m = times[0] + preview.t * (times[times.length - 1] - times[0]);
+        const pos = eventPositionAt(ev, m);
+        el.style.display = pos ? "" : "none";
+        if (pos) marker.setLngLat(pos);
+        return;
+      }
+
+      // During a tour, all other movement markers stay hidden (avoids showing a
+      // later battle's movement early, or twice).
+      if (touring) {
         el.style.display = "none";
         return;
       }
-      el.style.display = "";
-      marker.setLngLat(pos);
+
+      const pos = eventPositionAt(ev, minuteRef.current);
+      el.style.display = pos ? "" : "none";
+      if (pos) marker.setLngLat(pos);
     });
   }
 
@@ -478,11 +502,12 @@ export default function BattleMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleIds, activeId, spotlightId]);
 
-  // move/reveal event markers as the replay minute advances
+  // move/reveal event markers as the replay minute advances, or as the tour
+  // drives an explicit movement preview
   useEffect(() => {
     syncEventMarkers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [minute]);
+  }, [minute, movePreview, tourActive]);
 
   // show/hide location pins when entering/leaving a tour
   useEffect(() => {

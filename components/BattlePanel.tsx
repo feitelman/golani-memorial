@@ -27,12 +27,16 @@ const MEDIA_LABEL: Record<MediaKind, string> = {
 export default function BattlePanel({
   battle,
   onClose,
-  tourHint = false,
+  inTour = false,
+  onContinue,
 }: {
   battle: Battle | null;
+  /** the ✕ / backdrop — closes, and in a tour it also stops the tour */
   onClose: () => void;
-  /** during a guided tour: show a "close to continue" cue */
-  tourHint?: boolean;
+  /** whether a guided tour is showing this panel */
+  inTour?: boolean;
+  /** advance the tour to the next station */
+  onContinue?: () => void;
 }) {
   const body = useRef<HTMLDivElement>(null);
 
@@ -92,10 +96,19 @@ export default function BattlePanel({
               >
                 ✕
               </button>
-              {tourHint && (
-                <div className="tour-hint mb-4 flex items-center gap-2 border border-blood-bright/50 bg-blood/[0.08] px-3 py-2 text-xs text-bone/90">
-                  <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-blood-bright" />
-                  לחצו ✕ בסיום הקריאה — הקרב ימשיך
+              {inTour && (
+                <div className="tour-hint mb-4 flex items-center justify-between gap-3 border border-blood-bright/50 bg-blood/[0.08] px-3 py-2">
+                  <span className="text-[11px] text-muted">
+                    ✕ ליציאה מהסיור
+                  </span>
+                  {onContinue && (
+                    <button
+                      onClick={onContinue}
+                      className="shrink-0 whitespace-nowrap border border-line-strong bg-bone px-4 py-1.5 text-sm font-bold text-void transition-colors hover:bg-white"
+                    >
+                      המשך לנקודה הבאה ←
+                    </button>
+                  )}
                 </div>
               )}
               <p className="eyebrow text-blood-bright">{KIND_LABEL[battle.kind]}</p>
