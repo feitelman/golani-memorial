@@ -236,7 +236,14 @@ export default function BattlePanel({
                   <p className="mb-4 text-sm text-muted">
                     לזכרם של הלוחמים והלוחמות שנפלו במוקד זה.
                   </p>
-                  {(["battalion_13", "combat_team"] as Affiliation[]).map((group) => {
+                  {/* Group the fallen by their framework, in first-seen order — so
+                      each location shows its own units (Golani 13 / mortars /
+                      armor / etc.) without a hardcoded two-group assumption. */}
+                  {Array.from(
+                    new Set(
+                      battle.fallen.map((s) => (s.affiliation ?? "battalion_13") as Affiliation),
+                    ),
+                  ).map((group) => {
                     const inGroup = battle.fallen.filter(
                       (s) => (s.affiliation ?? "battalion_13") === group,
                     );
