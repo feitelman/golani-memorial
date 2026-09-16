@@ -21,7 +21,7 @@ export default async function MemorialPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-md text-pretty leading-relaxed text-muted">
             לזכרם של לוחמי גדוד 13, חטיבת גולני ולוחמי צוות הקרב הגדודי שנפלו
-            בקרבות מוצב נחל עוז ב-7 באוקטובר. כל שם הוא עולם ומלואו.
+            בקרבות מוצב נחל עוז ומחנה פגה ב-7 באוקטובר. כל שם הוא עולם ומלואו.
           </p>
           <div className="mx-auto mt-8 h-12 w-px bg-gradient-to-b from-blood-bright to-transparent" />
         </header>

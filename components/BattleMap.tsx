@@ -96,6 +96,8 @@ export default function BattleMap({
   const tourActiveRef = useRef(tourActive);
   const spotlightRef = useRef(spotlightId);
   const movePreviewRef = useRef(movePreview);
+  // Whether the camera has already zoomed out to follow the current movement.
+  const moveFollowRef = useRef(false);
   visibleRef.current = visibleIds;
   activeRef.current = activeId;
   minuteRef.current = minute;
@@ -400,6 +402,8 @@ export default function BattleMap({
   function syncEventMarkers() {
     const preview = movePreviewRef.current;
     const touring = tourActiveRef.current;
+    // When no movement is playing, arm the follow-camera for the next one.
+    if (!preview) moveFollowRef.current = false;
     movingEvents(battles).forEach(({ ev }) => {
       const marker = eventMarkersRef.current.get(ev.id);
       if (!marker) return;
@@ -410,7 +414,20 @@ export default function BattleMap({
         const m = times[0] + preview.t * (times[times.length - 1] - times[0]);
         const pos = eventPositionAt(ev, m);
         el.style.display = pos ? "" : "none";
-        if (pos) marker.setLngLat(pos);
+        if (pos) {
+          marker.setLngLat(pos);
+          // Keep the moving marker in frame: on the first tick ease out to a
+          // wide following shot, then track the marker's center each tick.
+          const map = mapRef.current;
+          if (map) {
+            if (!moveFollowRef.current) {
+              moveFollowRef.current = true;
+              map.easeTo({ center: pos, zoom: 13.4, pitch: 28, duration: 900, essential: true });
+            } else if (!map.isMoving()) {
+              map.setCenter(pos);
+            }
+          }
+        }
         return;
       }
 

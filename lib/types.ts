@@ -76,22 +76,16 @@ export function eventPositionAt(
   return null; // reached the end — hide so it doesn't duplicate the battle marker
 }
 
-/** Which framework the fallen soldier belonged to. */
-export type Affiliation =
-  | "battalion_13" // גדוד 13, חטיבת גולני (נחל עוז)
-  | "combat_team" // צוות הקרב הגדודי (נחל עוז)
-  | "company_c" // פלוגה ג' 'דייגו', גדוד 13 (מחנה פגה)
-  | "mortars" // מחלקת המרגמות, פלוגה מסייעת 13
-  | "armor_77" // צוות הטנק — גדוד 77, חטיבה 7 (שריון)
-  | "company_b"; // פלוגה ב', גדוד 13 (כוח החילוץ)
+/**
+ * Which framework the fallen soldier belonged to. Two groups only, mirroring the
+ * memorial's split: organic גדוד 13 soldiers, and everyone attached to the
+ * battalion combat team (e.g. the armor crew) under צוות הקרב הגדודי.
+ */
+export type Affiliation = "battalion_13" | "combat_team";
 
 export const AFFILIATION_LABEL: Record<Affiliation, string> = {
   battalion_13: "גדוד 13, חטיבת גולני",
   combat_team: "צוות הקרב הגדודי",
-  company_c: "פלוגה ג' 'דייגו', גדוד 13",
-  mortars: "מחלקת המרגמות, מסייעת 13",
-  armor_77: "צוות הטנק — גדוד 77, חטיבה 7",
-  company_b: "פלוגה ב', גדוד 13",
 };
 
 export interface Soldier {

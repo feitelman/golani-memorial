@@ -315,8 +315,7 @@ export const BATTLES: Battle[] = [
     description: "עם שחר ה-7 באוקטובר החזיקה מחלקת המרגמות (מחלקת ה-7) של הפלוגה המסייעת כוננות ירי במתחם נפרד, ממערב למחנה 'פגה', ליד רחבת הרק\"ם. הכוח, בפיקוד סמל המחלקה סמ\"ר איתמר בן יהודה, מנה כעשרה לוחמים שהיו ערוכים ליד הנגמ\"שים, לבושים בשכפ\"צים ומוכנים לירי מרגמות לפי פקודה.\nבשעה 06:29, עם תחילת ירי התמ\"ס המסיבי, רצו הלוחמים למיגונית הגלילית הסמוכה. כשהבינו מהקשר שמדובר ב'אירוע מורכב', הכניסו מחסניות לנשקים, הביאו קסדות אישיות וקפצו לנגמ\"שים להכנת הכלים לירי. בשעה 06:45 ביקש סמל המחלקה מטרות לירי, ובשעה 06:51 ניתן אישור לירי פגזי נפיץ. בשעה 06:55 היה הכוח ערוך ומוכן.\nברגע זה הסתערו תשעה מחבלים על מתחם המרגמות משני כיוונים — הצפון-מערבי והדרום-מערבי. הלוחמים, שהופתעו בעודם ליד הנגמ\"שים, הצליחו לפגוע בחלק מהמחבלים, אך ספגו אבידות קשות. סמ\"ר חביב קיעאן נהרג מפגיעה בצווארו. המחבלים זרקו רימונים פנימה — סמ\"ר תומר ברק נפצע קשה, וסמל עידו ביננשטוק גרר אותו למחסה בין המכולות בעודו נלחם ונפצע, והמשיך להילחם עד נפילתו.\nסמל המחלקה איתמר בן יהודה נפצע בבטנו, והלוחם סמל יותם סרור חילץ אותו אחד-על-אחד תחת אש אל תוך מחנה 'פגה'. המפקד סמ\"ר יקיר לוי חזר פעם אחר פעם למתחם כדי לחלץ פצועים. שני פצועים נוספים, שהסתתרו מתחת לנגמ\"שים, חולצו לאחר שעות ארוכות בידי הכוח שעל 'נמ\"ר דייגו'.\nבמתחם המרגמות נפלו: סמל חביב קיעאן, סמל עידו ביננשטוק וסמ\"ר תומר ברק. סמל המחלקה סמ\"ר איתמר בן יהודה והלוחם סמ\"ר חיים מאיר עדן, שנפצעו אנושות בקרב זה, נפטרו לימים מפצעיהם. יהי זכרם ברוך.",
     media: [],
     timeline: [
-      { id: "pgah-mortars-t0", time: "05:30", endTime: "06:00", title: "תדריך מחלקתי וכוננות עם שחר במתחם המרגמות" },
-      { id: "pgah-mortars-t1", time: "06:29", endTime: "06:45", title: "ירי תמ\"ס מסיבי — הלוחמים למיגונית, הכנת הכלים לירי מרגמות" },
+      { id: "pgah-mortars-t0", time: "06:29", endTime: "06:45", title: "ירי תמ\"ס מסיבי — הלוחמים למיגונית, הכנת הכלים לירי מרגמות" },
       { id: "pgah-mortars-t2", time: "06:51", endTime: "06:55", title: "התקבל אישור ירי; הכוח ערוך ומוכן לירי" },
       { id: "pgah-mortars-t3", time: "06:55", endTime: "06:57", title: "תשעה מחבלים מסתערים על המתחם משני כיוונים" },
       { id: "pgah-mortars-t4", time: "06:57", endTime: "07:00", title: "לחימת פנים אל פנים; נפילת סמל חביב קיעאן, פצועים רבים" },
@@ -324,11 +323,11 @@ export const BATTLES: Battle[] = [
       { id: "pgah-mortars-t6", time: "08:55", endTime: "09:00", title: "חילוץ שני הפצועים האחרונים מהמתחם ע\"י 'נמ\"ר דייגו'" },
     ],
     fallen: [
-      { id: "pg-kian", fullName: "חביב קיעאן", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-kian.jpg", hometown: "חורה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "mortars" },
-      { id: "pg-binen", fullName: "עידו דוד ביננשטוק", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg", hometown: "רמת גן", memorial: "חובש, מחלקת המרגמות, גדוד 13", affiliation: "mortars" },
-      { id: "pg-barak", fullName: "תומר ברק", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barak.jpg", hometown: "פתח תקווה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "mortars" },
-      { id: "pg-benyehuda", fullName: "איתמר בן יהודה", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-benyehuda.jpg", hometown: "רחובות", memorial: "סמל מחלקת המרגמות, גדוד 13", affiliation: "mortars" },
-      { id: "pg-eden", fullName: "חיים מאיר עדן", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eden.jpg", hometown: "רחובות", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "mortars" },
+      { id: "pg-kian", fullName: "חביב קיעאן", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-kian.jpg", hometown: "חורה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-binen", fullName: "עידו דוד ביננשטוק", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg", hometown: "רמת גן", memorial: "חובש, מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-barak", fullName: "תומר ברק", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barak.jpg", hometown: "פתח תקווה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-benyehuda", fullName: "איתמר בן יהודה", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-benyehuda.jpg", hometown: "רחובות", memorial: "סמל מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-eden", fullName: "חיים מאיר עדן", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eden.jpg", hometown: "רחובות", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
     ],
   }),
   build({
@@ -338,38 +337,40 @@ export const BATTLES: Battle[] = [
     kind: "battle",
     date: "2023-10-07",
     time: "06:33",
-    coordinates: [34.46700, 31.45000], // גזרת הגבול דרום-מערבית למחנה (ע' 106/91)
+    coordinates: [34.46680, 31.44980], // עמדת הירי 91 — גזרת הגבול דרום-מערבית למחנה
     locationName: "מחנה פגה",
     unit: "מחלקת טנקים, גדוד 77 (שריון) — ת\"פ פלוגה ג'",
     summary: "בלימת החדירה בגדר בידי הטנקים ונפילת צוות טנק 2ב'",
-    description: "מחלקת הטנקים של הצק\"מ בנחל 'סחף', בפיקוד מ\"מ השריון סגן יותם בבש ('טנק 2'), יצאה עם תחילת המתקפה לבלום את חדירת המחבלים בגדר. בשעה 06:33 פקד 'משנה דייגו' על 'טנק 2' לעלות לעמדה 106 ולהשמיד כל חמוש החוצה את ציר 'הוברס', ו'טנק 2' שלח את 'טנק 2ב' לעבר עמדה 91.\nהטנקים פגעו בעשרות מחבלים בגדר, אך בשעה 06:44 נפגע 'טנק 2' מרחפן-מטיל בעמדה 106 ונתקע כתוצאה מתקלה מכנית — צוותו נותר תקוע ומאוים בנ\"ט שעות ארוכות, עד שחולץ בסופו של דבר בידי 'טנק 3' לעבר צומת סעד.\nבשעה 06:56, תוך כדי הסתערות על חוליית מחבלים, נפגע 'טנק 2ב' מטיל נ\"ט קצר-טווח. המט\"ק סמ\"ר שי לוינסון נהרג במקום וגופתו נחטפה לעזה. התותחן סמל אריאל אליהו והטען סמל אופיר טסטה נפצעו אנושות. נהג הטנק, רב\"ט עידו סומך, נותר לבדו כשיר, ותחת פיקודו של הטען הפצוע נע הטנק מזרחה, הרחק מהגבול, לכיוון מרחב חורשת רעים ומסיבת 'הנובה'.\nבמהלך הנסיעה נפטר מפצעיו התותחן סמל אריאל אליהו. הטען סמל אופיר טסטה, בעודו פצוע, ירד מן הטנק והצטרף ללחימה במרחב המסיבה, מסר את נשקו למאבטח, ובניסיון לשוב אל הטנק נהרג מאש המחבלים. הנהג נלחם, דרס מחבלים, נמלט מלינץ' והסתתר עד שחולץ פצוע ומדמם. יהי זכרם ברוך.",
+    description: "מחלקת הטנקים של הצק\"מ בנחל 'סחף', בפיקוד מ\"מ השריון סגן יותם בבש ('טנק 2'), יצאה עם תחילת המתקפה לבלום את חדירת המחבלים בגדר. בשעה 06:33 פקד 'משנה דייגו' על 'טנק 2' לעלות לעמדה 106 ולהשמיד כל חמוש החוצה את ציר 'הוברס', ו'טנק 2' שלח את 'טנק 2ב' לעבר עמדה 91.\nהטנקים פגעו בעשרות מחבלים בגדר, אך בשעה 06:44 נפגע 'טנק 2' מרחפן-מטיל בעמדה 106 ונתקע כתוצאה מתקלה מכנית — צוותו נותר תקוע ומאוים בנ\"ט שעות ארוכות, עד שחולץ בסופו של דבר בידי 'טנק 3' לעבר צומת סעד.\nבשעה 06:56, תוך כדי הסתערות על חוליית מחבלים, נפגע 'טנק 2ב' מטיל נ\"ט קצר-טווח. המט\"ק סמ\"ר שי לוינסון נהרג במקום וגופתו נחטפה לעזה. התותחן סמל אריאל אליהו והטען סמל אופיר טסטה נפצעו אנושות. נהג הטנק, רב\"ט עידו סומך, נותר לבדו כשיר, ותחת פיקודו של הטען הפצוע ניתק הטנק מגע ונע דרומה, הרחק מהגבול, לאורך המרחב עד ציר 232 שבמרחב חורשת רעים ומסיבת 'הנובה'.\nבמהלך הנסיעה נפטר מפצעיו התותחן סמל אריאל אליהו. הטען סמל אופיר טסטה, בעודו פצוע, ירד מן הטנק והצטרף ללחימה במרחב המסיבה, מסר את נשקו למאבטח, ובניסיון לשוב אל הטנק נהרג מאש המחבלים. הנהג נלחם, דרס מחבלים, נמלט מלינץ' והסתתר עד שחולץ פצוע ומדמם. יהי זכרם ברוך.",
     media: [],
     timeline: [
       { id: "pgah-tanks-t0", time: "06:33", endTime: "06:36", title: "'טנק 2' עולה לעמדה 106; 'טנק 2ב' נע לעמדה 91" },
+      { id: "pgah-tanks-t1", time: "06:42", endTime: "06:45", title: "הטנקים פוגעים בעשרות מחבלים בגדר; 'טנק 2' נתקע בע' 106 וצוותו שרד" },
       {
-        id: "pgah-tanks-t1",
+        id: "pgah-tanks-t2",
         time: "06:36",
         endTime: "08:06",
-        title: "'טנק 2ב' נפגע מנ\"ט, נהג לבדו ונע מזרחה עד מרחב הנובה",
-        // נתיב מוערך: מגזרת הגבול (ע' 91), מזרחה לאורך המרחב, יורד מציר 'בורמה'
-        // ומגיע עד ציר 232 בסמוך לחורשת רעים ומסיבת 'הנובה' (חניון רעים).
+        title: "'טנק 2ב': עלייה לעמדה 91, פגיעת נ\"ט, ונסיעת הנהג לבדו עד מרחב הנובה",
+        // נתיב 'טנק 2ב': תחילה עולה לעמדת הירי 91 (ע\"פ #6 — קודם לעמדה), נפגע
+        // בנ\"ט, ואז הנהג מנתק מגע דרומה לאורך המרחב עד מסיבת 'הנובה' / חורשת
+        // רעים (נ.צ. מאומת: 34.47168, 31.39777).
         path: [
-          { time: "06:36", coordinates: [34.46700, 31.45000] },
-          { time: "07:00", coordinates: [34.47900, 31.44780] },
-          { time: "07:30", coordinates: [34.49600, 31.44560] },
-          { time: "07:50", coordinates: [34.51300, 31.44430] },
-          { time: "08:06", coordinates: [34.52370, 31.44370] },
+          { time: "06:36", coordinates: [34.47050, 31.45150] }, // יוצא לעבר העמדה
+          { time: "06:42", coordinates: [34.46680, 31.44980] }, // מגיע לעמדה 91
+          { time: "06:56", coordinates: [34.46830, 31.44740] }, // נפגע, מנתק מגע
+          { time: "07:20", coordinates: [34.47250, 31.43100] },
+          { time: "07:45", coordinates: [34.47180, 31.41300] },
+          { time: "08:06", coordinates: [34.47168, 31.39777] }, // מרחב הנובה / חורשת רעים
         ],
       },
-      { id: "pgah-tanks-t2", time: "06:42", endTime: "06:45", title: "הטנקים פוגעים בעשרות מחבלים בגדר" },
-      { id: "pgah-tanks-t3", time: "06:44", endTime: "06:50", title: "'טנק 2' נפגע מרחפן-מטיל בעמדה 106 ונתקע" },
+      { id: "pgah-tanks-t3", time: "06:44", endTime: "06:50", title: "'טנק 2' נפגע מרחפן-מטיל בעמדה 106 ונתקע (הצוות חולץ מאוחר יותר לצומת סעד)" },
       { id: "pgah-tanks-t4", time: "06:56", endTime: "06:57", title: "'טנק 2ב' נפגע מנ\"ט; נפילת המט\"ק סמ\"ר שי לוינסון, פציעת הצוות" },
       { id: "pgah-tanks-t5", time: "08:06", endTime: "10:00", title: "נפילת התותחן והטען במרחב הנובה; הנהג נלחם וחולץ פצוע" },
     ],
     fallen: [
-      { id: "pg-levinson", fullName: "שי לוינסון", rank: "סמ\"ר", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levinson.jpg", hometown: "גבעת אבני", memorial: "מפקד הטנק (מט\"ק), גדוד 77", affiliation: "armor_77" },
-      { id: "pg-eliyahu", fullName: "אריאל אליהו", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eliyahu.jpg", hometown: "מצפה יריחו", memorial: "תותחן הטנק, גדוד 77", affiliation: "armor_77" },
-      { id: "pg-testa", fullName: "אופיר טסטה", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-testa.jpg", hometown: "ירושלים", memorial: "טען הטנק, גדוד 77", affiliation: "armor_77" },
+      { id: "pg-levinson", fullName: "שי לוינסון", rank: "סמ\"ר", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levinson.jpg", hometown: "גבעת אבני", memorial: "מט\"ק טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
+      { id: "pg-eliyahu", fullName: "אריאל אליהו", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eliyahu.jpg", hometown: "מצפה יריחו", memorial: "תותחן טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
+      { id: "pg-testa", fullName: "אופיר טסטה", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-testa.jpg", hometown: "ירושלים", memorial: "טען טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
     ],
   }),
   build({
@@ -396,14 +397,14 @@ export const BATTLES: Battle[] = [
       { id: "pgah-camp-t7", time: "13:00", endTime: "13:05", title: "הסתערות חמשת הלוחמים מחדר האוכל ונפילתם בקרב" },
     ],
     fallen: [
-      { id: "pg-swissa", fullName: "דקל סויסה", rank: "סרן", age: 23, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-swissa.jpg", hometown: "מושב בר גיורא", memorial: "מפקד מחנה פגה, פלוגה ג', גדוד 13", affiliation: "company_c" },
-      { id: "pg-cohen", fullName: "איתמר כהן", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-cohen.jpg", hometown: "כרמיאל", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "company_c" },
-      { id: "pg-glisko", fullName: "איתי אופק גליסקו", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-glisko.jpg", hometown: "יקנעם עילית", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "company_c" },
-      { id: "pg-barnes", fullName: "שלו ברנס", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barnes.jpg", hometown: "כפר ברוך", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "company_c" },
-      { id: "pg-levi", fullName: "יקיר לוי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levi.jpg", hometown: "מורשת", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "company_c" },
-      { id: "pg-raz", fullName: "עידן רז", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-raz.jpg", hometown: "עין המפרץ", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "company_c" },
-      { id: "pg-peri", fullName: "רועי פרי", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-peri.jpg", hometown: "שוהם", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "company_c" },
-      { id: "pg-azizov", fullName: "ליאור עזיזוב", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-azizov.jpg", hometown: "אשקלון", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "company_c" },
+      { id: "pg-swissa", fullName: "דקל סויסה", rank: "סרן", age: 23, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-swissa.jpg", hometown: "מושב בר גיורא", memorial: "מפקד מחנה פגה, פלוגה ג', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-cohen", fullName: "איתמר כהן", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-cohen.jpg", hometown: "כרמיאל", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-glisko", fullName: "איתי אופק גליסקו", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-glisko.jpg", hometown: "יקנעם עילית", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-barnes", fullName: "שלו ברנס", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barnes.jpg", hometown: "כפר ברוך", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-levi", fullName: "יקיר לוי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levi.jpg", hometown: "מורשת", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-raz", fullName: "עידן רז", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-raz.jpg", hometown: "עין המפרץ", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-peri", fullName: "רועי פרי", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-peri.jpg", hometown: "שוהם", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-azizov", fullName: "ליאור עזיזוב", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-azizov.jpg", hometown: "אשקלון", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
     ],
   }),
   build({
@@ -425,7 +426,7 @@ export const BATTLES: Battle[] = [
       { id: "pgah-rescue-t2", time: "18:00", endTime: "18:10", title: "פגיעת 'קורנט' ברכב החילוץ; נפילת סמ\"ר דולב אמויאל" },
     ],
     fallen: [
-      { id: "pg-amoyal", fullName: "דולב אמויאל", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-amoyal.jpg", hometown: "נתניה", memorial: "פלוגה ב', גדוד 13 — נפל בחילוץ", affiliation: "company_b" },
+      { id: "pg-amoyal", fullName: "דולב אמויאל", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-amoyal.jpg", hometown: "נתניה", memorial: "פלוגה ב', גדוד 13 — נפל בחילוץ", affiliation: "battalion_13" },
     ],
   }),
 ];
