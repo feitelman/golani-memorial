@@ -371,6 +371,7 @@ export const BATTLES: Battle[] = [
       { id: "pg-levinson", fullName: "שי לוינסון", rank: "סמ\"ר", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levinson.jpg", hometown: "גבעת אבני", memorial: "מט\"ק טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
       { id: "pg-eliyahu", fullName: "אריאל אליהו", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eliyahu.jpg", hometown: "מצפה יריחו", memorial: "תותחן טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
       { id: "pg-testa", fullName: "אופיר טסטה", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-testa.jpg", hometown: "ירושלים", memorial: "טען טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
+      { id: "pg-alatrash", fullName: "מחמד אלאטרש", rank: "רס\"מ", age: 39, hometown: "שבט אל-אטרש", memorial: "גשש, צק\"מ סחף — חטיבה צפונית (הושב מהשבי)", affiliation: "combat_team" },
     ],
   }),
   build({
@@ -427,6 +428,44 @@ export const BATTLES: Battle[] = [
     ],
     fallen: [
       { id: "pg-amoyal", fullName: "דולב אמויאל", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-amoyal.jpg", hometown: "נתניה", memorial: "פלוגה ב', גדוד 13 — נפל בחילוץ", affiliation: "battalion_13" },
+    ],
+  }),
+
+  // ═══════════════════════════════════════════════════════════
+  //  מחנה מעבר ארז — 7 באוקטובר 2023
+  //  פלוגת פחת"ק 77/13 ('יוזם') מגדוד 13, בגזרת גדוד 77 (צפון העוטף).
+  //  מרכז מאומת: מעבר ארז [34.5462261, 31.5577659] (סמוך למת"ק/מש"א ארז).
+  //  ניתן לכוונון עדין בעורך המיקומים.
+  // ═══════════════════════════════════════════════════════════
+  build({
+    id: "erez-camp",
+    slug: "erez-camp",
+    title: "הגנת מחנה מעבר ארז",
+    kind: "battle",
+    date: "2023-10-07",
+    time: "06:30",
+    coordinates: [34.5462261, 31.5577659], // מעבר ארז — לכוונון עדין
+    locationName: "מחנה מעבר ארז",
+    unit: "פלוגת פחת\"ק 77/13 ('יוזם'), גדוד 13",
+    summary: "בלימת הפשיטה על מחנה מעבר ארז — קרב הבטונדות והמאבק במטבחון",
+    description: "מחנה 'מעבר ארז', בצפון גזרת העוטף, היה מחנה רב-יחידתי שבו שהו כוח מנהלת התיאום והקישור (מת\"ק), לוחמי איסוף (בלון) ולוחמי פלוגת פחת\"ק 77/13 ('יוזם') מגדוד 13, ת\"פ גדוד 77. בשבת בבוקר, כשמ\"פ הפלוגה שהה בביתו, ניהל את הקרב מ\"מ מחלקת ה-5, סגן רותם ליטקה.\nבשעה 06:29 הוכרז 'גשם סגול' והלוחמים התכנסו במרחב המוגן (המטבחון). דיווחים על 'אירוע מורכב' בק.ד 27 שלחו את כוח 'כרמל א' לגדר, אך הכוח הוחזר במהירות משזוהתה פשיטה. עד השעה 07:04 פשטו עשרות מחבלים על המחנה. הכוח התפצל: כוח סגן רותם ליטקה יצא אל מרחב הבטונדות והמיגוניות שבחניית המחנה, וכוח סמל רועי וייזר יצא בעקבותיו.\nבמרחב הבטונדות התנהל הקרב הקטלני. תחת אש ורימונים נפצע הלוחם אריאל ארז, ובלחימה במיגונית נהרג הרס\"פ סמ\"ר דניאל דנינו לאחר שיצא מהדלת וחיפה על חבריו. סמל רועי וייזר, סמל מחלקת ה-8, נהרג מאש מטווח קצר בעודו מוביל את כוחו למגע. הלוחם אדיר טהר נפגע מפגיעת טיל כתף. לאורך שעות ניסו רותם ליטקה ולוחמיו לחלץ את אריאל ארז הפצוע ממבנה למבנה, עד שנהרג מאש מחבל בעת יציאת הכוח מהחדר.\nבמקביל התבצרו כעשרה לוחמים בפיקוד הלוחם עומרי סילנר במטבחון — המרחב המוגן היחיד — ולחמו בהגנה נחושה עד שעות אחר הצהריים, חסמו את הדלת ובלמו כל ניסיון חדירה, עד שחברו לכוח החילוץ (ס\"פ 2 ויחידת יהלו\"ם) בסביבות השעה 17:00, שטיהרו את המחנה ופינו את הפצועים וההרוגים. בקרב זה נפלו ארבעה מלוחמי הפלוגה. יהי זכרם ברוך.",
+    media: [],
+    timeline: [
+      { id: "erez-camp-t0", time: "06:29", endTime: "06:32", title: "הכרזת 'גשם סגול' — הלוחמים למרחב המוגן (המטבחון)" },
+      { id: "erez-camp-t1", time: "06:32", endTime: "06:40", title: "'אירוע מורכב' בק.ד 27 — כוח 'כרמל א' יוצא לגדר ומוחזר עם דיווח פשיטה" },
+      { id: "erez-camp-t2", time: "06:41", endTime: "07:04", title: "חדירת מחבלים למעבר ארז; עשרות מחבלים על המחנה" },
+      { id: "erez-camp-t3", time: "07:04", endTime: "07:10", title: "פשיטת כ-20 מחבלים על המחנה; פיצול הכוחות" },
+      { id: "erez-camp-t4", time: "07:10", endTime: "07:30", title: "קרב הבטונדות/המיגוניות — נפילת הרס\"פ סמ\"ר דניאל דנינו, פציעת אריאל ארז ואדיר טהר" },
+      { id: "erez-camp-t5", time: "07:30", endTime: "07:45", title: "נפילת סמל רועי וייזר מאש מטווח קצר" },
+      { id: "erez-camp-t6", time: "07:45", endTime: "09:00", title: "ניסיונות חילוץ אריאל ארז הפצוע ממבנה למבנה; נפילתו בקרב" },
+      { id: "erez-camp-t7", time: "09:00", endTime: "16:30", title: "התבצרות כעשרה לוחמים במטבחון בפיקוד עומרי סילנר — לחימת הגנה ממושכת" },
+      { id: "erez-camp-t8", time: "16:30", endTime: "17:00", title: "חבירה לכוח החילוץ (ס\"פ 2 ויהלו\"ם), טיהור המחנה וחילוץ הפצועים וההרוגים" },
+    ],
+    fallen: [
+      { id: "erez-danino", fullName: "דניאל משה דנינו", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-danino.jpg", hometown: "חיפה", memorial: "רס\"פ הפלוגה, פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
+      { id: "erez-weiser", fullName: "רועי וייזר", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-weiser.jpg", hometown: "אפרת", memorial: "סמל מחלקת ה-8, פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
+      { id: "erez-erez", fullName: "אריאל ארז", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-erez.jpg", hometown: "מושב עמקה", memorial: "לוחם (רימונאי), פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
+      { id: "erez-tahar", fullName: "אדיר טהר", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-tahar.jpg", hometown: "ירושלים", memorial: "לוחם, פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
     ],
   }),
 ];
