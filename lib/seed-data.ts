@@ -48,7 +48,7 @@ export const BATTLES: Battle[] = [
         age: 21,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/7b8ab1e7.jpg",
         hometown: "ראשון לציון",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלס\"ם, גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -68,7 +68,7 @@ export const BATTLES: Battle[] = [
         age: 26,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/23bae5e7.jpg",
         hometown: "קריית ארבע",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -88,7 +88,7 @@ export const BATTLES: Battle[] = [
         age: 20,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/5158bc9a.jpg",
         hometown: "נס ציונה",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -98,7 +98,7 @@ export const BATTLES: Battle[] = [
         age: 19,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/e8147ff6.jpg",
         hometown: "שפרעם",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלס\"ם, גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -236,7 +236,7 @@ export const BATTLES: Battle[] = [
         age: 25,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/05b2ca38.jpg",
         hometown: "ירושלים",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -246,7 +246,7 @@ export const BATTLES: Battle[] = [
         age: 20,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/24c2f70e.jpg",
         hometown: "פתח תקווה",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -256,7 +256,7 @@ export const BATTLES: Battle[] = [
         age: 20,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/bb0a4a4e.jpg",
         hometown: "תל אביב",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -266,7 +266,7 @@ export const BATTLES: Battle[] = [
         age: 21,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/ef83ed72.jpg",
         hometown: "טלמון",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -276,7 +276,7 @@ export const BATTLES: Battle[] = [
         age: 21,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/7b963a4d.jpg",
         hometown: "טבריה",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
       {
@@ -286,7 +286,7 @@ export const BATTLES: Battle[] = [
         age: 21,
         photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/c97461ba.jpg",
         hometown: "ראשון לציון",
-        memorial: "גדוד 13, חטיבת גולני",
+        memorial: "פלוגה ב', גדוד 13",
         affiliation: "battalion_13",
       },
     ],
@@ -324,9 +324,9 @@ export const BATTLES: Battle[] = [
     ],
     fallen: [
       { id: "pg-kian", fullName: "חביב קיעאן", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-kian.jpg", hometown: "חורה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-binen", fullName: "עידו דוד ביננשטוק", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg", hometown: "רמת גן", memorial: "חובש, מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-binen", fullName: "עידו דוד ביננשטוק", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg", hometown: "רמת גן", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
       { id: "pg-barak", fullName: "תומר ברק", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barak.jpg", hometown: "פתח תקווה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-benyehuda", fullName: "איתמר בן יהודה", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-benyehuda.jpg", hometown: "רחובות", memorial: "סמל מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-benyehuda", fullName: "איתמר בן יהודה", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-benyehuda.jpg", hometown: "רחובות", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
       { id: "pg-eden", fullName: "חיים מאיר עדן", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eden.jpg", hometown: "רחובות", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
     ],
   }),
@@ -398,14 +398,14 @@ export const BATTLES: Battle[] = [
       { id: "pgah-camp-t7", time: "13:00", endTime: "13:05", title: "הסתערות חמשת הלוחמים מחדר האוכל ונפילתם בקרב" },
     ],
     fallen: [
-      { id: "pg-swissa", fullName: "דקל סויסה", rank: "סרן", age: 23, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-swissa.jpg", hometown: "מושב בר גיורא", memorial: "מפקד מחנה פגה, פלוגה ג', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-cohen", fullName: "איתמר כהן", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-cohen.jpg", hometown: "כרמיאל", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-glisko", fullName: "איתי אופק גליסקו", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-glisko.jpg", hometown: "יקנעם עילית", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-barnes", fullName: "שלו ברנס", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barnes.jpg", hometown: "כפר ברוך", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-levi", fullName: "יקיר לוי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levi.jpg", hometown: "מורשת", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-raz", fullName: "עידן רז", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-raz.jpg", hometown: "עין המפרץ", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-peri", fullName: "רועי פרי", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-peri.jpg", hometown: "שוהם", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-azizov", fullName: "ליאור עזיזוב", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-azizov.jpg", hometown: "אשקלון", memorial: "פלוגה ג' 'דייגו', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-swissa", fullName: "דקל סויסה", rank: "סרן", age: 23, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-swissa.jpg", hometown: "מושב בר גיורא", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-cohen", fullName: "איתמר כהן", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-cohen.jpg", hometown: "כרמיאל", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-glisko", fullName: "איתי אופק גליסקו", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-glisko.jpg", hometown: "יקנעם עילית", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-barnes", fullName: "שלו ברנס", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barnes.jpg", hometown: "כפר ברוך", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-levi", fullName: "יקיר לוי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levi.jpg", hometown: "מורשת", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-raz", fullName: "עידן רז", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-raz.jpg", hometown: "עין המפרץ", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-peri", fullName: "רועי פרי", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-peri.jpg", hometown: "שוהם", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-azizov", fullName: "ליאור עזיזוב", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-azizov.jpg", hometown: "אשקלון", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
     ],
   }),
   build({
@@ -427,7 +427,7 @@ export const BATTLES: Battle[] = [
       { id: "pgah-rescue-t2", time: "18:00", endTime: "18:10", title: "פגיעת 'קורנט' ברכב החילוץ; נפילת סמ\"ר דולב אמויאל" },
     ],
     fallen: [
-      { id: "pg-amoyal", fullName: "דולב אמויאל", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-amoyal.jpg", hometown: "נתניה", memorial: "פלוגה ב', גדוד 13 — נפל בחילוץ", affiliation: "battalion_13" },
+      { id: "pg-amoyal", fullName: "דולב אמויאל", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-amoyal.jpg", hometown: "נתניה", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
     ],
   }),
 
@@ -462,10 +462,10 @@ export const BATTLES: Battle[] = [
       { id: "erez-camp-t8", time: "16:30", endTime: "17:00", title: "חבירה לכוח החילוץ (ס\"פ 2 ויהלו\"ם), טיהור המחנה וחילוץ הפצועים וההרוגים" },
     ],
     fallen: [
-      { id: "erez-danino", fullName: "דניאל משה דנינו", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-danino.jpg", hometown: "חיפה", memorial: "רס\"פ הפלוגה, פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
-      { id: "erez-weiser", fullName: "רועי וייזר", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-weiser.jpg", hometown: "אפרת", memorial: "סמל מחלקת ה-8, פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
-      { id: "erez-erez", fullName: "אריאל ארז", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-erez.jpg", hometown: "מושב עמקה", memorial: "לוחם (רימונאי), פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
-      { id: "erez-tahar", fullName: "אדיר טהר", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-tahar.jpg", hometown: "ירושלים", memorial: "לוחם, פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
+      { id: "erez-danino", fullName: "דניאל משה דנינו", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-danino.jpg", hometown: "חיפה", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
+      { id: "erez-weiser", fullName: "רועי וייזר", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-weiser.jpg", hometown: "אפרת", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
+      { id: "erez-erez", fullName: "אריאל ארז", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-erez.jpg", hometown: "מושב עמקה", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
+      { id: "erez-tahar", fullName: "אדיר טהר", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-tahar.jpg", hometown: "ירושלים", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
     ],
   }),
 
@@ -494,9 +494,9 @@ export const BATTLES: Battle[] = [
       { id: "nz-shag-t2", time: "07:30", endTime: "07:35", title: "נפילת סמ\"ר בוגלה, סמ\"ר לזימי וסמ\"ר כרמי — הש.ג נפרץ" },
     ],
     fallen: [
-      { id: "nz-karmi", fullName: "אורי כרמי", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-karmi.jpg", hometown: "ראשון לציון", memorial: "לוחם, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
-      { id: "nz-lazimi", fullName: "דור לזימי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-lazimi.jpg", hometown: "נוף הגליל", memorial: "מ\"כ, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
-      { id: "nz-bugla", fullName: "אדיר אישטו בוגלה", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-bugla.jpg", hometown: "אריאל", memorial: "לוחם, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-karmi", fullName: "אורי כרמי", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-karmi.jpg", hometown: "ראשון לציון", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-lazimi", fullName: "דור לזימי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-lazimi.jpg", hometown: "נוף הגליל", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-bugla", fullName: "אדיר אישטו בוגלה", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-bugla.jpg", hometown: "אריאל", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
     ],
   }),
   build({
@@ -518,8 +518,8 @@ export const BATTLES: Battle[] = [
       { id: "nz-migunit-b-t2", time: "08:01", endTime: "08:05", title: "סמ\"ר דוד רתנר וסמ\"ר נאור סיבוני מתו מפצעיהם במיגונית" },
     ],
     fallen: [
-      { id: "nz-ratner", fullName: "דוד רתנר", rank: "סמ\"ר", age: 20, hometown: "אשדוד", memorial: "לוחם-נגב, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
-      { id: "nz-siboni", fullName: "נאור סיבוני", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-siboni.jpg", hometown: "גילת", memorial: "לוחם, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-ratner", fullName: "דוד רתנר", rank: "סמ\"ר", age: 20, hometown: "אשדוד", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-siboni", fullName: "נאור סיבוני", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-siboni.jpg", hometown: "גילת", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
     ],
   }),
   build({
