@@ -416,16 +416,25 @@ export default function BattleMap({
         el.style.display = pos ? "" : "none";
         if (pos) {
           marker.setLngLat(pos);
-          // Keep the moving marker in frame: on the first tick ease out to a
-          // wide following shot, then track the marker's center each tick.
+          // Frame the movement once, sized to the path itself — a short advance
+          // stays zoomed in, a long dash (e.g. a tank fleeing km away) zooms out
+          // only as much as needed. The marker then crawls within the framed view.
           const map = mapRef.current;
-          if (map) {
-            if (!moveFollowRef.current) {
-              moveFollowRef.current = true;
-              map.easeTo({ center: pos, zoom: 13.4, pitch: 28, duration: 900, essential: true });
-            } else if (!map.isMoving()) {
-              map.setCenter(pos);
+          if (map && !moveFollowRef.current) {
+            moveFollowRef.current = true;
+            const pts = ev.path.map((w) => w.coordinates);
+            let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
+            for (const [lng, lat] of pts) {
+              minLng = Math.min(minLng, lng); maxLng = Math.max(maxLng, lng);
+              minLat = Math.min(minLat, lat); maxLat = Math.max(maxLat, lat);
             }
+            map.fitBounds([[minLng, minLat], [maxLng, maxLat]], {
+              padding: 140,
+              maxZoom: 16.2, // never zoom out for a tiny path; keep it close
+              pitch: 30,
+              duration: 900,
+              essential: true,
+            });
           }
         }
         return;
