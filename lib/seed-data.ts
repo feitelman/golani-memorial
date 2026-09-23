@@ -323,11 +323,11 @@ export const BATTLES: Battle[] = [
       { id: "pgah-mortars-t6", time: "08:55", endTime: "09:00", title: "חילוץ שני הפצועים האחרונים מהמתחם ע\"י 'נמ\"ר דייגו'" },
     ],
     fallen: [
-      { id: "pg-kian", fullName: "חביב קיעאן", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-kian.jpg", hometown: "חורה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-binen", fullName: "עידו דוד ביננשטוק", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg", hometown: "רמת גן", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-barak", fullName: "תומר ברק", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barak.jpg", hometown: "פתח תקווה", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-benyehuda", fullName: "איתמר בן יהודה", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-benyehuda.jpg", hometown: "רחובות", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-eden", fullName: "חיים מאיר עדן", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eden.jpg", hometown: "רחובות", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-kian", fullName: "חביב קיעאן", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-kian.jpg", hometown: "חורה", memorial: "פלוגה מסייעת, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-binen", fullName: "עידו דוד ביננשטוק", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg", hometown: "רמת גן", memorial: "פלוגה מסייעת, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-barak", fullName: "תומר ברק", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barak.jpg", hometown: "פתח תקווה", memorial: "פלוגה מסייעת, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-benyehuda", fullName: "איתמר בן יהודה", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-benyehuda.jpg", hometown: "רחובות", memorial: "פלוגה מסייעת, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-eden", fullName: "חיים מאיר עדן", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eden.jpg", hometown: "רחובות", memorial: "פלוגה מסייעת, גדוד 13", affiliation: "battalion_13" },
     ],
   }),
   build({
@@ -402,7 +402,7 @@ export const BATTLES: Battle[] = [
       { id: "pg-cohen", fullName: "איתמר כהן", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-cohen.jpg", hometown: "כרמיאל", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
       { id: "pg-glisko", fullName: "איתי אופק גליסקו", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-glisko.jpg", hometown: "יקנעם עילית", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
       { id: "pg-barnes", fullName: "שלו ברנס", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barnes.jpg", hometown: "כפר ברוך", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
-      { id: "pg-levi", fullName: "יקיר לוי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levi.jpg", hometown: "מורשת", memorial: "מחלקת המרגמות, גדוד 13", affiliation: "battalion_13" },
+      { id: "pg-levi", fullName: "יקיר לוי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levi.jpg", hometown: "מורשת", memorial: "פלוגה מסייעת, גדוד 13", affiliation: "battalion_13" },
       { id: "pg-raz", fullName: "עידן רז", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-raz.jpg", hometown: "עין המפרץ", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
       { id: "pg-peri", fullName: "רועי פרי", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-peri.jpg", hometown: "שוהם", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
       { id: "pg-azizov", fullName: "ליאור עזיזוב", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-azizov.jpg", hometown: "אשקלון", memorial: "פלוגה ג', גדוד 13", affiliation: "battalion_13" },
@@ -547,6 +547,80 @@ export const BATTLES: Battle[] = [
       { id: "nz-peretz", fullName: "דניאל שמעון פרץ", rank: "סרן", age: 22, hometown: "יד בנימין", memorial: "מ\"מ מלא\"ר (טנק ג'1), גדוד 77 (שריון) — הושב מהשבי", affiliation: "combat_team" },
       { id: "nz-chen", fullName: "איתי חן", rank: "סמ\"ר", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-chen.jpg", hometown: "נתניה", memorial: "תותחן טנק ג'1, גדוד 77 (שריון) — הושב מהשבי", affiliation: "combat_team" },
       { id: "nz-leibovitz", fullName: "תומר ליבוביץ", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-leibovitz.jpg", hometown: "תל אביב", memorial: "טען טנק ג'1, גדוד 77 (שריון)", affiliation: "combat_team" },
+    ],
+  }),
+
+  // ═══════════════════════════════════════════════════════════
+  //  מוקדים משלימים של גדוד 13 מחוץ לנחל עוז/פגה/ארז:
+  //  קיבוץ ניר עם (פלוגה א'), מוצב ק-2 ומחנה יפתח (פחת"ק).
+  //  קואורדינטות: ניר עם ויפתח מאומתים; ק-2 זמני (לכוונון בעורך המיקומים).
+  // ═══════════════════════════════════════════════════════════
+  build({
+    id: "niram-defense",
+    slug: "niram-defense",
+    title: "הגנת קיבוץ ניר עם",
+    kind: "battle",
+    date: "2023-10-07",
+    time: "06:30",
+    coordinates: [34.5807617, 31.5193144], // קיבוץ ניר עם (מאומת)
+    locationName: "קיבוץ ניר עם",
+    unit: "פלוגה א', גדוד 13, חטיבת גולני",
+    summary: "נפילת הלוחם מתן אברג'יל בהגנת קיבוץ ניר עם",
+    description: "לוחמי פלוגה א' של גדוד 13, שהוצבו בגזרת ק-2 וצק\"ם סופר בצפון העוטף, נחלצו עם הבוקר להגן על היישובים שבמרחב. בקיבוץ ניר עם נפל הלוחם סמ\"ר מתן אברג'יל בקרב מול המחבלים, סמוך לנמ\"ר שליד המדגרה ומפעל המים. על פי עדויות, בגבורתו חיפה מתן בגופו על רימון והציל בכך את חיי ששה מחבריו. יהי זכרו ברוך.",
+    media: [],
+    timeline: [
+      { id: "niram-t0", time: "06:30", endTime: "07:00", title: "פלוגה א' נחלצת להגנת היישובים בגזרה" },
+      { id: "niram-t1", time: "07:00", endTime: "09:00", title: "לחימה במחבלים במרחב קיבוץ ניר עם" },
+      { id: "niram-t2", time: "09:00", endTime: "09:05", title: "נפילת סמ\"ר מתן אברג'יל בחיפוי על רימון להצלת חבריו" },
+    ],
+    fallen: [
+      { id: "g13-avergil", fullName: "מתן אברג'יל", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-avergil.jpg", hometown: "חרמש", memorial: "פלוגה א', גדוד 13", affiliation: "battalion_13" },
+    ],
+  }),
+  build({
+    id: "k2-defense",
+    slug: "k2-defense",
+    title: "הגנת מוצב ק-2",
+    kind: "battle",
+    date: "2023-10-07",
+    time: "06:30",
+    coordinates: [34.5750, 31.5180], // placeholder — מוצב ק-2 ('מגן שדרות'), סמוך לשדרות
+    locationName: "מוצב ק-2",
+    unit: "פלוגת פחת\"ק, גדוד 13 (ת\"פ גדוד 77)",
+    summary: "לחימת לוחמי הפחת\"ק בהגנת מוצב ק-2 ('מגן שדרות')",
+    description: "מוצב ק-2 ('מגן שדרות'), בגזרת גדוד 77, אוּיש בלוחמי פלוגת הפחת\"ק של גדוד 13 ובמחלקת מרגמות. עם תחילת המתקפה החזיק הכוח את המוצב תחת אש כבדה. הלוחם סמ\"ר ירון זוהר, איש מחלקת המרגמות, ירה מאות פגזי מרגמה תחת אש ופגע בעשרות מחבלים, עד שנפגע אנוש מרסיסי פצמ\"ר ונפטר מפצעיו. הלוחם סמ\"ר אופיר ירוחין נפל אף הוא בקרבות ההגנה על המוצב. יהי זכרם ברוך.",
+    media: [],
+    timeline: [
+      { id: "k2-t0", time: "06:30", endTime: "07:00", title: "כניסת הלוחמים למרחבים המוגנים; היערכות להגנת המוצב" },
+      { id: "k2-t1", time: "07:00", endTime: "10:00", title: "לחימת הגנה עיקשת; ירי מרגמות מסיבי על המחבלים" },
+      { id: "k2-t2", time: "10:00", endTime: "10:05", title: "נפילת סמ\"ר ירון זוהר ונפילת סמ\"ר אופיר ירוחין בהגנת המוצב" },
+    ],
+    fallen: [
+      { id: "g13-zohar", fullName: "ירון זוהר", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-zohar.jpg", hometown: "קרית אתא", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
+      { id: "g13-yeruchin", fullName: "אופיר ירוחין", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-yeruchin.jpg", hometown: "גבעת שמואל", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
+    ],
+  }),
+  build({
+    id: "yiftah-defense",
+    slug: "yiftah-defense",
+    title: "הגנת מחנה יפתח",
+    kind: "battle",
+    date: "2023-10-07",
+    time: "06:30",
+    coordinates: [34.5119583, 31.5969322], // מחנה יפתח (מאומת)
+    locationName: "מחנה יפתח",
+    unit: "פלוגת פחת\"ק, גדוד 13, חטיבת גולני",
+    summary: "נפילת שני לוחמי הפחת\"ק בהגנת שער מחנה יפתח",
+    description: "מחנה יפתח, מפקדת גדוד 77 שבו שהו גם לוחמי פלוגת הפחת\"ק של גדוד 13, הותקף עם תחילת המתקפה. במרחב שער המחנה (ש.ג) נפלו הלוחמים סמ\"ר עילי בר-שדה וסמ\"ר נתנאל אברהם שלום יאנג בהגנה על חבריהם ועל המחנה. נתנאל, עולה בודד מלונדון, נפל בעת סיוע לחילוץ לוחם בשער. יהי זכרם ברוך.",
+    media: [],
+    timeline: [
+      { id: "yiftah-t0", time: "06:30", endTime: "07:00", title: "המחנה מותקף; הלוחמים נערכים להגנה בשער ובעמדות" },
+      { id: "yiftah-t1", time: "07:00", endTime: "08:00", title: "לחימה בשער המחנה (ש.ג) מול המחבלים" },
+      { id: "yiftah-t2", time: "08:00", endTime: "08:05", title: "נפילת סמ\"ר עילי בר-שדה וסמ\"ר נתנאל יאנג בהגנת השער" },
+    ],
+    fallen: [
+      { id: "g13-barseda", fullName: "עילי בר-שדה", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-barseda.jpg", hometown: "רמת גן", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
+      { id: "g13-yang", fullName: "נתנאל אברהם שלום יאנג", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-yang.jpg", hometown: "רמת השרון", memorial: "פחת\"ק, גדוד 13", affiliation: "battalion_13" },
     ],
   }),
 ];

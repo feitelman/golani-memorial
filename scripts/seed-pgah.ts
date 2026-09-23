@@ -37,7 +37,7 @@ async function rest(method: string, path: string, body?: unknown, prefer?: strin
 }
 
 async function main() {
-  const pgah = BATTLES.filter((b) => b.id.startsWith("pgah-") || b.id.startsWith("erez-") || b.id.startsWith("nz-"));
+  const pgah = BATTLES.filter((b) => b.id.startsWith("pgah-") || b.id.startsWith("erez-") || b.id.startsWith("nz-") || b.id.startsWith("g13-") || b.id.startsWith("niram-") || b.id.startsWith("k2-") || b.id.startsWith("yiftah-"));
   for (const b of pgah) {
     await rest(
       "POST",
