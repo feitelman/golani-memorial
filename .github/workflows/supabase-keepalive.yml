@@ -2,13 +2,16 @@ name: Supabase keep-alive
 
 # Supabase auto-pauses free-tier projects after 7 days of inactivity. When that
 # happens the memorial site can't read its data and every battle looks deleted.
-# Any API request counts as activity, so this pings the project every 3 days.
+# Any API request counts as activity, so this pings the project DAILY — that
+# keeps "time since last activity" under 24h at all times, so Supabase never
+# even sends its pre-pause warning email, and a single dropped GitHub cron run
+# (they can be delayed/skipped under load) still leaves a wide safety margin.
 #
 # Runs on GitHub's servers — it does not depend on any machine being switched on.
 
 on:
   schedule:
-    - cron: "0 8 */3 * *" # every 3 days at 08:00 UTC
+    - cron: "0 8 * * *" # every day at 08:00 UTC
   workflow_dispatch: {} # also runnable by hand from the Actions tab
 
 jobs:
