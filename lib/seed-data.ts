@@ -468,6 +468,87 @@ export const BATTLES: Battle[] = [
       { id: "erez-tahar", fullName: "אדיר טהר", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-tahar.jpg", hometown: "ירושלים", memorial: "לוחם, פחת\"ק 77/13, גדוד 13", affiliation: "battalion_13" },
     ],
   }),
+
+  // ═══════════════════════════════════════════════════════════
+  //  מוצב נחל עוז — מוקדים משלימים (7 באוקטובר 2023)
+  //  ש.ג, מיגונית פלוגה ב' וטנקי השריון — משלימים למוקדים שכבר קיימים
+  //  (חמ"ל, בטונדות, צמ"ה, בלונאים, מיגונית התצפיתניות).
+  //  קואורדינטות זמניות סמוך למרכז המחנה — לכוונון עדין בעורך המיקומים.
+  // ═══════════════════════════════════════════════════════════
+  build({
+    id: "nz-shag",
+    slug: "nz-shag",
+    title: "קרב הש.ג",
+    kind: "battle",
+    date: "2023-10-07",
+    time: "07:00",
+    coordinates: [34.50120, 31.47905], // placeholder — שער המחנה
+    locationName: "מוצב נחל עוז",
+    unit: "פלוגה ב', גדוד 13, חטיבת גולני",
+    summary: "הגנת שער המחנה (ש.ג) עד נפילת הלוחמים ופריצת המחבלים פנימה",
+    description: "עם תחילת המתקפה עוּבּתה עמדת הש.ג של מחנה נחל עוז: לצד השומר הראשוני הוצבו שני לוחמים ומ\"כ מפלוגה ב'. הכוח ניהל חילופי אש כבדים מול מחבלים שתקפו את עמדת הש.ג ממספר כיוונים ובאמצעי לחימה מגוונים — נשק קל, רימונים ונ\"ט — כשלרשות המגִנים נשק אישי בלבד.\nסביב השעה 07:30 נפלו בעמדה סמ\"ר אדיר אישטו בוגלה, סמ\"ר דור לזימי וסמ\"ר אורי כרמי. נפילתם פתחה למחבלים את הכניסה דרך הש.ג ואפשרה להם לנוע בחופשיות בתוך המחנה. יהי זכרם ברוך.",
+    media: [],
+    timeline: [
+      { id: "nz-shag-t0", time: "06:35", endTime: "07:00", title: "עיבוי עמדת הש.ג — שני לוחמים ומ\"כ מפלוגה ב'" },
+      { id: "nz-shag-t1", time: "07:00", endTime: "07:30", title: "חילופי אש כבדים מול מחבלים ממספר כיוונים, בנשק אישי בלבד" },
+      { id: "nz-shag-t2", time: "07:30", endTime: "07:35", title: "נפילת סמ\"ר בוגלה, סמ\"ר לזימי וסמ\"ר כרמי — הש.ג נפרץ" },
+    ],
+    fallen: [
+      { id: "nz-karmi", fullName: "אורי כרמי", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-karmi.jpg", hometown: "ראשון לציון", memorial: "לוחם, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-lazimi", fullName: "דור לזימי", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-lazimi.jpg", hometown: "נוף הגליל", memorial: "מ\"כ, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-bugla", fullName: "אדיר אישטו בוגלה", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-bugla.jpg", hometown: "אריאל", memorial: "לוחם, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+    ],
+  }),
+  build({
+    id: "nz-migunit-b",
+    slug: "nz-migunit-b",
+    title: "קרב מיגונית פלוגה ב'",
+    kind: "battle",
+    date: "2023-10-07",
+    time: "06:35",
+    coordinates: [34.50045, 31.47975], // placeholder — מיגונית פלוגה ב'
+    locationName: "מוצב נחל עוז",
+    unit: "פלוגה ב', גדוד 13, חטיבת גולני",
+    summary: "לחימה מסביב למחנה ונפילת שני לוחמים במיגונית פלוגה ב'",
+    description: "בשעה 06:35 יצאו המ\"מים סגן נמרוד אלירז וסרן יוחאי דוכן, יחד עם לוחמים מפלוגה ב', לחזק את העמדות מסביב למחנה. במרחב מיגונית פלוגה ב' לחמו כוחות לא-אורגניים — לוחמי הפלוגה, לוחם מחפ\"ק הסמג\"ד, כוח קטן מהלוט\"ר וכוח צלפים מסיירת צנחנים — אל מול המחבלים.\nהלוחם סמ\"ר דוד רתנר לחם במפנה המערבי של המחנה, רץ להזהיר את חיילי הפלס\"ם מפני פשיטה צפויה, תגבר את העמדה המזרחית, ובשובו נפגע אנוש מאש שנורתה ממספר כיוונים. גם סמ\"ר נאור סיבוני נפגע אנוש. שניהם טופלו במיגונית פלוגה ב' בידי החובשים, ומתו מפצעיהם סמוך לשעה 08:01. יהי זכרם ברוך.",
+    media: [],
+    timeline: [
+      { id: "nz-migunit-b-t0", time: "06:35", endTime: "07:00", title: "יציאת המ\"מים והלוחמים לחיזוק העמדות סביב המחנה" },
+      { id: "nz-migunit-b-t1", time: "07:00", endTime: "08:00", title: "לחימה עיקשת במפנה המערבי והמזרחי; רתנר וסיבוני נפגעים אנוש" },
+      { id: "nz-migunit-b-t2", time: "08:01", endTime: "08:05", title: "סמ\"ר דוד רתנר וסמ\"ר נאור סיבוני מתו מפצעיהם במיגונית" },
+    ],
+    fallen: [
+      { id: "nz-ratner", fullName: "דוד רתנר", rank: "סמ\"ר", age: 20, hometown: "אשדוד", memorial: "לוחם-נגב, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-siboni", fullName: "נאור סיבוני", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-siboni.jpg", hometown: "גילת", memorial: "לוחם, פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+    ],
+  }),
+  build({
+    id: "nz-tanks",
+    slug: "nz-tanks",
+    title: "קרב טנקי השריון",
+    kind: "battle",
+    date: "2023-10-07",
+    time: "06:30",
+    coordinates: [34.49950, 31.47930], // placeholder — מרחב הטנקים, מערב המחנה
+    locationName: "מוצב נחל עוז",
+    unit: "פלוגת טנקים, גדוד 77 (שריון) — כוננות במחנה נחל עוז",
+    summary: "שני צוותי טנקים מגדוד 77 בלמו את החדירה בתוך המחנה וממערב לו",
+    description: "במחנה נחל עוז שהו בכוננות שני טנקים מגדוד 77 (שריון): טנק ד' ('משנה חשאי', בפיקוד סגן עידו פאר) וטנק ג'1 (המלא\"ר, בפיקוד המ\"מ סרן דניאל פרץ). בשעה 06:30 פקד סמג\"ד 13 ('משנה נשרים') על הטנקים לעלות לעמדות ולהשמיד את המחבלים החודרים.\nהטנקים לחמו שעות במרחב הגדר, בעמדות ובתוך המחנה, פגעו במחבלים רבים ובלמו את החדירה. בשעה 08:53 נפגע טנק ד' משני טילי נ\"ט בתוך המחנה, סמוך למיגונית הפלס\"ם — התותחן סמל אור אביטל נהרג מהפגיעה, והמט\"ק-טען סמ\"ר יונתן גולן נהרג בעת ריצת הצוות למיגונית. חיילי הפלס\"ם מנעו את חטיפת הגופות עד להגעת כוח החילוץ.\nבשעה 09:01, ממערב למחנה, נפגע טנק ג'1 מטיל נ\"ט. המ\"מ סרן דניאל שמעון פרץ והתותחן סמ\"ר איתי חן נהרגו וגופותיהם נחטפו לעזה (הושבו לימים לישראל), הטען סמל תומר ליבוביץ נהרג, והנהג סמל מתן אנגרסט נחטף חי ופצוע. יהי זכרם ברוך.",
+    media: [],
+    timeline: [
+      { id: "nz-tanks-t0", time: "06:30", endTime: "06:45", title: "פקודת משנה נשרים לטנקים: לעלות לעמדות ולהשמיד את המחבלים" },
+      { id: "nz-tanks-t1", time: "06:45", endTime: "08:50", title: "הטנקים לוחמים בגדר, בעמדות ובתוך המחנה ובולמים את החדירה" },
+      { id: "nz-tanks-t2", time: "08:53", endTime: "08:56", title: "טנק ד' נפגע משני נ\"ט במחנה — נפילת סמל אור אביטל וסמ\"ר יונתן גולן" },
+      { id: "nz-tanks-t3", time: "09:01", endTime: "09:05", title: "טנק ג'1 נפגע מנ\"ט ממערב למחנה — נפילת סרן דניאל פרץ, סמ\"ר איתי חן וסמל תומר ליבוביץ" },
+    ],
+    fallen: [
+      { id: "nz-golan", fullName: "יונתן גולן", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-golan.jpg", hometown: "נווה מונוסון", memorial: "מט\"ק טנק ד', גדוד 77 (שריון)", affiliation: "combat_team" },
+      { id: "nz-avital", fullName: "אור אביטל", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-avital.jpg", hometown: "מרום גולן", memorial: "תותחן טנק ד', גדוד 77 (שריון)", affiliation: "combat_team" },
+      { id: "nz-peretz", fullName: "דניאל שמעון פרץ", rank: "סרן", age: 22, hometown: "יד בנימין", memorial: "מ\"מ מלא\"ר (טנק ג'1), גדוד 77 (שריון) — הושב מהשבי", affiliation: "combat_team" },
+      { id: "nz-chen", fullName: "איתי חן", rank: "סמ\"ר", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-chen.jpg", hometown: "נתניה", memorial: "תותחן טנק ג'1, גדוד 77 (שריון) — הושב מהשבי", affiliation: "combat_team" },
+      { id: "nz-leibovitz", fullName: "תומר ליבוביץ", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-leibovitz.jpg", hometown: "תל אביב", memorial: "טען טנק ג'1, גדוד 77 (שריון)", affiliation: "combat_team" },
+    ],
+  }),
 ];
 
 export function getBattleBySlug(slug: string) {
