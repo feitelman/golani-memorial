@@ -371,7 +371,7 @@ export const BATTLES: Battle[] = [
       { id: "pg-levinson", fullName: "שי לוינסון", rank: "סמ\"ר", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levinson.jpg", hometown: "גבעת אבני", memorial: "מט\"ק טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
       { id: "pg-eliyahu", fullName: "אריאל אליהו", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eliyahu.jpg", hometown: "מצפה יריחו", memorial: "תותחן טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
       { id: "pg-testa", fullName: "אופיר טסטה", rank: "סמל", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-testa.jpg", hometown: "ירושלים", memorial: "טען טנק 2ב', גדוד 77 (שריון)", affiliation: "combat_team" },
-      { id: "pg-alatrash", fullName: "מחמד אלאטרש", rank: "רס\"מ", age: 39, hometown: "שבט אל-אטרש", memorial: "גשש, צק\"מ סחף — חטיבה צפונית (הושב מהשבי)", affiliation: "combat_team" },
+      { id: "pg-alatrash", fullName: "מחמד אלאטרש", rank: "רס\"מ", age: 39, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-alatrash.jpg", hometown: "סעווה (שבט אל-אטרש)", memorial: "גשש, צק\"מ סחף — חטיבה צפונית (הושב מהשבי)", affiliation: "combat_team" },
     ],
   }),
   build({
@@ -544,7 +544,7 @@ export const BATTLES: Battle[] = [
     fallen: [
       { id: "nz-golan", fullName: "יונתן גולן", rank: "סמ\"ר", age: 21, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-golan.jpg", hometown: "נווה מונוסון", memorial: "מט\"ק טנק ד', גדוד 77 (שריון)", affiliation: "combat_team" },
       { id: "nz-avital", fullName: "אור אביטל", rank: "סמל", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-avital.jpg", hometown: "מרום גולן", memorial: "תותחן טנק ד', גדוד 77 (שריון)", affiliation: "combat_team" },
-      { id: "nz-peretz", fullName: "דניאל שמעון פרץ", rank: "סרן", age: 22, hometown: "יד בנימין", memorial: "מ\"מ מלא\"ר (טנק ג'1), גדוד 77 (שריון) — הושב מהשבי", affiliation: "combat_team" },
+      { id: "nz-peretz", fullName: "דניאל שמעון פרץ", rank: "סרן", age: 22, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-peretz.jpg", hometown: "יד בנימין", memorial: "מ\"מ מלא\"ר (טנק ג'1), גדוד 77 (שריון) — הושב מהשבי", affiliation: "combat_team" },
       { id: "nz-chen", fullName: "איתי חן", rank: "סמ\"ר", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-chen.jpg", hometown: "נתניה", memorial: "תותחן טנק ג'1, גדוד 77 (שריון) — הושב מהשבי", affiliation: "combat_team" },
       { id: "nz-leibovitz", fullName: "תומר ליבוביץ", rank: "סמל", age: 19, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-leibovitz.jpg", hometown: "תל אביב", memorial: "טען טנק ג'1, גדוד 77 (שריון)", affiliation: "combat_team" },
     ],
