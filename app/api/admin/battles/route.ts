@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminClient } from "@/lib/supabase";
 import { fetchBattlesResult } from "@/lib/data";
-import { Battle } from "@/lib/types";
+import { battleSchema, describeIssues } from "@/lib/battle-schema";
+import { saveBattle } from "@/lib/save-battle";
 import { isAdminRequest } from "@/lib/auth";
 
 const unauthorized = () =>
@@ -27,7 +28,22 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   if (!(await isAdminRequest(req))) return unauthorized();
   const admin = getAdminClient();
-  const battle = (await req.json()) as Battle;
+
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ ok: false, error: "בקשה לא תקינה (JSON שבור)." }, { status: 400 });
+  }
+
+  // Validate before touching the database; reject with a readable Hebrew list.
+  const parsed = battleSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { ok: false, error: "הנתונים לא תקינים:\n" + describeIssues(parsed.error, body) },
+      { status: 422 },
+    );
+  }
 
   if (!admin) {
     return NextResponse.json({
@@ -37,70 +53,9 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  // Upsert battle row. `slug` is UNIQUE, so two battles with the same title
-  // would collide — self-heal by suffixing the id rather than failing the save.
-  const row = (slug: string) => ({
-    id: battle.id,
-    slug,
-    title: battle.title,
-    kind: battle.kind,
-    date: battle.date,
-    time: battle.time,
-    lng: battle.coordinates[0],
-    lat: battle.coordinates[1],
-    location_name: battle.locationName,
-    unit: battle.unit,
-    summary: battle.summary,
-    description: battle.description,
-  });
-
-  let savedSlug = battle.slug || battle.id;
-  let { error: bErr } = await admin.from("battles").upsert(row(savedSlug));
-  if (bErr && (bErr as { code?: string }).code === "23505") {
-    // unique_violation → retry once with a disambiguated slug
-    savedSlug = `${savedSlug}-${battle.id.slice(0, 5)}`;
-    ({ error: bErr } = await admin.from("battles").upsert(row(savedSlug)));
-  }
-  if (bErr)
-    return NextResponse.json({ ok: false, error: bErr.message }, { status: 500 });
-
-  // Replace child rows (simple + predictable for an admin tool)
-  await admin.from("timeline_events").delete().eq("battle_id", battle.id);
-  await admin.from("soldiers").delete().eq("battle_id", battle.id);
-  await admin.from("media").delete().eq("battle_id", battle.id);
-
-  if (battle.timeline.length)
-    await admin.from("timeline_events").insert(
-      battle.timeline.map((t) => ({
-        id: t.id,
-        battle_id: battle.id,
-        time: t.time,
-        end_time: t.endTime ?? null,
-        title: t.title,
-        detail: t.detail ?? null,
-        path: t.path ?? null,
-      })),
-    );
-  if (battle.fallen.length)
-    await admin.from("soldiers").insert(
-      battle.fallen.map((s) => ({
-        id: s.id,
-        battle_id: battle.id,
-        full_name: s.fullName,
-        rank: s.rank,
-        age: s.age,
-        photo: s.photo,
-        hometown: s.hometown,
-        memorial: s.memorial,
-        affiliation: s.affiliation ?? null,
-      })),
-    );
-  if (battle.media.length)
-    await admin.from("media").insert(
-      battle.media.map((m) => ({ ...m, battle_id: battle.id })),
-    );
-
-  return NextResponse.json({ ok: true, persisted: true, slug: savedSlug });
+  const result = await saveBattle(admin, parsed.data);
+  if (!result.ok) return NextResponse.json(result, { status: 500 });
+  return NextResponse.json({ ok: true, persisted: true, slug: result.slug });
 }
 
 export async function DELETE(req: NextRequest) {
