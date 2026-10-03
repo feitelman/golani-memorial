@@ -35,7 +35,7 @@ npm run dev                  # http://localhost:3000
 ## Supabase
 
 1. צרו פרויקט ב-[supabase.com](https://supabase.com).
-2. הריצו את `supabase/schema.sql` ואז `supabase/seed.sql` ב-SQL editor.
+2. הריצו את `supabase/schema.sql` ב-SQL editor. את התוכן מוסיפים דרך `/admin` (או משחזרים מגיבוי — ראו "גיבוי ושחזור").
 3. מלאו את משתני הסביבה.
 
 הסכימה כוללת RLS לקריאה ציבורית; כתיבה רק דרך ה-service-role במסלול ה-API של האדמין.
