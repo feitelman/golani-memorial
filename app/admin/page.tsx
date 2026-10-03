@@ -23,6 +23,20 @@ const MEDIA_KINDS: MediaKind[] = ["image", "video", "drone", "audio", "radio"];
 const AFFILIATIONS = Object.keys(AFFILIATION_LABEL) as Affiliation[];
 const uid = () => Math.random().toString(36).slice(2, 9);
 
+// A 401 means the admin session expired — send the user back to log in.
+function bounceIfUnauthorized(res: Response): boolean {
+  if (res.status === 401) {
+    window.location.href = "/admin/login?next=/admin";
+    return true;
+  }
+  return false;
+}
+
+async function logout() {
+  await fetch("/api/admin/login", { method: "DELETE" }).catch(() => {});
+  window.location.href = "/admin/login";
+}
+
 // Map a file's mime type to our media kind (best-effort default).
 function kindFromMime(type: string): MediaKind {
   if (type.startsWith("video")) return "video";
@@ -64,7 +78,10 @@ export default function AdminPage() {
 
   useEffect(() => {
     fetch("/api/admin/battles")
-      .then((r) => r.json())
+      .then((r) => {
+        if (bounceIfUnauthorized(r)) throw new Error("unauthorized");
+        return r.json();
+      })
       .then((d) => {
         setBattles(d.battles ?? []);
         setPersisted(d.persisted);
@@ -117,6 +134,7 @@ export default function AdminPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(e),
       });
+      if (bounceIfUnauthorized(res)) return;
       d = await res.json().catch(() => ({}));
       // A failed save must NOT look like a success — keep the editor open so the
       // work isn't lost, and say what went wrong.
@@ -148,11 +166,22 @@ export default function AdminPage() {
 
   async function remove(id: string) {
     if (!confirm("למחוק את הקרב הזה?")) return;
-    await fetch("/api/admin/battles", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
-    });
+    try {
+      const res = await fetch("/api/admin/battles", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      if (bounceIfUnauthorized(res)) return;
+      const d = await res.json().catch(() => ({}));
+      if (!res.ok || d.ok === false) {
+        alert("המחיקה נכשלה ולא בוצעה:\n" + (d.error || `שגיאה ${res.status}`));
+        return;
+      }
+    } catch {
+      alert("המחיקה נכשלה (שגיאת רשת).");
+      return;
+    }
     setBattles((p) => p.filter((b) => b.id !== id));
   }
 
@@ -176,6 +205,9 @@ export default function AdminPage() {
           <Link href="/map" className="text-xs text-muted hover:text-bone">
             למפה ↗
           </Link>
+          <button onClick={logout} className="text-xs text-muted hover:text-bone">
+            התנתקות
+          </button>
         </div>
       </header>
 
@@ -667,6 +699,7 @@ function UploadButton({
             fd.append("file", file);
             fd.append("folder", folder);
             const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+            if (bounceIfUnauthorized(res)) return;
             const d = await res.json();
             if (d.ok && d.url) onUploaded(d.url, file);
             else setErr(d.error || "העלאה נכשלה");

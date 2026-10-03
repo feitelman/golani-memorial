@@ -86,7 +86,7 @@ export default function BattleMap({
   const locPinsRef = useRef<Map<string, mapboxgl.Marker>>(new Map());
   const resizeObsRef = useRef<ResizeObserver | null>(null);
   // kept so we can rebuild markers when `battles` changes (live data refresh)
-  const glRef = useRef<typeof import("mapbox-gl") | null>(null);
+  const glRef = useRef<typeof import("mapbox-gl").default | null>(null);
   const readyRef = useRef(false);
   // Live mirrors so the imperative marker sync never reads a stale closure
   // (markers are created async on style.load, after the first render).
@@ -115,7 +115,6 @@ export default function BattleMap({
 
     (async () => {
       const mapboxgl = (await import("mapbox-gl")).default;
-      await import("mapbox-gl/dist/mapbox-gl.css");
       if (cancelled || !containerRef.current) return;
       glRef.current = mapboxgl;
 
@@ -153,7 +152,7 @@ export default function BattleMap({
         // vary, so set only layers that actually exist (Mapbox fires errors,
         // not exceptions, for unknown layers — guard rather than try/catch).
         const setIf = (id: string, prop: string, val: string) => {
-          if (map.getLayer(id)) map.setPaintProperty(id, prop, val as any);
+          if (map.getLayer(id)) map.setPaintProperty(id, prop as any, val as any);
         };
         const bg = (map.getStyle().layers ?? []).find(
           (l: any) => l.type === "background",
@@ -286,7 +285,7 @@ export default function BattleMap({
   }, []);
 
   // ── markers ───────────────────────────────────────────
-  function addMarkers(map: mapboxgl.Map, mapboxgl: typeof import("mapbox-gl")) {
+  function addMarkers(map: mapboxgl.Map, mapboxgl: typeof import("mapbox-gl").default) {
     battles.forEach((b) => {
       const el = document.createElement("button");
       el.className = "tac-marker";
@@ -369,7 +368,7 @@ export default function BattleMap({
 
   function addEventMarkers(
     map: mapboxgl.Map,
-    mapboxgl: typeof import("mapbox-gl"),
+    mapboxgl: typeof import("mapbox-gl").default,
   ) {
     eventMarkersRef.current.forEach((m) => m.remove());
     eventMarkersRef.current.clear();
@@ -456,7 +455,7 @@ export default function BattleMap({
   // ── location pins (guided-tour entry) ─────────────────
   function addLocationPins(
     map: mapboxgl.Map,
-    mapboxgl: typeof import("mapbox-gl"),
+    mapboxgl: typeof import("mapbox-gl").default,
   ) {
     locPinsRef.current.forEach((m) => m.remove());
     locPinsRef.current.clear();

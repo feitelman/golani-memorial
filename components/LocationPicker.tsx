@@ -44,7 +44,6 @@ export default function LocationPicker({
     (async () => {
       const mod = await import("mapbox-gl");
       const mapboxgl = mod.default;
-      await import("mapbox-gl/dist/mapbox-gl.css");
       if (cancelled || !containerRef.current) return;
       mapboxgl.accessToken = TOKEN!;
 

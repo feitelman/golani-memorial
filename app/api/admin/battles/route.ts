@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAdminClient } from "@/lib/supabase";
 import { fetchBattlesResult } from "@/lib/data";
 import { Battle } from "@/lib/types";
+import { isAdminRequest } from "@/lib/auth";
+
+const unauthorized = () =>
+  NextResponse.json({ ok: false, error: "נדרשת התחברות" }, { status: 401 });
 
 // Lightweight admin API. With a Supabase service-role key it persists to the
 // relational tables; without one it runs in demo mode (returns seed, accepts
@@ -9,7 +13,8 @@ import { Battle } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  if (!(await isAdminRequest(req))) return unauthorized();
   const { battles, source, error } = await fetchBattlesResult();
   return NextResponse.json({
     battles,
@@ -20,6 +25,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  if (!(await isAdminRequest(req))) return unauthorized();
   const admin = getAdminClient();
   const battle = (await req.json()) as Battle;
 
@@ -98,6 +104,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
+  if (!(await isAdminRequest(req))) return unauthorized();
   const admin = getAdminClient();
   const { id } = await req.json();
   if (!admin) return NextResponse.json({ ok: true, persisted: false });

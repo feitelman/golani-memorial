@@ -50,7 +50,7 @@ export default function PathEditor({
 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
-  const glRef = useRef<typeof import("mapbox-gl") | null>(null);
+  const glRef = useRef<typeof import("mapbox-gl").default | null>(null);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
   const roRef = useRef<ResizeObserver | null>(null);
   const [ready, setReady] = useState(false);
@@ -69,7 +69,6 @@ export default function PathEditor({
     (async () => {
       const mod = await import("mapbox-gl");
       const mapboxgl = mod.default;
-      await import("mapbox-gl/dist/mapbox-gl.css");
       if (cancelled || !containerRef.current) return;
       glRef.current = mapboxgl;
       mapboxgl.accessToken = TOKEN!;

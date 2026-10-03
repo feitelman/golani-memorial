@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo, IBM_Plex_Mono } from "next/font/google";
+import "mapbox-gl/dist/mapbox-gl.css";
 import "./globals.css";
 import Atmosphere from "@/components/Atmosphere";
 

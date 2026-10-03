@@ -1,0 +1,66 @@
+name: Supabase backup
+
+# Nightly snapshot of everything the memorial holds — all four tables plus every
+# file in the battle-media bucket — committed to the `backups` branch. Each
+# night's commit is a restore point (git history = point-in-time recovery).
+#
+# Restore: check out the `backups` branch into a folder, then from main run
+#   npx tsx scripts/restore-backup.ts <thatFolder>          (dry run)
+#   npx tsx scripts/restore-backup.ts <thatFolder> --yes    (restore)
+#
+# Uses only the public anon key: the data is public-read by design.
+
+on:
+  schedule:
+    - cron: "30 2 * * *" # every night at 02:30 UTC
+  workflow_dispatch: {} # also runnable by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: supabase-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Export tables and storage
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://szejkimsbjvdamittwlf.supabase.co
+          # Public "anon" key — safe to commit (shipped to every visitor's browser).
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6ZWpraW1zYmp2ZGFtaXR0d2xmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDAzMDAsImV4cCI6MjA5Nzg3NjMwMH0.FKwE0bcQgPXmfnh-NI9ZErUuSNj1CtmQoD4Uwlw6-LE
+        run: node scripts/backup.mjs "$RUNNER_TEMP/snapshot"
+
+      - name: Commit snapshot to the backups branch
+        run: |
+          set -euo pipefail
+          git config user.name "memorial-backup-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BK="$RUNNER_TEMP/bk"
+          if git ls-remote --exit-code --heads origin backups >/dev/null 2>&1; then
+            git fetch --depth=1 origin backups:backups
+            git worktree add "$BK" backups
+          else
+            git worktree add --detach "$BK"
+            git -C "$BK" checkout --orphan backups
+            git -C "$BK" rm -rfq . || true
+          fi
+          rsync -a --delete --exclude .git "$RUNNER_TEMP/snapshot/" "$BK/"
+          cd "$BK"
+          # Only commit when the data itself changed (manifest timestamp alone isn't news).
+          if [ -z "$(git status --porcelain -- db storage)" ] && git rev-parse -q --verify HEAD >/dev/null; then
+            echo "No data changes since the last snapshot — nothing to commit."
+            exit 0
+          fi
+          git add -A
+          git commit -q -m "Backup $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push origin backups
+          echo "✅ Snapshot committed to the backups branch."

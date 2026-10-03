@@ -12,3 +12,6 @@ yarn-error.log*
 next-env.d.ts
 .vercel
 *.tsbuildinfo
+
+# local backup snapshots (the nightly Action commits them to the `backups` branch)
+/backup
