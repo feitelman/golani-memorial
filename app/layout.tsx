@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo, IBM_Plex_Mono } from "next/font/google";
-import "mapbox-gl/dist/mapbox-gl.css";
 import "./globals.css";
+// After globals.css on purpose: Mapbox's own rules (e.g. markers being
+// position:absolute) must win over our same-specificity marker classes.
+import "mapbox-gl/dist/mapbox-gl.css";
 import Atmosphere from "@/components/Atmosphere";
 
 const heebo = Heebo({

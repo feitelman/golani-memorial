@@ -150,7 +150,7 @@ body {
 
 /* ── Tactical battle markers (Mapbox custom HTML markers) ── */
 .tac-marker {
-  position: relative;
+  position: absolute; /* Mapbox positions markers via transform from top-left */
   width: 24px;
   height: 24px;
   background: transparent;
@@ -250,7 +250,7 @@ body {
 
 /* ── Location pins (guided-tour entry, explore mode) ── */
 .loc-pin {
-  position: relative;
+  position: absolute; /* Mapbox positions markers via transform from top-left */
   width: 30px;
   height: 30px;
   background: transparent;
@@ -316,7 +316,7 @@ body {
 
 /* ── Moving event markers (a force advancing along a path) ── */
 .event-marker {
-  position: relative;
+  position: absolute; /* Mapbox positions markers via transform from top-left */
   width: 16px;
   height: 16px;
   background: transparent;
