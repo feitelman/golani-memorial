@@ -15,3 +15,4 @@ next-env.d.ts
 
 # local backup snapshots (the nightly Action commits them to the `backups` branch)
 /backup
+/.next-verify

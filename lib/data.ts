@@ -1,4 +1,5 @@
 import { Battle, toMinutes } from "./types";
+import { compareFallen } from "./ranks";
 import { supabase, supabaseEnabled } from "./supabase";
 
 // Single source of truth for reading battles: the Supabase database. It joins
@@ -20,7 +21,10 @@ export async function fetchBattlesResult(): Promise<BattlesResult> {
   // Not configured at all → bundled demo content is the honest answer.
   if (!supabaseEnabled || !supabase) {
     const snapshot = (await import("./snapshot.json")).default as unknown as Battle[];
-    return { battles: snapshot, source: "seed" };
+    return {
+      battles: snapshot.map((b) => ({ ...b, fallen: [...b.fallen].sort(compareFallen) })),
+      source: "seed",
+    };
   }
 
   const { data, error } = await supabase
@@ -66,16 +70,18 @@ export async function fetchBattlesResult(): Promise<BattlesResult> {
       description: row.description,
       media: row.media ?? [],
       timeline,
-      fallen: (row.soldiers ?? []).map((s: any) => ({
-        id: s.id,
-        fullName: s.full_name,
-        rank: s.rank,
-        age: s.age,
-        photo: s.photo,
-        hometown: s.hometown,
-        memorial: s.memorial,
-        affiliation: s.affiliation,
-      })),
+      fallen: (row.soldiers ?? [])
+        .map((s: any) => ({
+          id: s.id,
+          fullName: s.full_name,
+          rank: s.rank,
+          age: s.age,
+          photo: s.photo,
+          hometown: s.hometown,
+          memorial: s.memorial,
+          affiliation: s.affiliation,
+        }))
+        .sort(compareFallen), // senior rank first — the DB has no row order
       startMinute: toMinutes(row.time),
       endMinute: toMinutes(timeline[timeline.length - 1]?.time ?? row.time),
     };

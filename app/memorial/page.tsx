@@ -6,7 +6,20 @@ export const dynamic = "force-dynamic";
 
 export default async function MemorialPage() {
   const battles = await fetchBattles();
-  const soldiers = battles.flatMap((b) =>
+  // Cluster the wall by battle: locations with the most fallen first, battles
+  // within a location by time; each battle's fallen are already rank-ordered.
+  const perLocation = new Map<string, number>();
+  for (const b of battles) {
+    perLocation.set(b.locationName, (perLocation.get(b.locationName) ?? 0) + b.fallen.length);
+  }
+  const ordered = [...battles].sort(
+    (a, b) =>
+      perLocation.get(b.locationName)! - perLocation.get(a.locationName)! ||
+      a.locationName.localeCompare(b.locationName, "he") ||
+      a.startMinute - b.startMinute ||
+      a.title.localeCompare(b.title, "he"),
+  );
+  const soldiers = ordered.flatMap((b) =>
     b.fallen.map((s) => ({ ...s, battle: b.title, battleSlug: b.slug })),
   );
 
@@ -21,7 +34,7 @@ export default async function MemorialPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-md text-pretty leading-relaxed text-muted">
             לזכרם של לוחמי גדוד 13, חטיבת גולני ולוחמי צוות הקרב הגדודי שנפלו
-            בקרבות מוצב נחל עוז ומחנה פגה ב-7 באוקטובר. כל שם הוא עולם ומלואו.
+            בקרבות 7 באוקטובר — בנחל עוז, בפגה, במעבר ארז ובמוצבי הגזרה. כל שם הוא עולם ומלואו.
           </p>
           <div className="mx-auto mt-8 h-12 w-px bg-gradient-to-b from-blood-bright to-transparent" />
         </header>
