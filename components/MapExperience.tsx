@@ -103,7 +103,6 @@ export default function MapExperience({
 
   // Tour finished all stations — return to the locations overview.
   function endTour(completed: boolean) {
-    const center = tourLoc?.center;
     setTour(null);
     setReading(false);
     setActiveId(null);
@@ -111,7 +110,7 @@ export default function MapExperience({
     setMovePreview(null);
     setPlaying(false);
     setMinute(range[0]); // reset the clock back to the start (06:29)
-    if (center) setCameraTarget({ center, zoom: 13.2, pitch: 24 });
+    setCameraTarget({ overview: true }); // back to the view of all locations
     if (completed) {
       setToast("הסיור הושלם");
       setTimeout(() => setToast(""), 3500);

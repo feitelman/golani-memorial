@@ -31,16 +31,30 @@ const CENTER: [number, number] = [34.4975, 31.4762];
 // just above the floor so every building renders, while still fitting both the
 // outpost and the kibbutz in frame.
 const FRAME = { center: CENTER, zoom: 16.4, pitch: 46, bearing: -20 };
-// Wider establishing framing for the "locations overview" (explore, no tour):
-// far enough out that each location pin reads as a place on the map.
+// "Locations overview" (explore, no tour): framed to fit every location (see
+// overviewCamera); this zoom is only the ceiling, so a single location isn't
+// shown absurdly close.
 const OVERVIEW = { center: CENTER, zoom: 13.2, pitch: 24, bearing: -20 };
 // Above this zoom the location pins hide (the user has zoomed past the overview).
 const LOC_PIN_MAX_ZOOM = 14.5;
 
 export interface CameraTarget {
-  center: [number, number];
+  center?: [number, number];
   zoom?: number;
   pitch?: number;
+  /** Ignore center/zoom and frame every location on the map. */
+  overview?: boolean;
+}
+
+/** Bounding box of every battle — the locations overview frames all of it. */
+function battleBounds(battles: Battle[]): [[number, number], [number, number]] | null {
+  if (!battles.length) return null;
+  const lngs = battles.map((b) => b.coordinates[0]);
+  const lats = battles.map((b) => b.coordinates[1]);
+  return [
+    [Math.min(...lngs), Math.min(...lats)],
+    [Math.max(...lngs), Math.max(...lats)],
+  ];
 }
 
 interface Props {
@@ -96,6 +110,8 @@ export default function BattleMap({
   const tourActiveRef = useRef(tourActive);
   const spotlightRef = useRef(spotlightId);
   const movePreviewRef = useRef(movePreview);
+  const battlesRef = useRef(battles);
+  battlesRef.current = battles;
   // Whether the camera has already zoomed out to follow the current movement.
   const moveFollowRef = useRef(false);
   visibleRef.current = visibleIds;
@@ -146,6 +162,15 @@ export default function BattleMap({
         maxPitch: mobile ? 60 : 75,
       });
       mapRef.current = map;
+
+      // Establishing shot starts a little wider than the fitted overview of all
+      // locations, then pushes in on load (reduced motion: start there).
+      const ov = overviewCamera(map);
+      map.jumpTo(
+        reduce
+          ? { ...ov, pitch: OVERVIEW.pitch }
+          : { center: ov.center, zoom: ov.zoom - 1, pitch: 14 },
+      );
 
       map.on("style.load", () => {
         // Push toward a monochrome documentary palette. dark-v11's layer IDs
@@ -260,7 +285,9 @@ export default function BattleMap({
         if (containerRef.current) containerRef.current.style.opacity = "1";
         if (!reduce) {
           map.easeTo({
-            ...OVERVIEW,
+            ...overviewCamera(map),
+            pitch: OVERVIEW.pitch,
+            bearing: OVERVIEW.bearing,
             duration: 4000,
             easing: (t) => 1 - Math.pow(1 - t, 3), // ease-out cubic
             essential: true,
@@ -285,6 +312,26 @@ export default function BattleMap({
   }, []);
 
   // ── markers ───────────────────────────────────────────
+  // Camera that frames every location, kept clear of the HUD (top bar,
+  // timeline). Recomputed from live battles, so new locations are included.
+  function overviewCamera(map: mapboxgl.Map): { center: mapboxgl.LngLatLike; zoom: number } {
+    const fallback = { center: OVERVIEW.center, zoom: OVERVIEW.zoom };
+    const bounds = battleBounds(battlesRef.current);
+    if (!bounds) return fallback;
+    const mobile = window.innerWidth < 640;
+    const cam = map.cameraForBounds(bounds, {
+      padding: mobile
+        ? { top: 130, bottom: 200, left: 75, right: 75 }
+        : { top: 150, bottom: 210, left: 140, right: 140 },
+      bearing: OVERVIEW.bearing,
+      pitch: OVERVIEW.pitch,
+      maxZoom: OVERVIEW.zoom,
+    });
+    return cam?.center && typeof cam.zoom === "number"
+      ? { center: cam.center, zoom: cam.zoom }
+      : fallback;
+  }
+
   function addMarkers(map: mapboxgl.Map, mapboxgl: typeof import("mapbox-gl").default) {
     battles.forEach((b) => {
       const el = document.createElement("button");
@@ -563,6 +610,17 @@ export default function BattleMap({
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !cameraTarget) return;
+    if (cameraTarget.overview) {
+      map.flyTo({
+        ...overviewCamera(map),
+        pitch: OVERVIEW.pitch,
+        bearing: OVERVIEW.bearing,
+        duration: 2600,
+        essential: true,
+      });
+      return;
+    }
+    if (!cameraTarget.center) return;
     map.flyTo({
       center: cameraTarget.center,
       zoom: cameraTarget.zoom ?? 16.5,
