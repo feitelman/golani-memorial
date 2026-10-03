@@ -1,6 +1,6 @@
 import { Battle, toMinutes } from "./types";
 import { compareFallen } from "./ranks";
-import { supabase, supabaseEnabled } from "./supabase";
+import { freshClient, supabase, supabaseEnabled } from "./supabase";
 
 // Single source of truth for reading battles: the Supabase database. It joins
 // the relational tables back into the nested Battle shape the UI expects.
@@ -17,7 +17,10 @@ export interface BattlesResult {
   error?: string;
 }
 
-export async function fetchBattlesResult(): Promise<BattlesResult> {
+/**
+ * @param opts.fresh bypass the server data cache (the admin editor must see live data).
+ */
+export async function fetchBattlesResult(opts: { fresh?: boolean } = {}): Promise<BattlesResult> {
   // Not configured at all → bundled demo content is the honest answer.
   if (!supabaseEnabled || !supabase) {
     const snapshot = (await import("./snapshot.json")).default as unknown as Battle[];
@@ -27,7 +30,8 @@ export async function fetchBattlesResult(): Promise<BattlesResult> {
     };
   }
 
-  const { data, error } = await supabase
+  const client = (opts.fresh && freshClient()) || supabase;
+  const { data, error } = await client
     .from("battles")
     .select(
       `id, slug, title, kind, date, time, lng, lat, location_name, unit, summary, description,

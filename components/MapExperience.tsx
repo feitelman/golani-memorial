@@ -215,20 +215,24 @@ export default function MapExperience({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Keep the map's data fresh without a manual refresh, so an admin save shows
-  // up on its own. We re-fetch straight from Supabase on the client and only
-  // swap state when the data actually changed (so idle polling never rebuilds
-  // markers / restarts their animations). Triggers:
-  //   • on mount            — corrects browser-cached/stale initial HTML
-  //   • every 12s           — guaranteed catch-up, independent of anything else
-  //   • on focus / tab show — instant when returning from the admin tab
-  //   • on realtime change  — instant while viewing (if the tables are in the
-  //                           supabase_realtime publication)
+  // Keep the map's data fresh without a manual refresh, while touching the
+  // database as little as possible. Full reloads happen only:
+  //   • on mount                — corrects a cached/stale server render
+  //   • on a realtime change    — the normal path (tables are in the
+  //                               supabase_realtime publication)
+  //   • every 60s, ONLY while realtime isn't connected — fallback
+  //   • on focus / tab show, at most once per 30s — returning from admin
+  // Swaps state only when the data actually changed, so idle refreshes never
+  // rebuild markers or restart their animations.
   const lastSigRef = useRef<string>(JSON.stringify(initialBattles));
   useEffect(() => {
     let alive = true;
+    let live = false; // realtime channel status
+    let everLive = false;
+    let lastLoad = 0;
     let debounce: ReturnType<typeof setTimeout> | undefined;
     const load = async () => {
+      lastLoad = Date.now();
       try {
         const fresh = await fetchBattles();
         if (!alive) return;
@@ -244,13 +248,18 @@ export default function MapExperience({
       clearTimeout(debounce);
       debounce = setTimeout(load, 400);
     };
+    const loadIfStale = () => {
+      if (Date.now() - lastLoad > 30_000) load();
+    };
 
     load();
-    const poll = setInterval(load, 12000);
+    const poll = setInterval(() => {
+      if (!live) load(); // realtime covers changes while connected
+    }, 60_000);
 
-    const onFocus = () => load();
+    const onFocus = () => loadIfStale();
     const onVis = () => {
-      if (!document.hidden) load();
+      if (!document.hidden) loadIfStale();
     };
     window.addEventListener("focus", onFocus);
     document.addEventListener("visibilitychange", onVis);
@@ -261,7 +270,12 @@ export default function MapExperience({
       .on("postgres_changes", { event: "*", schema: "public", table: "timeline_events" }, refetch)
       .on("postgres_changes", { event: "*", schema: "public", table: "soldiers" }, refetch)
       .on("postgres_changes", { event: "*", schema: "public", table: "media" }, refetch)
-      .subscribe();
+      .subscribe((status) => {
+        const wasLive = live;
+        live = status === "SUBSCRIBED";
+        if (live && !wasLive && everLive) refetch(); // reconnected — catch up on anything missed
+        if (live) everLive = true;
+      });
 
     return () => {
       alive = false;

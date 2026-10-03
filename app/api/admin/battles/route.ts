@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAdminClient } from "@/lib/supabase";
+import { revalidateTag } from "next/cache";
+import { BATTLES_TAG, getAdminClient } from "@/lib/supabase";
 import { fetchBattlesResult } from "@/lib/data";
 import { battleSchema, describeIssues } from "@/lib/battle-schema";
 import { saveBattle } from "@/lib/save-battle";
@@ -16,7 +17,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
   if (!(await isAdminRequest(req))) return unauthorized();
-  const { battles, source, error } = await fetchBattlesResult();
+  const { battles, source, error } = await fetchBattlesResult({ fresh: true });
   return NextResponse.json({
     battles,
     source, // "db" | "seed" | "error" — the UI must not treat these alike
@@ -55,6 +56,7 @@ export async function POST(req: NextRequest) {
 
   const result = await saveBattle(admin, parsed.data);
   if (!result.ok) return NextResponse.json(result, { status: 500 });
+  revalidateTag(BATTLES_TAG); // map + memorial pick up the change on the next request
   return NextResponse.json({ ok: true, persisted: true, slug: result.slug });
 }
 
@@ -65,5 +67,6 @@ export async function DELETE(req: NextRequest) {
   if (!admin) return NextResponse.json({ ok: true, persisted: false });
   const { error } = await admin.from("battles").delete().eq("id", id);
   if (error) return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
+  revalidateTag(BATTLES_TAG);
   return NextResponse.json({ ok: true, persisted: true });
 }

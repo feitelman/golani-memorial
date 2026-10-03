@@ -1,11 +1,15 @@
-import { fetchBattles } from "@/lib/data";
+import { fetchBattlesResult } from "@/lib/data";
+import { BATTLES_REVALIDATE } from "@/lib/supabase";
 import Nav from "@/components/Nav";
 import MemorialWall from "@/components/MemorialWall";
 
-export const dynamic = "force-dynamic";
+// Cached on the server (refreshed every 5 minutes, and instantly after an admin save).
+export const revalidate = BATTLES_REVALIDATE;
 
 export default async function MemorialPage() {
-  const battles = await fetchBattles();
+  const { battles, source, error } = await fetchBattlesResult();
+  // Throw rather than cache an empty wall: Next keeps serving the last good page.
+  if (source === "error") throw new Error(`Battle data unavailable: ${error}`);
   // Cluster the wall by battle: locations with the most fallen first, battles
   // within a location by time; each battle's fallen are already rank-ordered.
   const perLocation = new Map<string, number>();
