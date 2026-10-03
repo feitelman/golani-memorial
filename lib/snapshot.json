@@ -117,7 +117,7 @@
         "age": 22,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-peretz.jpg",
         "hometown": "יד בנימין",
-        "memorial": "חיל השריון",
+        "memorial": "חיל השריון · נחטף לרצועה והושב לקבורה בישראל",
         "affiliation": "combat_team"
       },
       {
@@ -127,7 +127,7 @@
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-chen.jpg",
         "hometown": "נתניה",
-        "memorial": "חיל השריון",
+        "memorial": "חיל השריון · נחטף לרצועה והושב לקבורה בישראל",
         "affiliation": "combat_team"
       },
       {
@@ -520,7 +520,7 @@
         "age": 39,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-alatrash.jpg",
         "hometown": "סעווה (שבט אל-אטרש)",
-        "memorial": "מערך הגנת הגבולות",
+        "memorial": "מערך הגנת הגבולות · נחטף לרצועה והושב לקבורה בישראל",
         "affiliation": "combat_team"
       },
       {
@@ -1124,7 +1124,7 @@
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/34309c7d.jpg",
         "hometown": "ראשון לציון",
-        "memorial": "חיל רגלים",
+        "memorial": "חטיבה צפונית",
         "affiliation": "combat_team"
       },
       {
@@ -1134,7 +1134,7 @@
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/9f85239e.jpg",
         "hometown": "מזכרת בתיה",
-        "memorial": "חיל רגלים",
+        "memorial": "חטיבה צפונית",
         "affiliation": "combat_team"
       },
       {
@@ -1335,7 +1335,7 @@
         "age": 22,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783937887397-fpr4lq.jpg",
         "hometown": "מודיעין-מכבים-רעות",
-        "memorial": "חיל התותחנים",
+        "memorial": "חיל התותחנים, יחידת רוכב שמיים",
         "affiliation": "combat_team"
       },
       {
