@@ -7,7 +7,11 @@
     "dev": "NODE_OPTIONS=--experimental-websocket next dev",
     "build": "NODE_OPTIONS=--experimental-websocket next build",
     "start": "NODE_OPTIONS=--experimental-websocket next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "snapshot": "NODE_OPTIONS=--experimental-websocket tsx scripts/export-snapshot.ts",
+    "import-battles": "NODE_OPTIONS=--experimental-websocket tsx scripts/import-battles.ts",
+    "backup": "node scripts/backup.mjs",
+    "restore": "tsx scripts/restore-backup.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -29,6 +33,7 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
+    "tsx": "^4.23.15",
     "typescript": "^5.5.4"
   }
 }

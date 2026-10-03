@@ -1,10 +1,11 @@
 import { Battle, toMinutes } from "./types";
-import { BATTLES as SEED } from "./seed-data";
 import { supabase, supabaseEnabled } from "./supabase";
 
-// Single source of truth for reading battles. If Supabase is configured
-// it joins the relational tables back into the nested Battle shape the UI
-// expects; otherwise it serves the bundled seed data.
+// Single source of truth for reading battles: the Supabase database. It joins
+// the relational tables back into the nested Battle shape the UI expects.
+// Only when Supabase isn't configured at all (demo/offline) does it serve
+// lib/snapshot.json — a generated copy of the database (`npm run snapshot`),
+// loaded lazily so it never ships in the client bundle.
 
 /** Where the returned battles came from — so callers can warn instead of lying. */
 export type BattlesSource = "db" | "seed" | "error";
@@ -17,7 +18,10 @@ export interface BattlesResult {
 
 export async function fetchBattlesResult(): Promise<BattlesResult> {
   // Not configured at all → bundled demo content is the honest answer.
-  if (!supabaseEnabled || !supabase) return { battles: SEED, source: "seed" };
+  if (!supabaseEnabled || !supabase) {
+    const snapshot = (await import("./snapshot.json")).default as unknown as Battle[];
+    return { battles: snapshot, source: "seed" };
+  }
 
   const { data, error } = await supabase
     .from("battles")
