@@ -518,7 +518,7 @@ export const BATTLES: Battle[] = [
       { id: "nz-migunit-b-t2", time: "08:01", endTime: "08:05", title: "סמ\"ר דוד רתנר וסמ\"ר נאור סיבוני מתו מפצעיהם במיגונית" },
     ],
     fallen: [
-      { id: "nz-ratner", fullName: "דוד רתנר", rank: "סמ\"ר", age: 20, hometown: "אשדוד", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
+      { id: "nz-ratner", fullName: "דוד רתנר", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-ratner.jpg", hometown: "אשדוד", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
       { id: "nz-siboni", fullName: "נאור סיבוני", rank: "סמ\"ר", age: 20, photo: "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-siboni.jpg", hometown: "גילת", memorial: "פלוגה ב', גדוד 13", affiliation: "battalion_13" },
     ],
   }),
