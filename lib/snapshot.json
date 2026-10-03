@@ -111,13 +111,13 @@
     ],
     "fallen": [
       {
-        "id": "nz-avital",
-        "fullName": "אור אביטל",
-        "rank": "סמל",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-avital.jpg",
-        "hometown": "מרום גולן",
-        "memorial": "תותחן טנק ד', גדוד 77 (שריון)",
+        "id": "nz-peretz",
+        "fullName": "דניאל שמעון פרץ",
+        "rank": "סרן",
+        "age": 22,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-peretz.jpg",
+        "hometown": "יד בנימין",
+        "memorial": "חיל השריון",
         "affiliation": "combat_team"
       },
       {
@@ -127,7 +127,7 @@
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-chen.jpg",
         "hometown": "נתניה",
-        "memorial": "תותחן טנק ג'1, גדוד 77 (שריון) — הושב מהשבי",
+        "memorial": "חיל השריון",
         "affiliation": "combat_team"
       },
       {
@@ -137,7 +137,17 @@
         "age": 21,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-golan.jpg",
         "hometown": "נווה מונוסון",
-        "memorial": "מט\"ק טנק ד', גדוד 77 (שריון)",
+        "memorial": "חיל השריון",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "nz-avital",
+        "fullName": "אור אביטל",
+        "rank": "סמל",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-avital.jpg",
+        "hometown": "מרום גולן",
+        "memorial": "חיל השריון",
         "affiliation": "combat_team"
       },
       {
@@ -147,17 +157,7 @@
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-leibovitz.jpg",
         "hometown": "תל אביב",
-        "memorial": "טען טנק ג'1, גדוד 77 (שריון)",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "nz-peretz",
-        "fullName": "דניאל שמעון פרץ",
-        "rank": "סרן",
-        "age": 22,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/nz-peretz.jpg",
-        "hometown": "יד בנימין",
-        "memorial": "מ\"מ מלא\"ר (טנק ג'1), גדוד 77 (שריון) — הושב מהשבי",
+        "memorial": "חיל השריון",
         "affiliation": "combat_team"
       }
     ],
@@ -257,12 +257,12 @@
         "affiliation": "battalion_13"
       },
       {
-        "id": "erez-erez",
-        "fullName": "אריאל ארז",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-erez.jpg",
-        "hometown": "מושב עמקה",
+        "id": "erez-weiser",
+        "fullName": "רועי וייזר",
+        "rank": "סמ\"ר",
+        "age": 21,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-weiser.jpg",
+        "hometown": "אפרת",
         "memorial": "פחת\"ק, גדוד 13",
         "affiliation": "battalion_13"
       },
@@ -277,12 +277,12 @@
         "affiliation": "battalion_13"
       },
       {
-        "id": "erez-weiser",
-        "fullName": "רועי וייזר",
-        "rank": "סמ\"ר",
-        "age": 21,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-weiser.jpg",
-        "hometown": "אפרת",
+        "id": "erez-erez",
+        "fullName": "אריאל ארז",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/erez-erez.jpg",
+        "hometown": "מושב עמקה",
         "memorial": "פחת\"ק, גדוד 13",
         "affiliation": "battalion_13"
       }
@@ -331,22 +331,22 @@
     ],
     "fallen": [
       {
-        "id": "g13-barseda",
-        "fullName": "עילי בר-שדה",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-barseda.jpg",
-        "hometown": "רמת גן",
-        "memorial": "פחת\"ק, גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
         "id": "g13-yang",
         "fullName": "נתנאל אברהם שלום יאנג",
         "rank": "סמל",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-yang.jpg",
         "hometown": "רמת השרון",
+        "memorial": "פחת\"ק, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "g13-barseda",
+        "fullName": "עילי בר-שדה",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-barseda.jpg",
+        "hometown": "רמת גן",
         "memorial": "פחת\"ק, גדוד 13",
         "affiliation": "battalion_13"
       }
@@ -520,17 +520,7 @@
         "age": 39,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-alatrash.jpg",
         "hometown": "סעווה (שבט אל-אטרש)",
-        "memorial": "גשש, צק\"מ סחף — חטיבה צפונית (הושב מהשבי)",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "pg-eliyahu",
-        "fullName": "אריאל אליהו",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eliyahu.jpg",
-        "hometown": "מצפה יריחו",
-        "memorial": "תותחן טנק 2ב', גדוד 77 (שריון)",
+        "memorial": "מערך הגנת הגבולות",
         "affiliation": "combat_team"
       },
       {
@@ -540,7 +530,7 @@
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-levinson.jpg",
         "hometown": "גבעת אבני",
-        "memorial": "מט\"ק טנק 2ב', גדוד 77 (שריון)",
+        "memorial": "חיל השריון",
         "affiliation": "combat_team"
       },
       {
@@ -550,7 +540,17 @@
         "age": 21,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-testa.jpg",
         "hometown": "ירושלים",
-        "memorial": "טען טנק 2ב', גדוד 77 (שריון)",
+        "memorial": "חיל השריון",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "pg-eliyahu",
+        "fullName": "אריאל אליהו",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-eliyahu.jpg",
+        "hometown": "מצפה יריחו",
+        "memorial": "חיל השריון",
         "affiliation": "combat_team"
       }
     ],
@@ -683,32 +683,12 @@
     ],
     "fallen": [
       {
-        "id": "pg-barak",
-        "fullName": "תומר ברק",
-        "rank": "סמ\"ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barak.jpg",
-        "hometown": "פתח תקווה",
-        "memorial": "פלוגה מסייעת, גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
         "id": "pg-benyehuda",
         "fullName": "איתמר בן יהודה",
         "rank": "סמ\"ר",
         "age": 21,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-benyehuda.jpg",
         "hometown": "רחובות",
-        "memorial": "פלוגה מסייעת, גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "pg-binen",
-        "fullName": "עידו דוד ביננשטוק",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg",
-        "hometown": "רמת גן",
         "memorial": "פלוגה מסייעת, גדוד 13",
         "affiliation": "battalion_13"
       },
@@ -723,12 +703,32 @@
         "affiliation": "battalion_13"
       },
       {
+        "id": "pg-barak",
+        "fullName": "תומר ברק",
+        "rank": "סמ\"ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barak.jpg",
+        "hometown": "פתח תקווה",
+        "memorial": "פלוגה מסייעת, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
         "id": "pg-kian",
         "fullName": "חביב קיעאן",
         "rank": "סמל",
         "age": 21,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-kian.jpg",
         "hometown": "חורה",
+        "memorial": "פלוגה מסייעת, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "pg-binen",
+        "fullName": "עידו דוד ביננשטוק",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-binen.jpg",
+        "hometown": "רמת גן",
         "memorial": "פלוגה מסייעת, גדוד 13",
         "affiliation": "battalion_13"
       }
@@ -886,32 +886,12 @@
     ],
     "fallen": [
       {
-        "id": "pg-azizov",
-        "fullName": "ליאור עזיזוב",
-        "rank": "סמל",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-azizov.jpg",
-        "hometown": "אשקלון",
-        "memorial": "פלוגה ג', גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "pg-barnes",
-        "fullName": "שלו ברנס",
-        "rank": "סמ\"ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barnes.jpg",
-        "hometown": "כפר ברוך",
-        "memorial": "פלוגה ג', גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "pg-cohen",
-        "fullName": "איתמר כהן",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-cohen.jpg",
-        "hometown": "כרמיאל",
+        "id": "pg-swissa",
+        "fullName": "דקל סויסה",
+        "rank": "סרן",
+        "age": 23,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-swissa.jpg",
+        "hometown": "מושב בר גיורא",
         "memorial": "פלוגה ג', גדוד 13",
         "affiliation": "battalion_13"
       },
@@ -936,16 +916,6 @@
         "affiliation": "battalion_13"
       },
       {
-        "id": "pg-peri",
-        "fullName": "רועי פרי",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-peri.jpg",
-        "hometown": "שוהם",
-        "memorial": "פלוגה ג', גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
         "id": "pg-raz",
         "fullName": "עידן רז",
         "rank": "סמ\"ר",
@@ -956,12 +926,42 @@
         "affiliation": "battalion_13"
       },
       {
-        "id": "pg-swissa",
-        "fullName": "דקל סויסה",
-        "rank": "סרן",
-        "age": 23,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-swissa.jpg",
-        "hometown": "מושב בר גיורא",
+        "id": "pg-barnes",
+        "fullName": "שלו ברנס",
+        "rank": "סמ\"ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-barnes.jpg",
+        "hometown": "כפר ברוך",
+        "memorial": "פלוגה ג', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "pg-cohen",
+        "fullName": "איתמר כהן",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-cohen.jpg",
+        "hometown": "כרמיאל",
+        "memorial": "פלוגה ג', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "pg-azizov",
+        "fullName": "ליאור עזיזוב",
+        "rank": "סמל",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-azizov.jpg",
+        "hometown": "אשקלון",
+        "memorial": "פלוגה ג', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "pg-peri",
+        "fullName": "רועי פרי",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/pg-peri.jpg",
+        "hometown": "שוהם",
         "memorial": "פלוגה ג', גדוד 13",
         "affiliation": "battalion_13"
       }
@@ -1038,6 +1038,106 @@
     ],
     "fallen": [
       {
+        "id": "7b8ab1e7",
+        "fullName": "עידן בלוי",
+        "rank": "סרן",
+        "age": 21,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/7b8ab1e7.jpg",
+        "hometown": "ראשון לציון",
+        "memorial": "פלס\"ם, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "c2efb952",
+        "fullName": "שיר אילת",
+        "rank": "סרן",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/c2efb952.jpg",
+        "hometown": "כפר שמואל",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "23bae5e7",
+        "fullName": "יוחאי דוכן",
+        "rank": "סגן",
+        "age": 26,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/23bae5e7.jpg",
+        "hometown": "קריית ארבע",
+        "memorial": "פלוגה ב', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "e218d50b",
+        "fullName": "איברהים ח'רובה",
+        "rank": "רס\"ב",
+        "age": 39,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/e218d50b.jpeg",
+        "hometown": "מע'אר",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "5158bc9a",
+        "fullName": "איתי אברהם רון",
+        "rank": "סמ\"ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/5158bc9a.jpg",
+        "hometown": "נס ציונה",
+        "memorial": "פלוגה ב', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "e8147ff6",
+        "fullName": "דניאל ראשד",
+        "rank": "סמ\"ר",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/e8147ff6.jpg",
+        "hometown": "שפרעם",
+        "memorial": "פלס\"ם, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "e47bf80c",
+        "fullName": "ים גלס",
+        "rank": "סמ\"ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/e47bf80c.jpg",
+        "hometown": "מודיעין",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "8dc7fb10",
+        "fullName": "עדי לנדמן",
+        "rank": "סמ\"ר",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/8dc7fb10.jpg",
+        "hometown": "יקנעם עילית",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "34309c7d",
+        "fullName": "שיראל חיים פור",
+        "rank": "סמ\"ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/34309c7d.jpg",
+        "hometown": "ראשון לציון",
+        "memorial": "חיל רגלים",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "9f85239e",
+        "fullName": "אושר שמחה ברזילי",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/9f85239e.jpg",
+        "hometown": "מזכרת בתיה",
+        "memorial": "חיל רגלים",
+        "affiliation": "combat_team"
+      },
+      {
         "id": "1f3c92fe",
         "fullName": "יעל לייבושור",
         "rank": "סמל",
@@ -1058,56 +1158,6 @@
         "affiliation": "combat_team"
       },
       {
-        "id": "23bae5e7",
-        "fullName": "יוחאי דוכן",
-        "rank": "סגן",
-        "age": 26,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/23bae5e7.jpg",
-        "hometown": "קריית ארבע",
-        "memorial": "פלוגה ב', גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "34309c7d",
-        "fullName": "שיראל חיים פור",
-        "rank": "סמ\"ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/34309c7d.jpg",
-        "hometown": "ראשון לציון",
-        "memorial": "חטיבה צפונית",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "5158bc9a",
-        "fullName": "איתי אברהם רון",
-        "rank": "סמ\"ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/5158bc9a.jpg",
-        "hometown": "נס ציונה",
-        "memorial": "פלוגה ב', גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "5f5bd432",
-        "fullName": "מיה ויאלובו פולו",
-        "rank": "רב\"ט",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/5f5bd432.jpg",
-        "hometown": "תל אביב",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "7b8ab1e7",
-        "fullName": "עידן בלוי",
-        "rank": "סרן",
-        "age": 21,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/7b8ab1e7.jpg",
-        "hometown": "ראשון לציון",
-        "memorial": "פלס\"ם, גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
         "id": "8afb3562",
         "fullName": "שיראל מור",
         "rank": "סמל",
@@ -1115,26 +1165,6 @@
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/8afb3562.jpg",
         "hometown": "רעננה",
         "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "8dc7fb10",
-        "fullName": "עדי לנדמן",
-        "rank": "סמ\"ר",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/8dc7fb10.jpg",
-        "hometown": "יקנעם עילית",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "9f85239e",
-        "fullName": "אושר שמחה ברזילי",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/9f85239e.jpg",
-        "hometown": "מזכרת בתיה",
-        "memorial": "חטיבה צפונית",
         "affiliation": "combat_team"
       },
       {
@@ -1148,44 +1178,14 @@
         "affiliation": "combat_team"
       },
       {
-        "id": "c2efb952",
-        "fullName": "שיר אילת",
-        "rank": "סרן",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/c2efb952.jpg",
-        "hometown": "כפר שמואל",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "e218d50b",
-        "fullName": "איברהים ח'רובה",
-        "rank": "רס\"ב",
-        "age": 39,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/e218d50b.jpeg",
-        "hometown": "מע'אר",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "e47bf80c",
-        "fullName": "ים גלס",
-        "rank": "סמ\"ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/e47bf80c.jpg",
-        "hometown": "מודיעין",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "e8147ff6",
-        "fullName": "דניאל ראשד",
-        "rank": "סמ\"ר",
+        "id": "5f5bd432",
+        "fullName": "מיה ויאלובו פולו",
+        "rank": "רב\"ט",
         "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/e8147ff6.jpg",
-        "hometown": "שפרעם",
-        "memorial": "פלס\"ם, גדוד 13",
-        "affiliation": "battalion_13"
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/5f5bd432.jpg",
+        "hometown": "תל אביב",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
       }
     ],
     "startMinute": 450,
@@ -1226,42 +1226,12 @@
     ],
     "fallen": [
       {
-        "id": "c6rcspx",
-        "fullName": "שוהם נידם",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517287252-pooagu.jpg",
-        "hometown": "קריית שמונה",
-        "memorial": "פלס\"ם, גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "ffcdwke",
-        "fullName": "אמיר איל",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517283876-9e2s5v.jpg",
-        "hometown": "חיפה",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "p012lrf",
-        "fullName": "שמעון לוגאסי",
-        "rank": "רב״ט",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517233196-sypcxs.jpg",
-        "hometown": "עכו",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "pgpm1j2",
-        "fullName": "שמעון אלרואי בן שטרית",
+        "id": "yblzj79",
+        "fullName": "דניאל שפרבר",
         "rank": "סמ״ר",
         "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517202243-d1ox94.jpg",
-        "hometown": "בית שאן",
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517212737-doihdh.jpg",
+        "hometown": "יהוד מונסון",
         "memorial": "מערך הגנת הגבולות",
         "affiliation": "combat_team"
       },
@@ -1276,12 +1246,42 @@
         "affiliation": "combat_team"
       },
       {
-        "id": "yblzj79",
-        "fullName": "דניאל שפרבר",
+        "id": "pgpm1j2",
+        "fullName": "שמעון אלרואי בן שטרית",
         "rank": "סמ״ר",
         "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517212737-doihdh.jpg",
-        "hometown": "יהוד מונסון",
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517202243-d1ox94.jpg",
+        "hometown": "בית שאן",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "ffcdwke",
+        "fullName": "אמיר איל",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517283876-9e2s5v.jpg",
+        "hometown": "חיפה",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "c6rcspx",
+        "fullName": "שוהם נידם",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517287252-pooagu.jpg",
+        "hometown": "קריית שמונה",
+        "memorial": "פלס\"ם, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "p012lrf",
+        "fullName": "שמעון לוגאסי",
+        "rank": "רב״ט",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517233196-sypcxs.jpg",
+        "hometown": "עכו",
         "memorial": "מערך הגנת הגבולות",
         "affiliation": "combat_team"
       }
@@ -1335,7 +1335,17 @@
         "age": 22,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783937887397-fpr4lq.jpg",
         "hometown": "מודיעין-מכבים-רעות",
-        "memorial": "חיל התותחנים, יחידת רוכב שמיים",
+        "memorial": "חיל התותחנים",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "cpjgc4j",
+        "fullName": " ירין מארי פלד",
+        "rank": "סמ״ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938118008-ub9764.jpg",
+        "hometown": "בארי",
+        "memorial": "חיל הרפואה",
         "affiliation": "combat_team"
       },
       {
@@ -1359,13 +1369,33 @@
         "affiliation": "combat_team"
       },
       {
-        "id": "cpjgc4j",
-        "fullName": " ירין מארי פלד",
+        "id": "qlys5x0",
+        "fullName": "שחף ניסני",
         "rank": "סמ״ר",
         "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938118008-ub9764.jpg",
-        "hometown": "בארי",
-        "memorial": "חיל הרפואה",
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783937932457-84d98p.jpg",
+        "hometown": "אשקלון",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "zn54kp2",
+        "fullName": "אביב חג'ג'",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938166203-iqd969.jpg",
+        "hometown": "גילת",
+        "memorial": "מערך הגנת הגבולות",
+        "affiliation": "combat_team"
+      },
+      {
+        "id": "0yxori8",
+        "fullName": "נועם אברמוביץ",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938428460-zyu2g3.jpg",
+        "hometown": "גבעת ברנר",
+        "memorial": "מערך הגנת הגבולות",
         "affiliation": "combat_team"
       },
       {
@@ -1389,36 +1419,6 @@
         "affiliation": "combat_team"
       },
       {
-        "id": "0yxori8",
-        "fullName": "נועם אברמוביץ",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938428460-zyu2g3.jpg",
-        "hometown": "גבעת ברנר",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "qcus0ho",
-        "fullName": "נועה מרציאנו",
-        "rank": "רב״ט",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938566953-n83ggm.jpg",
-        "hometown": "מודיעין",
-        "memorial": "נחטפה חיה ונרצחה בשבי חמאס · תצפיתנית, גדוד 414 (לא נפלה במיגונית)",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "qlys5x0",
-        "fullName": "שחף ניסני",
-        "rank": "סמ״ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783937932457-84d98p.jpg",
-        "hometown": "אשקלון",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
         "id": "viztn6j",
         "fullName": "הדר מרים כהן",
         "rank": "רב״ט",
@@ -1429,22 +1429,22 @@
         "affiliation": "combat_team"
       },
       {
+        "id": "qcus0ho",
+        "fullName": "נועה מרציאנו",
+        "rank": "רב״ט",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938566953-n83ggm.jpg",
+        "hometown": "מודיעין",
+        "memorial": "נחטפה חיה ונרצחה בשבי חמאס · מערך הגנת הגבולות (לא נפלה במיגונית)",
+        "affiliation": "combat_team"
+      },
+      {
         "id": "xzzcta7",
         "fullName": "שירת ים עמר",
         "rank": "רב״ט",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938471670-wj4r4w.jpg",
         "hometown": "קריית אונו",
-        "memorial": "מערך הגנת הגבולות",
-        "affiliation": "combat_team"
-      },
-      {
-        "id": "zn54kp2",
-        "fullName": "אביב חג'ג'",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938166203-iqd969.jpg",
-        "hometown": "גילת",
         "memorial": "מערך הגנת הגבולות",
         "affiliation": "combat_team"
       }
@@ -1562,32 +1562,12 @@
         "affiliation": "battalion_13"
       },
       {
-        "id": "24c2f70e",
-        "fullName": "יעד בן יעקב",
-        "rank": "סמ\"ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/24c2f70e.jpg",
-        "hometown": "פתח תקווה",
-        "memorial": "פלוגה ב', גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
         "id": "7b963a4d",
         "fullName": "דביר זכאי",
         "rank": "סמ\"ר",
         "age": 21,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/7b963a4d.jpg",
         "hometown": "טבריה",
-        "memorial": "פלוגה ב', גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "bb0a4a4e",
-        "fullName": "רועי ברקת",
-        "rank": "סמ\"ר",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/bb0a4a4e.jpg",
-        "hometown": "תל אביב",
         "memorial": "פלוגה ב', גדוד 13",
         "affiliation": "battalion_13"
       },
@@ -1602,12 +1582,32 @@
         "affiliation": "battalion_13"
       },
       {
+        "id": "24c2f70e",
+        "fullName": "יעד בן יעקב",
+        "rank": "סמ\"ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/24c2f70e.jpg",
+        "hometown": "פתח תקווה",
+        "memorial": "פלוגה ב', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
         "id": "ef83ed72",
         "fullName": "ישי פיטוסי",
         "rank": "סמ\"ר",
         "age": 21,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/ef83ed72.jpg",
         "hometown": "טלמון",
+        "memorial": "פלוגה ב', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "bb0a4a4e",
+        "fullName": "רועי ברקת",
+        "rank": "סמ\"ר",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/bb0a4a4e.jpg",
+        "hometown": "תל אביב",
         "memorial": "פלוגה ב', גדוד 13",
         "affiliation": "battalion_13"
       }
@@ -1686,6 +1686,16 @@
     ],
     "fallen": [
       {
+        "id": "oxtcx29",
+        "fullName": "ברק יעקב בן-דוד",
+        "rank": "סמ״ר",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783940954527-pj4uxm.jpg",
+        "hometown": "דימונה",
+        "memorial": "פלוגה ב', גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
         "id": "pafbtzv",
         "fullName": "נהוראי לוי אמיתי",
         "rank": "סמ״ר",
@@ -1694,16 +1704,6 @@
         "hometown": "רינתיה",
         "memorial": "פלוגה ב', גדוד 13",
         "affiliation": "battalion_13"
-      },
-      {
-        "id": "10pevwm",
-        "fullName": "בעז מנשה יוגב",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783941006512-gkfmru.jpg",
-        "hometown": "אלעזר",
-        "memorial": "חיל הטכנולוגיה והאחזקה",
-        "affiliation": "combat_team"
       },
       {
         "id": "nlqwwge",
@@ -1716,14 +1716,14 @@
         "affiliation": "battalion_13"
       },
       {
-        "id": "oxtcx29",
-        "fullName": "ברק יעקב בן-דוד",
-        "rank": "סמ״ר",
+        "id": "10pevwm",
+        "fullName": "בעז מנשה יוגב",
+        "rank": "סמל",
         "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783940954527-pj4uxm.jpg",
-        "hometown": "דימונה",
-        "memorial": "פלוגה ב', גדוד 13",
-        "affiliation": "battalion_13"
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783941006512-gkfmru.jpg",
+        "hometown": "אלעזר",
+        "memorial": "חיל הטכנולוגיה והאחזקה",
+        "affiliation": "combat_team"
       }
     ],
     "startMinute": 510,
