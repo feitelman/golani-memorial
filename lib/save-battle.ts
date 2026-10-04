@@ -46,8 +46,22 @@ export async function saveBattle(db: SupabaseClient, b: ValidBattle): Promise<Sa
       url: m.url,
       thumb: m.thumb ?? null,
       caption: m.caption ?? null,
+      at_time: m.atTime ?? null,
     })),
   };
+
+  // media.at_time is a later column. Until the database has it, save without it
+  // (and refuse only if a time was actually entered, so nothing is lost silently).
+  const { error: colErr } = await db.from("media").select("at_time").limit(1);
+  if (colErr) {
+    if (b.media.some((m) => m.atTime)) {
+      return {
+        ok: false,
+        error: "שעת מדיה דורשת עדכון במסד הנתונים (עמודה media.at_time) — ראו supabase/schema.sql. שום נתון לא נשמר.",
+      };
+    }
+    rows.media.forEach((r) => delete r.at_time);
+  }
 
   // 1. An id that exists under another battle would be *moved* by the upsert.
   for (const table of CHILD_TABLES) {

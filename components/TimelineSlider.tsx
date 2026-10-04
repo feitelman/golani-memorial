@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Battle, fromMinutes } from "@/lib/types";
+import { Battle, MEDIA_LABEL, fromMinutes } from "@/lib/types";
+import type { Moment } from "./MediaMoment";
 
 interface Props {
   battles: Battle[];
@@ -10,6 +11,10 @@ interface Props {
   playing: boolean;
   setPlaying: (p: boolean) => void;
   range: [number, number];
+  /** timed media — small marks above the track */
+  moments?: Moment[];
+  /** a media mark was clicked — show it even when jumping backwards */
+  onPickMoment?: (m: Moment) => void;
 }
 
 // Cinematic bottom scrubber for the Oct-7 replay. As `minute` advances the
@@ -21,6 +26,8 @@ export default function TimelineSlider({
   playing,
   setPlaying,
   range,
+  moments = [],
+  onPickMoment,
 }: Props) {
   const [min, max] = range;
   const raf = useRef<number | null>(null);
@@ -111,6 +118,31 @@ export default function TimelineSlider({
                     (reached
                       ? "scale-110 border-blood-bright bg-blood-bright shadow-[0_0_10px_rgba(185,28,28,0.75)]"
                       : "border-faint bg-void group-hover:border-bone")
+                  }
+                />
+              </button>
+            );
+          })}
+          {/* timed media marks (above the track) */}
+          {moments.map((x) => {
+            const p = ((x.t - min) / (max - min)) * 100;
+            return (
+              <button
+                key={x.media.id}
+                title={`${x.media.atTime} · ${MEDIA_LABEL[x.media.kind]} — ${x.battle.title}`}
+                aria-label={`${MEDIA_LABEL[x.media.kind]} בשעה ${x.media.atTime}`}
+                onClick={() => {
+                  setPlaying(false);
+                  setMinute(x.t);
+                  onPickMoment?.(x);
+                }}
+                className="absolute top-0 z-10 -translate-x-1/2"
+                style={{ insetInlineStart: `${p}%` }}
+              >
+                <span
+                  className={
+                    "block h-1.5 w-1.5 rounded-full transition-colors " +
+                    (x.t <= minute ? "bg-blood-glow" : "bg-faint hover:bg-bone")
                   }
                 />
               </button>

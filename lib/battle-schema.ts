@@ -63,6 +63,7 @@ const media = z.object({
   url: httpsUrl,
   thumb: optional(httpsUrl),
   caption: optional(text(300)),
+  atTime: optional(hhmm),
 });
 
 /** Fails when two items in one list share an id (that silently overwrote rows before). */

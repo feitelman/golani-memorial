@@ -16,6 +16,7 @@ import type { CameraTarget } from "./BattleMap";
 import BattlePanel from "./BattlePanel";
 import TimelineSlider from "./TimelineSlider";
 import AmbientAudio from "./AmbientAudio";
+import MediaMoment, { type Moment } from "./MediaMoment";
 
 // Map renders client-only (Mapbox/WebGL touch `window`).
 const BattleMap = dynamic(() => import("./BattleMap"), {
@@ -62,6 +63,29 @@ export default function MapExperience({
     });
     return s;
   }, [battles, minute]);
+
+  // ── media moments ──────────────────────────────────────
+  // Media with a recorded time surfaces as the clock passes that minute.
+  const moments = useMemo<Moment[]>(
+    () =>
+      battles
+        .flatMap((b) =>
+          b.media
+            .filter((m) => m.atTime && m.url)
+            .map((m) => ({ media: m, battle: b, t: toMinutes(m.atTime!) })),
+        )
+        .sort((a, b) => a.t - b.t),
+    [battles],
+  );
+  const [moment, setMoment] = useState<Moment | null>(null);
+  const prevMinuteRef = useRef(minute);
+  useEffect(() => {
+    const prev = prevMinuteRef.current;
+    prevMinuteRef.current = minute;
+    if (minute <= prev) return; // only moving forward surfaces media
+    const crossed = moments.filter((x) => x.t > prev && x.t <= minute);
+    if (crossed.length) setMoment(crossed[crossed.length - 1]); // the latest one
+  }, [minute, moments]);
 
   // ── guided tour ────────────────────────────────────────
   const locations = useMemo(() => groupLocations(battles), [battles]);
@@ -413,6 +437,21 @@ export default function MapExperience({
         playing={playing}
         setPlaying={setPlaying}
         range={range}
+        moments={moments}
+        onPickMoment={setMoment}
+      />
+
+      <MediaMoment
+        moment={active ? null : moment}
+        onClose={() => setMoment(null)}
+        onOpenBattle={
+          tour
+            ? undefined
+            : (b) => {
+                setMoment(null);
+                setActiveId(b.id);
+              }
+        }
       />
 
       {/* tour completion / status toast */}

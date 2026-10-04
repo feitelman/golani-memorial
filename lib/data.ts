@@ -35,7 +35,7 @@ export async function fetchBattlesResult(opts: { fresh?: boolean } = {}): Promis
     .from("battles")
     .select(
       `id, slug, title, kind, date, time, lng, lat, location_name, unit, summary, description,
-       media ( id, kind, url, thumb, caption ),
+       media ( * ),
        timeline_events ( id, time, end_time, title, detail, path ),
        soldiers ( id, full_name, rank, age, photo, hometown, memorial, affiliation )`,
     )
@@ -72,7 +72,14 @@ export async function fetchBattlesResult(opts: { fresh?: boolean } = {}): Promis
       unit: row.unit,
       summary: row.summary,
       description: row.description,
-      media: row.media ?? [],
+      media: (row.media ?? []).map((m: any) => ({
+        id: m.id,
+        kind: m.kind,
+        url: m.url,
+        thumb: m.thumb ?? undefined,
+        caption: m.caption ?? undefined,
+        atTime: m.at_time ?? undefined, // absent until the column is added
+      })),
       timeline,
       fallen: (row.soldiers ?? [])
         .map((s: any) => ({

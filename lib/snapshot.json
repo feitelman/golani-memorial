@@ -1209,10 +1209,8 @@
     "media": [
       {
         "id": "830oou5",
-        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783517304039-8okxv7.jpg",
         "kind": "image",
-        "thumb": null,
-        "caption": null
+        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783517304039-8okxv7.jpg"
       }
     ],
     "timeline": [
@@ -1307,10 +1305,8 @@
     "media": [
       {
         "id": "ljzy9xq",
-        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783938620589-nm30cu.jpeg",
         "kind": "image",
-        "thumb": null,
-        "caption": null
+        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783938620589-nm30cu.jpeg"
       }
     ],
     "timeline": [
@@ -1470,17 +1466,13 @@
     "media": [
       {
         "id": "26eeaa99",
-        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/26eeaa99.jpg",
         "kind": "image",
-        "thumb": null,
-        "caption": null
+        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/26eeaa99.jpg"
       },
       {
         "id": "3f105717",
-        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/3f105717.mp3",
         "kind": "audio",
-        "thumb": null,
-        "caption": null
+        "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/3f105717.mp3"
       }
     ],
     "timeline": [

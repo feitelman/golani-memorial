@@ -14,12 +14,29 @@ export const KIND_LABEL: Record<BattleKind, string> = {
 
 export type MediaKind = "image" | "video" | "drone" | "audio" | "radio";
 
+export const MEDIA_ICON: Record<MediaKind, string> = {
+  image: "▣",
+  video: "►",
+  drone: "✦",
+  audio: "♪",
+  radio: "📻",
+};
+export const MEDIA_LABEL: Record<MediaKind, string> = {
+  image: "תמונה",
+  video: "וידאו קרבי",
+  drone: "צילום רחפן",
+  audio: "הקלטה",
+  radio: "קשר",
+};
+
 export interface Media {
   id: string;
   kind: MediaKind;
   url: string;
   thumb?: string;
   caption?: string;
+  /** "HH:MM" — when it was recorded/taken; the replay surfaces it at that minute */
+  atTime?: string;
 }
 
 /** A timed point on the map — used to move an event marker over time. */

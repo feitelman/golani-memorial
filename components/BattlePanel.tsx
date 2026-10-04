@@ -4,25 +4,11 @@ import { useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { AFFILIATION_LABEL, Affiliation, Battle, KIND_LABEL, MediaKind } from "@/lib/types";
+import { AFFILIATION_LABEL, Affiliation, Battle, KIND_LABEL, MEDIA_ICON, MEDIA_LABEL } from "@/lib/types";
 import SoldierCard from "./SoldierCard";
 
 gsap.registerPlugin(useGSAP);
 
-const MEDIA_ICON: Record<MediaKind, string> = {
-  image: "▣",
-  video: "►",
-  drone: "✦",
-  audio: "♪",
-  radio: "📻",
-};
-const MEDIA_LABEL: Record<MediaKind, string> = {
-  image: "תמונה",
-  video: "וידאו קרבי",
-  drone: "צילום רחפן",
-  audio: "הקלטה",
-  radio: "קשר",
-};
 
 export default function BattlePanel({
   battle,

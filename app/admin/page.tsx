@@ -609,6 +609,22 @@ function Editor({
                       onUploaded={(url, file) => set({ url, kind: kindFromMime(file.type) })}
                     />
                   </div>
+                  <div className="grid grid-cols-[1fr_110px] gap-2">
+                    <Input
+                      value={m.caption ?? ""}
+                      placeholder="כיתוב (למשל: קשר מהחמ״ל)"
+                      onChange={(v) => set({ caption: v })}
+                    />
+                    <Input
+                      value={m.atTime ?? ""}
+                      placeholder="שעה HH:MM"
+                      onChange={(v) => set({ atTime: v })}
+                      mono
+                    />
+                  </div>
+                  <p className="text-[11px] text-faint">
+                    עם שעה — הפריט יקפוץ בשחזור ובסיור כשהשעון מגיע אליה.
+                  </p>
                   {m.url && (
                     <p className="truncate font-mono text-[10px] text-faint" dir="ltr">
                       {m.url}

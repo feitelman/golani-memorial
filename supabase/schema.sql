@@ -56,9 +56,12 @@ create table if not exists media (
   kind       text not null check (kind in ('image','video','drone','audio','radio')),
   url        text not null,
   thumb      text,
-  caption    text
+  caption    text,
+  at_time    text                              -- "HH:MM" — surfaced by the replay at that minute
 );
 create index if not exists idx_media_battle on media(battle_id);
+-- Upgrade for databases created before at_time existed:
+alter table media add column if not exists at_time text;
 
 -- ── Row Level Security ───────────────────────────────────
 alter table battles         enable row level security;
