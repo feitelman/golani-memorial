@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -15,6 +15,7 @@ export default function BattlePanel({
   onClose,
   inTour = false,
   onContinue,
+  autoScrollMs,
 }: {
   battle: Battle | null;
   /** the ✕ / backdrop — closes, and in a tour it also stops the tour */
@@ -23,8 +24,30 @@ export default function BattlePanel({
   inTour?: boolean;
   /** advance the tour to the next station */
   onContinue?: () => void;
+  /** display mode: glide the panel from top to bottom over this many ms */
+  autoScrollMs?: number;
 }) {
   const body = useRef<HTMLDivElement>(null);
+
+  // Display (kiosk) mode: nobody scrolls, so the story scrolls itself — a pause
+  // to read the top, a slow glide, and a pause at the fallen at the bottom.
+  useEffect(() => {
+    const el = body.current;
+    if (!battle || !autoScrollMs || !el) return;
+    el.scrollTop = 0;
+    const HOLD_TOP = 4000;
+    const HOLD_END = 5000;
+    const glide = Math.max(1000, autoScrollMs - HOLD_TOP - HOLD_END);
+    let raf = 0;
+    const t0 = performance.now() + HOLD_TOP;
+    const step = (now: number) => {
+      const p = Math.min(1, Math.max(0, (now - t0) / glide));
+      el.scrollTop = (el.scrollHeight - el.clientHeight) * p;
+      if (p < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [battle?.id, autoScrollMs]);
 
   // As the panel slides in, reveal its sections and timeline beats in sequence.
   useGSAP(
@@ -56,7 +79,11 @@ export default function BattlePanel({
       {battle && (
         <>
           <motion.div
-            className="fixed inset-0 z-50 bg-void/70 backdrop-blur-sm"
+            className={
+              "fixed inset-0 z-50 " +
+              // display mode: keep the map visible beside the story
+              (autoScrollMs ? "bg-void/25" : "bg-void/70 backdrop-blur-sm")
+            }
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

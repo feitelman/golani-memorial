@@ -17,6 +17,7 @@ import BattlePanel from "./BattlePanel";
 import TimelineSlider from "./TimelineSlider";
 import AmbientAudio from "./AmbientAudio";
 import MediaMoment, { type Moment } from "./MediaMoment";
+import { KioskClock, KioskLayer, type KioskCard } from "./KioskOverlays";
 
 // Map renders client-only (Mapbox/WebGL touch `window`).
 const BattleMap = dynamic(() => import("./BattleMap"), {
@@ -136,7 +137,7 @@ export default function MapExperience({
     setPlaying(false);
     setMinute(range[0]); // reset the clock back to the start (06:29)
     setCameraTarget({ overview: true }); // back to the view of all locations
-    if (completed) {
+    if (completed && !kiosk) {
       setToast("הסיור הושלם");
       setTimeout(() => setToast(""), 3500);
     }
@@ -185,6 +186,10 @@ export default function MapExperience({
   const keyRef = useRef<(e: KeyboardEvent) => void>(() => {});
   keyRef.current = (e: KeyboardEvent) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (kiosk) {
+      if (e.key === "Escape") exitKiosk(); // every other key is ignored on a display
+      return;
+    }
     const t = e.target;
     if (t instanceof HTMLElement && (t.closest("input, textarea, select, [contenteditable=true]") || t.tagName === "AUDIO" || t.tagName === "VIDEO")) return;
     const forward = e.key === "ArrowLeft";
@@ -214,6 +219,135 @@ export default function MapExperience({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // ── ceremony / display mode (/map?mode=kiosk) ─────────
+  // Runs every location's tour on its own, in a loop: a title card, the
+  // stations (each panel held long enough to read, scrolling itself), then the
+  // names of that location's fallen; after the last location a closing card.
+  // &autostart=1 skips the start screen (for a browser already in kiosk mode);
+  // &loc=<location name> loops a single location (e.g. a ceremony at Erez).
+  type KPhase =
+    | { kind: "start" }
+    | { kind: "intro" | "tour" | "names"; loc: number }
+    | { kind: "outro" };
+  const [kiosk, setKiosk] = useState(false);
+  const [kp, setKp] = useState<KPhase | null>(null);
+  const [kioskOnly, setKioskOnly] = useState<string | null>(null);
+  const wakeRef = useRef<{ release: () => Promise<void> } | null>(null);
+
+  // Same order as the memorial wall: locations with the most fallen first.
+  const kioskLocs = useMemo(() => {
+    const fallen = (l: MapLocation) => l.battles.reduce((n, b) => n + b.fallen.length, 0);
+    const only = kioskOnly && locations.filter((l) => l.name === kioskOnly);
+    if (only && only.length) return only;
+    return [...locations].sort((a, b) => fallen(b) - fallen(a) || a.name.localeCompare(b.name, "he"));
+  }, [locations, kioskOnly]);
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get("mode") !== "kiosk") return;
+    setKiosk(true);
+    setKioskOnly(p.get("loc"));
+    setKp(p.get("autostart") ? { kind: "intro", loc: 0 } : { kind: "start" });
+  }, []);
+
+  // Keep the screen awake while the display runs (re-acquired when the tab returns).
+  useEffect(() => {
+    if (!kiosk || !kp || kp.kind === "start") return;
+    const acquire = async () => {
+      try {
+        wakeRef.current = await (navigator as any).wakeLock?.request("screen");
+      } catch {
+        /* not supported / denied — the display just follows the OS settings */
+      }
+    };
+    if (!wakeRef.current) acquire();
+    const onVis = () => {
+      if (!document.hidden) acquire();
+    };
+    document.addEventListener("visibilitychange", onVis);
+    return () => document.removeEventListener("visibilitychange", onVis);
+  }, [kiosk, kp]);
+
+  function startKiosk() {
+    document.documentElement.requestFullscreen?.().catch(() => {});
+    setKp({ kind: "intro", loc: 0 });
+  }
+
+  function exitKiosk() {
+    setKiosk(false);
+    setKp(null);
+    stopTour();
+    setActiveId(null);
+    wakeRef.current?.release().catch(() => {});
+    wakeRef.current = null;
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    window.history.replaceState(null, "", "/map");
+  }
+
+  // Phase timing.
+  useEffect(() => {
+    if (!kiosk || !kp) return;
+    const loc = "loc" in kp ? kioskLocs[kp.loc] : undefined;
+    let id: ReturnType<typeof setTimeout> | undefined;
+    if (kp.kind === "intro") {
+      if (!loc) {
+        setKp({ kind: "outro" });
+        return;
+      }
+      id = setTimeout(() => {
+        startTour(loc);
+        setKp({ kind: "tour", loc: kp.loc });
+      }, 6000);
+    } else if (kp.kind === "names") {
+      const n = loc?.battles.reduce((s, b) => s + b.fallen.length, 0) ?? 0;
+      const next = kp.loc + 1;
+      id = setTimeout(
+        () => setKp(next < kioskLocs.length ? { kind: "intro", loc: next } : { kind: "outro" }),
+        n ? Math.min(32000, 9000 + n * 400) : 0,
+      );
+    } else if (kp.kind === "outro") {
+      id = setTimeout(() => setKp({ kind: "intro", loc: 0 }), 12000);
+    }
+    return () => clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [kiosk, kp, kioskLocs]);
+
+  // A location's tour finished (endTour cleared it) → show its names.
+  useEffect(() => {
+    if (kiosk && kp?.kind === "tour" && !tour) setKp({ kind: "names", loc: kp.loc });
+  }, [kiosk, kp, tour]);
+
+  // Hold each open panel long enough to read it, then continue by itself.
+  const readMs = (b: Battle) =>
+    Math.min(60000, Math.max(16000, 9000 + (b.description?.length ?? 0) * 30 + b.fallen.length * 1500));
+  useEffect(() => {
+    if (!kiosk || !tour || !reading || !active) return;
+    const id = setTimeout(continueTour, readMs(active));
+    return () => clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [kiosk, tour, reading, active?.id]);
+
+  const kioskCard: KioskCard | null = !kiosk || !kp
+    ? null
+    : kp.kind === "start"
+      ? { kind: "start" }
+      : kp.kind === "outro"
+        ? { kind: "outro" }
+        : kp.kind === "intro" && kioskLocs[kp.loc]
+          ? {
+              kind: "intro",
+              name: kioskLocs[kp.loc].name,
+              stations: kioskLocs[kp.loc].battles.length,
+              fallen: kioskLocs[kp.loc].battles.reduce((n, b) => n + b.fallen.length, 0),
+            }
+          : kp.kind === "names" && kioskLocs[kp.loc]
+            ? {
+                kind: "names",
+                name: kioskLocs[kp.loc].name,
+                fallen: kioskLocs[kp.loc].battles.flatMap((b) => b.fallen),
+              }
+            : null;
 
   // ── per-station cinematic runner ───────────────────────
   // For the current station: fly the camera in, play its movement (if any) at a
@@ -360,7 +494,12 @@ export default function MapExperience({
   }, []);
 
   return (
-    <main className="relative h-dvh w-full overflow-hidden bg-void">
+    <main
+      className={
+        "relative h-dvh w-full overflow-hidden bg-void " +
+        (kiosk && kp?.kind !== "start" ? "cursor-none" : "")
+      }
+    >
       <BattleMap
         battles={battles}
         visibleIds={visibleIds}
@@ -389,7 +528,7 @@ export default function MapExperience({
 
       {/* top HUD */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-30 flex items-start justify-between gap-4 p-4 sm:p-6">
-        <nav className="pointer-events-auto flex flex-wrap items-center gap-2">
+        <nav className={"pointer-events-auto flex flex-wrap items-center gap-2 " + (kiosk ? "invisible" : "")}>
           <Link
             href="/"
             className="group flex items-center gap-2 border border-line bg-void/80 px-3 py-2 text-sm text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-bone"
@@ -426,10 +565,13 @@ export default function MapExperience({
               <span className="tnum">31.32°N 34.38°E</span>
             </p>
           </div>
-          <AmbientAudio />
+          {!kiosk && <AmbientAudio />}
         </div>
       </div>
 
+      {kiosk ? (
+        <KioskClock minute={minute} />
+      ) : (
       <TimelineSlider
         battles={battles}
         minute={minute}
@@ -440,6 +582,7 @@ export default function MapExperience({
         moments={moments}
         onPickMoment={setMoment}
       />
+      )}
 
       <MediaMoment
         moment={active ? null : moment}
@@ -466,9 +609,12 @@ export default function MapExperience({
       <BattlePanel
         battle={active}
         onClose={closePanel}
-        inTour={!!tour && reading}
+        inTour={!!tour && reading && !kiosk}
+        autoScrollMs={kiosk && active ? readMs(active) : undefined}
         onContinue={continueTour}
       />
+
+      <KioskLayer card={kioskCard} onStart={startKiosk} />
     </main>
   );
 }
