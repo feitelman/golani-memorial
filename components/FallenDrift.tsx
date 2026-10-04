@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import type { Soldier } from "@/lib/types";
 
-/** How long the fallen float past before the deployment begins. */
+/** How long the fallen are shown before the deployment begins. */
 export const FALLEN_MS = 16000;
 
 // A deterministic shuffle so the portraits appear in a scattered (not row by
@@ -22,77 +22,106 @@ function scatter<T>(items: T[]): number[] {
   return rank;
 }
 
+const GAP = 10; // px between portraits
+const NAME_H = 30; // px reserved under a portrait for name + rank
+const MIN_NAMED = 64; // below this portrait width the names are left out
+
 /**
- * Every fallen soldier's portrait, floating on a tilted plane that drifts
- * slowly past the camera — after "רבים מהם לא שבו", before the map.
- * Mounted (not playing) during the story so the photos are already loaded.
+ * The largest grid in which ALL portraits fit the area at once (4:5 photos,
+ * with names under them when there is room).
+ */
+function fitGrid(n: number, w: number, h: number) {
+  const fit = (named: boolean) => {
+    let best = { cols: 1, cell: 0, named };
+    for (let cols = 1; cols <= n; cols++) {
+      const rows = Math.ceil(n / cols);
+      const cellW = (w - GAP * (cols - 1)) / cols;
+      const cellH = cellW * 1.25 + (named ? NAME_H : 0);
+      if (rows * cellH + GAP * (rows - 1) <= h && cellW > best.cell) best = { cols, cell: cellW, named };
+    }
+    return best;
+  };
+  // Names matter: show them whenever the portraits can still be a fair size.
+  const named = fit(true);
+  return named.cell >= MIN_NAMED ? named : fit(false);
+}
+
+/**
+ * Every fallen soldier's portrait, all on screen together — after "רבים מהם לא
+ * שבו", before the map. Mounted (not playing) during the story so the photos
+ * are already loaded.
  */
 export default function FallenDrift({ fallen, playing }: { fallen: Soldier[]; playing: boolean }) {
   const appear = useMemo(() => scatter(fallen), [fallen]);
-  const span = 7.5; // seconds over which all portraits fade in
+  const areaRef = useRef<HTMLDivElement>(null);
+  const [grid, setGrid] = useState({ cols: 10, cell: 80, named: true });
+  const span = 6; // seconds over which all portraits fade in
+
+  useEffect(() => {
+    const el = areaRef.current;
+    if (!el) return;
+    const fit = () => setGrid(fitGrid(fallen.length, el.clientWidth, el.clientHeight));
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [fallen.length]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-void" style={{ perspective: "1400px" }}>
-      {/* the floating plane (centred by the wrapper; framer owns the inner transform) */}
-      <div className="absolute left-1/2 top-1/2 w-[150vw] -translate-x-1/2 -translate-y-1/2 sm:w-[118vw]" style={{ transformStyle: "preserve-3d" }}>
-      <motion.div
-        initial={{ y: "6%", scale: 1.12, rotateX: 24, rotateZ: -5 }}
-        animate={playing ? { y: "-10%", scale: 1.0, rotateX: 18, rotateZ: -3 } : undefined}
-        transition={{ duration: FALLEN_MS / 1000 + 2, ease: "linear" }}
-        className="grid grid-cols-6 gap-x-5 gap-y-7 sm:grid-cols-10 sm:gap-x-7 sm:gap-y-9"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {fallen.map((s, i) => (
-          <motion.figure
-            key={s.id}
-            initial={{ opacity: 0, y: 14 }}
-            animate={playing ? { opacity: 1, y: 0 } : undefined}
-            transition={{ delay: 0.4 + (appear[i] / Math.max(1, fallen.length)) * span, duration: 1.4, ease: "easeOut" }}
-            className="flex flex-col items-center"
-          >
-            {/* each portrait bobs gently on its own rhythm */}
-            <div
-              className="fallen-float flex w-full flex-col items-center"
-              style={{ animationDelay: `${-(i % 7) * 0.9}s`, animationDuration: `${6 + (i % 5)}s` }}
-            >
-            <div className="aspect-[4/5] w-full overflow-hidden border border-line bg-elevated shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
-              {s.photo && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={s.photo} alt="" className="h-full w-full object-cover grayscale" />
-              )}
-            </div>
-            <figcaption className="mt-2 text-center leading-tight">
-              <span className="block text-[11px] font-bold text-bone sm:text-sm">{s.fullName}</span>
-              <span className="block font-mono text-[8px] text-faint sm:text-[10px]">{s.rank}</span>
-            </figcaption>
-            </div>
-          </motion.figure>
-        ))}
-      </motion.div>
-      </div>
-
-      {/* soft vignette so the plane dissolves into black at the edges */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 62% at 50% 50%, transparent 35%, rgba(10,10,11,0.85) 72%, #0A0A0B 100%)",
-        }}
-      />
-
+    <div className="absolute inset-0 flex flex-col bg-void px-4 pb-20 pt-8 sm:px-10 sm:pb-20 sm:pt-10">
       {/* dedication */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={playing ? { opacity: 1 } : undefined}
-        transition={{ delay: 1.2, duration: 1.6 }}
-        className="pointer-events-none absolute inset-x-0 bottom-20 px-6 text-center sm:bottom-24"
+      <motion.div
+        initial={{ opacity: 0, y: -6 }}
+        animate={playing ? { opacity: 1, y: 0 } : undefined}
+        transition={{ duration: 1.4 }}
+        className="shrink-0 text-center"
       >
-        <span className="block font-mono text-[11px] tracking-[0.3em] text-blood-bright">לזכרם</span>
-        <span className="mt-2 block text-balance text-lg font-bold text-bone drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] sm:text-2xl">
+        <p className="font-mono text-[11px] tracking-[0.3em] text-blood-bright">לזכרם</p>
+        <p className="mt-2 text-balance text-lg font-bold text-bone sm:text-2xl">
           לוחמי ולוחמות גדוד 13 וצוות הקרב הגדודי
-        </span>
-      </motion.p>
+        </p>
+      </motion.div>
+
+      {/* all of them, sized so everyone fits */}
+      <div ref={areaRef} className="mt-6 flex min-h-0 flex-1 items-center justify-center">
+        <motion.div
+          initial={{ scale: 1.03 }}
+          animate={playing ? { scale: 1 } : undefined}
+          transition={{ duration: FALLEN_MS / 1000, ease: "linear" }}
+          // wrapping rows (last row centred), exactly `cols` portraits wide
+          className="flex flex-wrap justify-center"
+          style={{ width: grid.cols * grid.cell + (grid.cols - 1) * GAP + 1, gap: GAP }}
+        >
+          {fallen.map((s, i) => (
+            <motion.figure
+              key={s.id}
+              style={{ width: grid.cell }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={playing ? { opacity: 1, y: 0 } : undefined}
+              transition={{ delay: 0.5 + (appear[i] / Math.max(1, fallen.length)) * span, duration: 1.2, ease: "easeOut" }}
+            >
+              {/* each portrait bobs gently on its own rhythm */}
+              <div
+                className="fallen-float"
+                style={{ animationDelay: `${-(i % 7) * 0.9}s`, animationDuration: `${6 + (i % 5)}s` }}
+              >
+                <div className="aspect-[4/5] w-full overflow-hidden border border-line bg-elevated">
+                  {s.photo && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={s.photo} alt={s.fullName} className="h-full w-full object-cover grayscale" />
+                  )}
+                </div>
+                {grid.named && (
+                  <figcaption className="mt-1 text-center leading-tight" style={{ height: NAME_H - 4 }}>
+                    <span className="block truncate text-[10px] font-bold text-bone sm:text-[11px]">{s.fullName}</span>
+                    <span className="block font-mono text-[8px] text-faint">{s.rank}</span>
+                  </figcaption>
+                )}
+              </div>
+            </motion.figure>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }
