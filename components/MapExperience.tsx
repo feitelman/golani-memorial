@@ -18,7 +18,8 @@ import TimelineSlider from "./TimelineSlider";
 import AmbientAudio from "./AmbientAudio";
 import MediaMoment, { type Moment } from "./MediaMoment";
 import { KioskClock, KioskLayer, type KioskCard } from "./KioskOverlays";
-import IntroOverlay, { STORY_MS } from "./IntroOverlay";
+import IntroOverlay, { FALLEN_MS, STORY_MS } from "./IntroOverlay";
+import { orderedFallen } from "@/lib/fallen";
 
 // Map renders client-only (Mapbox/WebGL touch `window`).
 const BattleMap = dynamic(() => import("./BattleMap"), {
@@ -67,8 +68,9 @@ export default function MapExperience({
   }, [battles, minute]);
 
   // ── opening sequence (/map?intro=1, from the home page) ─
-  // 0 the story · 1 the border · 2 communities · 3 sectors & positions · 4 hold
-  // · 5 leave to the overview. Click / Space / ← advance; Esc or "דלג" skips.
+  // 0 the story · 1 the fallen, floating · 2 the border · 3 communities ·
+  // 4 sectors & positions · 5 hold · 6 leave to the overview (BattleMap gets
+  // the map part: step − 1). Click / Space / ← advance; Esc or "דלג" skips.
   const [introStep, setIntroStep] = useState<number | null>(null);
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
@@ -79,12 +81,13 @@ export default function MapExperience({
   }, []);
   useEffect(() => {
     if (introStep === null) return;
-    const ms = [STORY_MS, 3600, 2600, 7600, 5200, 3400][introStep];
-    const id = setTimeout(() => setIntroStep(introStep >= 5 ? null : introStep + 1), ms);
+    const ms = [STORY_MS, FALLEN_MS, 3600, 2600, 7600, 5200, 3400][introStep];
+    const id = setTimeout(() => setIntroStep(introStep >= 6 ? null : introStep + 1), ms);
     return () => clearTimeout(id);
   }, [introStep]);
-  const nextIntro = () => setIntroStep((s) => (s === null ? null : Math.min(5, s + 1)));
-  const skipIntro = () => setIntroStep((s) => (s === null ? null : 5));
+  const nextIntro = () => setIntroStep((s) => (s === null ? null : Math.min(6, s + 1)));
+  const skipIntro = () => setIntroStep((s) => (s === null ? null : 6));
+  const introFallen = useMemo(() => orderedFallen(battles), [battles]);
 
   // ── media moments ──────────────────────────────────────
   // Media with a recorded time surfaces as the clock passes that minute.
@@ -540,7 +543,7 @@ export default function MapExperience({
         cameraTarget={cameraTarget}
         spotlightId={spotlightId}
         movePreview={movePreview}
-        introStep={introStep}
+        introStep={introStep === null ? null : Math.max(0, introStep - 1)}
       />
 
       {/* first light: a warm glow from the east (map right, bearing −20°) that
@@ -650,7 +653,7 @@ export default function MapExperience({
 
       <KioskLayer card={kioskCard} onStart={startKiosk} />
 
-      {introStep !== null && <IntroOverlay step={introStep} onNext={nextIntro} onSkip={skipIntro} />}
+      {introStep !== null && <IntroOverlay step={introStep} fallen={introFallen} onNext={nextIntro} onSkip={skipIntro} />}
     </main>
   );
 }

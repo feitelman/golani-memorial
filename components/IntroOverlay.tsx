@@ -1,9 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import type { Soldier } from "@/lib/types";
+import FallenDrift, { FALLEN_MS } from "./FallenDrift";
 
-// Text layer of the map's opening sequence. Step 0 is the short story on black;
-// steps 1–4 play over the deployment drawn on the map (BattleMap); 5 leaves.
+export { FALLEN_MS };
+
+// Text layer of the map's opening sequence. Step 0 is the short story on black,
+// 1 the fallen floating past; 2–5 play over the deployment drawn on the map
+// (BattleMap); 6 leaves.
 
 const STORY: { text: string; strong?: boolean }[] = [
   { text: "שבת, 7 באוקטובר 2023. שמחת תורה.", strong: true },
@@ -19,16 +24,18 @@ export const STORY_MS = (STORY.length * LINE_GAP + 2.4) * 1000;
 
 export default function IntroOverlay({
   step,
+  fallen,
   onNext,
   onSkip,
 }: {
   step: number;
+  fallen: Soldier[];
   onNext: () => void;
   onSkip: () => void;
 }) {
   return (
     <div
-      className={"absolute inset-0 z-[60] " + (step >= 5 ? "pointer-events-none" : "cursor-pointer")}
+      className={"absolute inset-0 z-[60] " + (step >= 6 ? "pointer-events-none" : "cursor-pointer")}
       onClick={onNext}
     >
       {/* the story, on black */}
@@ -62,15 +69,29 @@ export default function IntroOverlay({
         )}
       </AnimatePresence>
 
+      {/* the fallen — mounted (hidden) during the story so the photos preload */}
+      <AnimatePresence>
+        {step <= 1 && (
+          <motion.div
+            key="fallen"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.8, ease: "easeInOut" }}
+            className={"absolute inset-0 " + (step === 0 ? "invisible" : "")}
+          >
+            <FallenDrift fallen={fallen} playing={step === 1} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* title over the deployment */}
       <AnimatePresence>
-        {step >= 1 && step <= 4 && (
+        {step >= 2 && step <= 5 && (
           <motion.div
             key="title"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, delay: step === 1 ? 0.8 : 0 }}
+            transition={{ duration: 1, delay: step === 2 ? 0.8 : 0 }}
             className="pointer-events-none absolute inset-x-0 top-6 flex flex-col items-center px-4 text-center sm:top-10"
           >
             <p className="font-mono text-[11px] tracking-[0.25em] text-blood-bright">07.10.2023 · 06:29</p>
@@ -83,7 +104,7 @@ export default function IntroOverlay({
 
       {/* legend */}
       <AnimatePresence>
-        {step >= 2 && step <= 4 && (
+        {step >= 3 && step <= 5 && (
           <motion.ul
             key="legend"
             initial={{ opacity: 0 }}
@@ -109,7 +130,7 @@ export default function IntroOverlay({
       </AnimatePresence>
 
       {/* skip — always available */}
-      {step < 5 && (
+      {step < 6 && (
         <button
           onClick={(e) => {
             e.stopPropagation();
