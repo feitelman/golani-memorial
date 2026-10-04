@@ -10,6 +10,7 @@ import {
   toMinutes,
 } from "@/lib/types";
 import { MapLocation } from "@/lib/locations";
+import { lightAt, toCss } from "@/lib/daylight";
 import FallbackMap from "./FallbackMap";
 
 /** Timeline events that carry a path, flattened with their parent battle. */
@@ -114,6 +115,10 @@ export default function BattleMap({
   battlesRef.current = battles;
   // Whether the camera has already zoomed out to follow the current movement.
   const moveFollowRef = useRef(false);
+  // Last whole minute the daylight was applied for (see applyLight).
+  const lightMinuteRef = useRef<number | null>(null);
+  const bgLayerRef = useRef<string | null>(null);
+  const shadowsRef = useRef(false);
   visibleRef.current = visibleIds;
   activeRef.current = activeId;
   minuteRef.current = minute;
@@ -176,15 +181,10 @@ export default function BattleMap({
         // Push toward a monochrome documentary palette. dark-v11's layer IDs
         // vary, so set only layers that actually exist (Mapbox fires errors,
         // not exceptions, for unknown layers — guard rather than try/catch).
-        const setIf = (id: string, prop: string, val: string) => {
-          if (map.getLayer(id)) map.setPaintProperty(id, prop as any, val as any);
-        };
-        const bg = (map.getStyle().layers ?? []).find(
-          (l: any) => l.type === "background",
-        )?.id;
-        if (bg) setIf(bg, "background-color", "#0A0A0B");
-        setIf("water", "fill-color", "#06060a");
-        setIf("land", "background-color", "#0A0A0B");
+        // Ground, water, haze and sun follow the replay clock — see applyLight.
+        bgLayerRef.current =
+          (map.getStyle().layers ?? []).find((l: any) => l.type === "background")?.id ?? null;
+        shadowsRef.current = !mobile && !reduce; // moving building shadows: desktop only
 
         // 3D building extrusion in dark, near-grayscale tones.
         const layers = map.getStyle().layers ?? [];
@@ -261,15 +261,7 @@ export default function BattleMap({
           map.setTerrain({ source: "mapbox-dem", exaggeration: 1.2 });
         }
 
-        // Atmospheric haze for the documentary look — kept light enough that
-        // the terrain still reads.
-        map.setFog({
-          color: "rgb(20,20,24)",
-          "high-color": "rgb(28,28,34)",
-          "horizon-blend": 0.18,
-          "space-color": "rgb(6,6,8)",
-          "star-intensity": 0.0,
-        });
+        applyLight(map, minuteRef.current, true);
 
         addMarkers(map, mapboxgl);
         addEventPaths(map);
@@ -310,6 +302,48 @@ export default function BattleMap({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // ── daylight ──────────────────────────────────────────
+  // The light of that morning follows the replay clock: a low warm dawn at
+  // 06:29 brightening into day (lib/daylight.ts). Applied once per whole minute.
+  function applyLight(map: mapboxgl.Map, minute: number, force = false) {
+    const m = Math.round(minute);
+    if (!force && lightMinuteRef.current === m) return;
+    lightMinuteRef.current = m;
+    const L = lightAt(m);
+    const setIf = (id: string | null, prop: string, val: string) => {
+      if (id && map.getLayer(id)) map.setPaintProperty(id, prop as any, val as any);
+    };
+    setIf(bgLayerRef.current, "background-color", toCss(L.ground));
+    setIf("land", "background-color", toCss(L.ground));
+    setIf("water", "fill-color", toCss(L.water));
+    // Atmospheric haze — kept light enough that the terrain still reads.
+    map.setFog({
+      color: toCss(L.fog),
+      "high-color": toCss(L.sky),
+      "horizon-blend": 0.18,
+      "space-color": "rgb(6,6,8)",
+      "star-intensity": 0.0,
+    });
+    map.setLights([
+      {
+        id: "ambient",
+        type: "ambient",
+        properties: { color: toCss(L.ambientColor), intensity: L.ambient },
+      },
+      {
+        id: "sun",
+        type: "directional",
+        properties: {
+          color: toCss(L.sunColor),
+          intensity: L.sun,
+          direction: [L.azimuth, Math.min(L.polar, 89)],
+          "cast-shadows": shadowsRef.current && L.polar < 88,
+          "shadow-intensity": 0.75,
+        },
+      },
+    ]);
+  }
 
   // ── markers ───────────────────────────────────────────
   // Camera that frames every location, kept clear of the HUD (top bar,
@@ -573,6 +607,13 @@ export default function BattleMap({
     syncMarkers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleIds, activeId, spotlightId]);
+
+  // daylight follows the clock
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map && readyRef.current) applyLight(map, minute);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [minute]);
 
   // move/reveal event markers as the replay minute advances, or as the tour
   // drives an explicit movement preview

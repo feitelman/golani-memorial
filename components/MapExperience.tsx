@@ -11,6 +11,7 @@ import {
 } from "@/lib/locations";
 import { fetchBattles } from "@/lib/data";
 import { supabase } from "@/lib/supabase";
+import { dawnGlow } from "@/lib/daylight";
 import type { CameraTarget } from "./BattleMap";
 import BattlePanel from "./BattlePanel";
 import TimelineSlider from "./TimelineSlider";
@@ -348,6 +349,18 @@ export default function MapExperience({
         cameraTarget={cameraTarget}
         spotlightId={spotlightId}
         movePreview={movePreview}
+      />
+
+      {/* first light: a warm glow from the east (map right, bearing −20°) that
+          fades over the first hour — the attack opened at sunrise. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-10 mix-blend-screen transition-opacity duration-700"
+        style={{
+          opacity: dawnGlow(minute),
+          background:
+            "radial-gradient(120% 90% at 100% 15%, rgba(255,140,70,0.20), rgba(255,110,60,0.07) 45%, transparent 75%)",
+        }}
       />
 
       {/* top HUD */}
