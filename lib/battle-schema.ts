@@ -9,8 +9,14 @@ const ID = /^[A-Za-z0-9_-]{1,64}$/;
 
 const hhmm = z.string().regex(HHMM, "שעה לא תקינה (צריך HH:MM, למשל 07:30)");
 const id = z.string().regex(ID, "מזהה לא תקין");
-const text = (max: number) => z.string().trim().max(max, `ארוך מדי (עד ${max} תווים)`);
-const required = (max: number) => text(max).min(1, "שדה חובה");
+/** One spelling for abbreviations and spacing: ״/׳ → "/', and no doubled spaces. */
+const clean = (v: unknown) =>
+  typeof v === "string"
+    ? v.replace(/״/g, '"').replace(/׳/g, "'").replace(/[ \t]{2,}/g, " ")
+    : v;
+const str = (max: number) => z.string().trim().max(max, `ארוך מדי (עד ${max} תווים)`);
+const text = (max: number) => z.preprocess(clean, str(max));
+const required = (max: number) => z.preprocess(clean, str(max).min(1, "שדה חובה"));
 /** Empty string → undefined, so optional fields can be cleared from the form. */
 const optional = <T extends z.ZodTypeAny>(s: T) =>
   z.preprocess((v) => (v === "" || v === null ? undefined : v), s.optional());

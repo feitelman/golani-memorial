@@ -1,69 +1,5 @@
 [
   {
-    "id": "k2-defense",
-    "slug": "k2-defense",
-    "title": "הגנת מוצב ק-2",
-    "kind": "battle",
-    "date": "2023-10-07",
-    "time": "06:30",
-    "coordinates": [
-      34.575,
-      31.518
-    ],
-    "locationName": "מוצב ק-2",
-    "unit": "פלוגת פחת\"ק, גדוד 13 (ת\"פ גדוד 77)",
-    "summary": "לחימת לוחמי הפחת\"ק בהגנת מוצב ק-2 ('מגן שדרות')",
-    "description": "מוצב ק-2 ('מגן שדרות'), בגזרת גדוד 77, אוּיש בלוחמי פלוגת הפחת\"ק של גדוד 13 ובמחלקת מרגמות. עם תחילת המתקפה החזיק הכוח את המוצב תחת אש כבדה. הלוחם סמ\"ר ירון זוהר, איש מחלקת המרגמות, ירה מאות פגזי מרגמה תחת אש ופגע בעשרות מחבלים, עד שנפגע אנוש מרסיסי פצמ\"ר ונפטר מפצעיו. הלוחם סמ\"ר אופיר ירוחין נפל אף הוא בקרבות ההגנה על המוצב. יהי זכרם ברוך.",
-    "media": [],
-    "timeline": [
-      {
-        "id": "k2-t0",
-        "time": "06:30",
-        "endTime": "07:00",
-        "title": "כניסת הלוחמים למרחבים המוגנים; היערכות להגנת המוצב",
-        "detail": null
-      },
-      {
-        "id": "k2-t1",
-        "time": "07:00",
-        "endTime": "10:00",
-        "title": "לחימת הגנה עיקשת; ירי מרגמות מסיבי על המחבלים",
-        "detail": null
-      },
-      {
-        "id": "k2-t2",
-        "time": "10:00",
-        "endTime": "10:05",
-        "title": "נפילת סמ\"ר ירון זוהר ונפילת סמ\"ר אופיר ירוחין בהגנת המוצב",
-        "detail": null
-      }
-    ],
-    "fallen": [
-      {
-        "id": "g13-yeruchin",
-        "fullName": "אופיר ירוחין",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-yeruchin.jpg",
-        "hometown": "גבעת שמואל",
-        "memorial": "פחת\"ק, גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "g13-zohar",
-        "fullName": "ירון זוהר",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-zohar.jpg",
-        "hometown": "קרית אתא",
-        "memorial": "פחת\"ק, גדוד 13",
-        "affiliation": "battalion_13"
-      }
-    ],
-    "startMinute": 390,
-    "endMinute": 600
-  },
-  {
     "id": "nz-tanks",
     "slug": "nz-tanks",
     "title": "קרב טנקי השריון",
@@ -163,6 +99,188 @@
     ],
     "startMinute": 390,
     "endMinute": 541
+  },
+  {
+    "id": "k2-defense",
+    "slug": "k2-defense",
+    "title": "הגנת מוצב ק-2",
+    "kind": "battle",
+    "date": "2023-10-07",
+    "time": "06:30",
+    "coordinates": [
+      34.575,
+      31.518
+    ],
+    "locationName": "מוצב ק-2",
+    "unit": "פלוגת פחת\"ק, גדוד 13 (ת\"פ גדוד 77)",
+    "summary": "לחימת לוחמי הפחת\"ק בהגנת מוצב ק-2 ('מגן שדרות')",
+    "description": "מוצב ק-2 ('מגן שדרות'), בגזרת גדוד 77, אוּיש בלוחמי פלוגת הפחת\"ק של גדוד 13 ובמחלקת מרגמות. עם תחילת המתקפה החזיק הכוח את המוצב תחת אש כבדה. הלוחם סמ\"ר ירון זוהר, איש מחלקת המרגמות, ירה מאות פגזי מרגמה תחת אש ופגע בעשרות מחבלים, עד שנפגע אנוש מרסיסי פצמ\"ר ונפטר מפצעיו. הלוחם סמ\"ר אופיר ירוחין נפל אף הוא בקרבות ההגנה על המוצב. יהי זכרם ברוך.",
+    "media": [],
+    "timeline": [
+      {
+        "id": "k2-t0",
+        "time": "06:30",
+        "endTime": "07:00",
+        "title": "כניסת הלוחמים למרחבים המוגנים; היערכות להגנת המוצב",
+        "detail": null
+      },
+      {
+        "id": "k2-t1",
+        "time": "07:00",
+        "endTime": "10:00",
+        "title": "לחימת הגנה עיקשת; ירי מרגמות מסיבי על המחבלים",
+        "detail": null
+      },
+      {
+        "id": "k2-t2",
+        "time": "10:00",
+        "endTime": "10:05",
+        "title": "נפילת סמ\"ר ירון זוהר ונפילת סמ\"ר אופיר ירוחין בהגנת המוצב",
+        "detail": null
+      }
+    ],
+    "fallen": [
+      {
+        "id": "g13-yeruchin",
+        "fullName": "אופיר ירוחין",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-yeruchin.jpg",
+        "hometown": "גבעת שמואל",
+        "memorial": "פחת\"ק, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "g13-zohar",
+        "fullName": "ירון זוהר",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-zohar.jpg",
+        "hometown": "קרית אתא",
+        "memorial": "פחת\"ק, גדוד 13",
+        "affiliation": "battalion_13"
+      }
+    ],
+    "startMinute": 390,
+    "endMinute": 600
+  },
+  {
+    "id": "yiftah-defense",
+    "slug": "yiftah-defense",
+    "title": "הגנת מחנה יפתח",
+    "kind": "battle",
+    "date": "2023-10-07",
+    "time": "06:30",
+    "coordinates": [
+      34.5119583,
+      31.5969322
+    ],
+    "locationName": "מחנה יפתח",
+    "unit": "פלוגת פחת\"ק, גדוד 13, חטיבת גולני",
+    "summary": "נפילת שני לוחמי הפחת\"ק בהגנת שער מחנה יפתח",
+    "description": "מחנה יפתח, מפקדת גדוד 77 שבו שהו גם לוחמי פלוגת הפחת\"ק של גדוד 13, הותקף עם תחילת המתקפה. במרחב שער המחנה (ש.ג) נפלו הלוחמים סמ\"ר עילי בר-שדה וסמ\"ר נתנאל אברהם שלום יאנג בהגנה על חבריהם ועל המחנה. נתנאל, עולה בודד מלונדון, נפל בעת סיוע לחילוץ לוחם בשער. יהי זכרם ברוך.",
+    "media": [],
+    "timeline": [
+      {
+        "id": "yiftah-t0",
+        "time": "06:30",
+        "endTime": "07:00",
+        "title": "המחנה מותקף; הלוחמים נערכים להגנה בשער ובעמדות",
+        "detail": null
+      },
+      {
+        "id": "yiftah-t1",
+        "time": "07:00",
+        "endTime": "08:00",
+        "title": "לחימה בשער המחנה (ש.ג) מול המחבלים",
+        "detail": null
+      },
+      {
+        "id": "yiftah-t2",
+        "time": "08:00",
+        "endTime": "08:05",
+        "title": "נפילת סמ\"ר עילי בר-שדה וסמ\"ר נתנאל יאנג בהגנת השער",
+        "detail": null
+      }
+    ],
+    "fallen": [
+      {
+        "id": "g13-yang",
+        "fullName": "נתנאל אברהם שלום יאנג",
+        "rank": "סמל",
+        "age": 20,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-yang.jpg",
+        "hometown": "רמת השרון",
+        "memorial": "פחת\"ק, גדוד 13",
+        "affiliation": "battalion_13"
+      },
+      {
+        "id": "g13-barseda",
+        "fullName": "עילי בר-שדה",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-barseda.jpg",
+        "hometown": "רמת גן",
+        "memorial": "פחת\"ק, גדוד 13",
+        "affiliation": "battalion_13"
+      }
+    ],
+    "startMinute": 390,
+    "endMinute": 480
+  },
+  {
+    "id": "niram-defense",
+    "slug": "niram-defense",
+    "title": "הגנת קיבוץ ניר עם",
+    "kind": "battle",
+    "date": "2023-10-07",
+    "time": "06:30",
+    "coordinates": [
+      34.572749,
+      31.517985
+    ],
+    "locationName": "קיבוץ ניר עם",
+    "unit": "פלוגה א', גדוד 13, חטיבת גולני",
+    "summary": "נפילת הלוחם מתן אברג'יל בהגנת קיבוץ ניר עם",
+    "description": "לוחמי פלוגה א' של גדוד 13, שהוצבו בגזרת ק-2 וצק\"ם סופר בצפון העוטף, נחלצו עם הבוקר להגן על היישובים שבמרחב. בקיבוץ ניר עם נפל הלוחם סמ\"ר מתן אברג'יל בקרב מול המחבלים, סמוך לנמ\"ר שליד המדגרה ומפעל המים. על פי עדויות, בגבורתו חיפה מתן בגופו על רימון והציל בכך את חיי ששה מחבריו. יהי זכרו ברוך.",
+    "media": [],
+    "timeline": [
+      {
+        "id": "niram-t0",
+        "time": "06:30",
+        "endTime": "07:00",
+        "title": "פלוגה א' נחלצת להגנת היישובים בגזרה",
+        "detail": null
+      },
+      {
+        "id": "niram-t1",
+        "time": "07:00",
+        "endTime": "09:00",
+        "title": "לחימה במחבלים במרחב קיבוץ ניר עם",
+        "detail": null
+      },
+      {
+        "id": "niram-t2",
+        "time": "09:00",
+        "endTime": "09:05",
+        "title": "נפילת סמ\"ר מתן אברג'יל בחיפוי על רימון להצלת חבריו",
+        "detail": null
+      }
+    ],
+    "fallen": [
+      {
+        "id": "g13-avergil",
+        "fullName": "מתן אברג'יל",
+        "rank": "סמל",
+        "age": 19,
+        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-avergil.jpg",
+        "hometown": "חרמש",
+        "memorial": "פלוגה א', גדוד 13",
+        "affiliation": "battalion_13"
+      }
+    ],
+    "startMinute": 390,
+    "endMinute": 540
   },
   {
     "id": "erez-camp",
@@ -289,124 +407,6 @@
     ],
     "startMinute": 390,
     "endMinute": 990
-  },
-  {
-    "id": "yiftah-defense",
-    "slug": "yiftah-defense",
-    "title": "הגנת מחנה יפתח",
-    "kind": "battle",
-    "date": "2023-10-07",
-    "time": "06:30",
-    "coordinates": [
-      34.5119583,
-      31.5969322
-    ],
-    "locationName": "מחנה יפתח",
-    "unit": "פלוגת פחת\"ק, גדוד 13, חטיבת גולני",
-    "summary": "נפילת שני לוחמי הפחת\"ק בהגנת שער מחנה יפתח",
-    "description": "מחנה יפתח, מפקדת גדוד 77 שבו שהו גם לוחמי פלוגת הפחת\"ק של גדוד 13, הותקף עם תחילת המתקפה. במרחב שער המחנה (ש.ג) נפלו הלוחמים סמ\"ר עילי בר-שדה וסמ\"ר נתנאל אברהם שלום יאנג בהגנה על חבריהם ועל המחנה. נתנאל, עולה בודד מלונדון, נפל בעת סיוע לחילוץ לוחם בשער. יהי זכרם ברוך.",
-    "media": [],
-    "timeline": [
-      {
-        "id": "yiftah-t0",
-        "time": "06:30",
-        "endTime": "07:00",
-        "title": "המחנה מותקף; הלוחמים נערכים להגנה בשער ובעמדות",
-        "detail": null
-      },
-      {
-        "id": "yiftah-t1",
-        "time": "07:00",
-        "endTime": "08:00",
-        "title": "לחימה בשער המחנה (ש.ג) מול המחבלים",
-        "detail": null
-      },
-      {
-        "id": "yiftah-t2",
-        "time": "08:00",
-        "endTime": "08:05",
-        "title": "נפילת סמ\"ר עילי בר-שדה וסמ\"ר נתנאל יאנג בהגנת השער",
-        "detail": null
-      }
-    ],
-    "fallen": [
-      {
-        "id": "g13-yang",
-        "fullName": "נתנאל אברהם שלום יאנג",
-        "rank": "סמל",
-        "age": 20,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-yang.jpg",
-        "hometown": "רמת השרון",
-        "memorial": "פחת\"ק, גדוד 13",
-        "affiliation": "battalion_13"
-      },
-      {
-        "id": "g13-barseda",
-        "fullName": "עילי בר-שדה",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-barseda.jpg",
-        "hometown": "רמת גן",
-        "memorial": "פחת\"ק, גדוד 13",
-        "affiliation": "battalion_13"
-      }
-    ],
-    "startMinute": 390,
-    "endMinute": 480
-  },
-  {
-    "id": "niram-defense",
-    "slug": "niram-defense",
-    "title": "הגנת קיבוץ ניר עם",
-    "kind": "battle",
-    "date": "2023-10-07",
-    "time": "06:30",
-    "coordinates": [
-      34.572749,
-      31.517985
-    ],
-    "locationName": "קיבוץ ניר עם",
-    "unit": "פלוגה א', גדוד 13, חטיבת גולני",
-    "summary": "נפילת הלוחם מתן אברג'יל בהגנת קיבוץ ניר עם",
-    "description": "לוחמי פלוגה א' של גדוד 13, שהוצבו בגזרת ק-2 וצק\"ם סופר בצפון העוטף, נחלצו עם הבוקר להגן על היישובים שבמרחב. בקיבוץ ניר עם נפל הלוחם סמ\"ר מתן אברג'יל בקרב מול המחבלים, סמוך לנמ\"ר שליד המדגרה ומפעל המים. על פי עדויות, בגבורתו חיפה מתן בגופו על רימון והציל בכך את חיי ששה מחבריו. יהי זכרו ברוך.",
-    "media": [],
-    "timeline": [
-      {
-        "id": "niram-t0",
-        "time": "06:30",
-        "endTime": "07:00",
-        "title": "פלוגה א' נחלצת להגנת היישובים בגזרה",
-        "detail": null
-      },
-      {
-        "id": "niram-t1",
-        "time": "07:00",
-        "endTime": "09:00",
-        "title": "לחימה במחבלים במרחב קיבוץ ניר עם",
-        "detail": null
-      },
-      {
-        "id": "niram-t2",
-        "time": "09:00",
-        "endTime": "09:05",
-        "title": "נפילת סמ\"ר מתן אברג'יל בחיפוי על רימון להצלת חבריו",
-        "detail": null
-      }
-    ],
-    "fallen": [
-      {
-        "id": "g13-avergil",
-        "fullName": "מתן אברג'יל",
-        "rank": "סמל",
-        "age": 19,
-        "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/g13-avergil.jpg",
-        "hometown": "חרמש",
-        "memorial": "פלוגה א', גדוד 13",
-        "affiliation": "battalion_13"
-      }
-    ],
-    "startMinute": 390,
-    "endMinute": 540
   },
   {
     "id": "pgah-tanks",
@@ -1204,7 +1204,7 @@
     ],
     "locationName": "מוצב נחל עוז",
     "unit": "גדוד 13, חטיבת גולני",
-    "summary": "",
+    "summary": null,
     "description": "בוקר השבת של ה-7 באוקטובר הפך גם את מתחם הבלונאים בנחל עוז לזירת קרב קשוחה ורוויית גבורה. עם הישמע האזעקות ותחילת מתקפת הפתע, ניצבו לוחמי גדוד 414 בקו הראשון מול פני האויב, כשהם מנהלים קרב בלימה הירואי בתנאים נגד כל הסיכויים.\nסמל אמיר אייל, שהוצב בשמירה סטטית במתחם, היה הראשון לזהות את החדירה. בקור רוח ובנחישות, פתח באש לעבר המחבלים שפשטו על עמדת הבלון, פגע בהם והשיב מלחמה שערה. בהמשך, כשהמתקפה התגברה, חדרו עשרות מחבלים למרחב מגורי הבלונאים. מפקד הכוח וארבעת לוחמיו לא נסוגו; הם התייצבו מול המחבלים וניהלו פנים אל פנים קרב גבורה אכזר בטווחים קרובים, תוך שהם משיבים אש ומגנים על המתחם בכל מחיר.\nבמקביל, במרחב הנשקייה, נמצא בשמירה סטטית סמל שוהם נידם, חייל פלס\"מ במחלקת החימוש. למרות שהיה ללא נשק אישי, עם הישמע האזעקות פעל בתושייה וניסה לנוע תחת אש לעבר מיגונית הבלונאים כדי לחבור לחבריו. מחבלים שארבו במרחב זיהו אותו בסמוך למיגונית, ושם, בדרכו להגן על חבריו, נפל.\nבסביבות השעה 07:50, לאחר דקות ארוכות של לחימה עיקשת בנחיתות מספרית מול כוחות אויב עדיפים, נפלו מפקד הכוח ולוחמיו בקרב, כשהם נאבקים עד נשימתם האחרונה.\nבקרב זה נפלו גיבורי מתחם הבלונאים:\nסמ\"ר נטע ברעם ז\"ל\nסמ\"ר שמעון אלרואי בן שטרית ז\"ל\nסמ\"ר דניאל שפרבר ז\"ל\nרב\"ט שמעון לוגאסי ז\"ל\nסמל אמיר איל ז\"ל\nסמל שוהם נידם ז\"ל\nבגופם ובאומץ ליבם, לחמו הבלונאים ואנשי המפקדה בנחל עוז, הדפו את התקדמות האויב בתוך המוצב, וכתבו בדם פרק מפואר של רעות, הקרבה ודבקות במשימה בתולדות מדינת ישראל. יהי זכרם ברוך.",
     "media": [
       {
@@ -1212,7 +1212,7 @@
         "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783517304039-8okxv7.jpg",
         "kind": "image",
         "thumb": null,
-        "caption": ""
+        "caption": null
       }
     ],
     "timeline": [
@@ -1221,14 +1221,14 @@
         "time": "07:40",
         "endTime": "07:50",
         "title": "לחימה עיקשת בכניסה למיגונית",
-        "detail": ""
+        "detail": null
       }
     ],
     "fallen": [
       {
         "id": "yblzj79",
         "fullName": "דניאל שפרבר",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517212737-doihdh.jpg",
         "hometown": "יהוד מונסון",
@@ -1238,7 +1238,7 @@
       {
         "id": "qe38oej",
         "fullName": "נטע ברעם",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517155841-gzu236.jpg",
         "hometown": "כרכור",
@@ -1248,7 +1248,7 @@
       {
         "id": "pgpm1j2",
         "fullName": "שמעון אלרואי בן שטרית",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517202243-d1ox94.jpg",
         "hometown": "בית שאן",
@@ -1278,7 +1278,7 @@
       {
         "id": "p012lrf",
         "fullName": "שמעון לוגאסי",
-        "rank": "רב״ט",
+        "rank": "רב\"ט",
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783517233196-sypcxs.jpg",
         "hometown": "עכו",
@@ -1302,7 +1302,7 @@
     ],
     "locationName": "מוצב נחל עוז",
     "unit": "גדוד 13, חטיבת גולני",
-    "summary": "",
+    "summary": null,
     "description": "בוקר השבת של ה-7 באוקטובר הפך את מיגונית התצפיתניות, שהוצבה מערבית לשער הבסיס בנחל עוז, למעוז של לחימה הירואית וטרגדיה כואבת. עם הישמע האזעקות וירי הטילים המסיבי, התפנו עשרות חיילות – תצפיתניות, לוחות יחידת \"רוכב שמיים\", חובשות וחיילות מפקדה – אל המיגונית, שם מצאו את עצמן בקו המגע הישיר מול פשיטת המחבלים.\nכשאל פתח המיגונית הגיעו עשרות מחבלים חמושים, התייצבה מולן בקור רוח עילאי סרן עדן נימרי, מפקדת צוות ביחידת \"רוכב שמיים\". חמושה בנשקה ורוויית תעוזה, ניהלה עדן קרב פנים אל פנים אכזרי בפתח המיגונית, השיבה אש לעבר האויב ולחמה בעוז ממושך כדי להגן בגופה על החיילות חסרות האונים שהצטופפו מאחוריה. בלחימתה העיקשת הצילה חיים, עד אשר נפלה בקרב.\nלאחר נפילתה של סרן נימרי, חיללו המחבלים את מרחב המיגונית תחת מטר של ירי ורימונים. למרות התנאים הקשים, חלק מהחיילות גילו תושייה עילאית והצליחו תחת אש להימלט לעבר חדרי המגורים הסמוכים – שם חלקן הסתתרו ולחמו עד לחילוצן המורט, וחלקן נהרגו בהמשך הלחימה במחנה.\nלקראת השעה 10:30, לאחר פגיעה פיזית קשה בשוהות במקום, נחטפו מהמיגונית שבע תצפיתניות אל שטח רצועת עזה.\nבקרב ההגנה על המיגונית ובסביבתה נפלו הגיבורות:\nסרן עדן נימרי ז\"ל\nסמ\"ר שחף ניסני ז\"ל\nסמ\"ר נועה פרייס ז\"ל\nסמ\"ר סיוון-שמחה אסראף ז\"ל\nסמ\"ר ירין מארי פלד ז\"ל\nסמלת אביב חג'ג' ז\"ל\nסמלת שי אשרם ז\"ל\nסמלת שיר ביטון ז\"ל\nרב\"ט נועם אברמוביץ ז\"ל\nרב\"ט שירת ים עמר ז\"ל\nרב\"ט הדר מרים כהן ז\"ל\nרב\"ט נועה מרציאנו ז\"ל (שנחטפה ונרצחה בשבי)\nבמעשי הגבורה המפעימים, בלחימה בפתח המיגונית ובחוסן שנפגש עם אכזריות האויב, הפגינו מגינות המיגונית רעות עילאית ודבקות במשימה. הן חקקו בדם פרק נצחי של גבורה נשית ומנהיגות בתולדות מדינת ישראל. יהי זכרן ברוך.",
     "media": [
       {
@@ -1310,21 +1310,21 @@
         "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783938620589-nm30cu.jpeg",
         "kind": "image",
         "thumb": null,
-        "caption": ""
+        "caption": null
       }
     ],
     "timeline": [
       {
         "id": "du2o1bw",
         "time": "07:44",
-        "title": "לחימה עיקשת בכניסה למיגונית בהובלת סרן עדן נימרי ז״לֹ",
-        "detail": ""
+        "title": "לחימה עיקשת בכניסה למיגונית בהובלת סרן עדן נימרי ז\"ל",
+        "detail": null
       },
       {
         "id": "il8eu8g",
         "time": "10:00",
         "title": "*בערך - המחבלים חודרים למיגונית",
-        "detail": ""
+        "detail": null
       }
     ],
     "fallen": [
@@ -1340,8 +1340,8 @@
       },
       {
         "id": "cpjgc4j",
-        "fullName": " ירין מארי פלד",
-        "rank": "סמ״ר",
+        "fullName": "ירין מארי פלד",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938118008-ub9764.jpg",
         "hometown": "בארי",
@@ -1351,7 +1351,7 @@
       {
         "id": "nkpzzua",
         "fullName": "נועה פרייס",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783937982014-vv69lj.jpg",
         "hometown": "מבועים",
@@ -1361,7 +1361,7 @@
       {
         "id": "5tcl1he",
         "fullName": "סיוון-שמחה אסראף",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938042157-gknpot.jpg",
         "hometown": "אשקלון",
@@ -1371,7 +1371,7 @@
       {
         "id": "qlys5x0",
         "fullName": "שחף ניסני",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783937932457-84d98p.jpg",
         "hometown": "אשקלון",
@@ -1421,7 +1421,7 @@
       {
         "id": "viztn6j",
         "fullName": "הדר מרים כהן",
-        "rank": "רב״ט",
+        "rank": "רב\"ט",
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938523285-u7ilm5.jpg",
         "hometown": "זיתן",
@@ -1431,7 +1431,7 @@
       {
         "id": "qcus0ho",
         "fullName": "נועה מרציאנו",
-        "rank": "רב״ט",
+        "rank": "רב\"ט",
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938566953-n83ggm.jpg",
         "hometown": "מודיעין",
@@ -1441,7 +1441,7 @@
       {
         "id": "xzzcta7",
         "fullName": "שירת ים עמר",
-        "rank": "רב״ט",
+        "rank": "רב\"ט",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783938471670-wj4r4w.jpg",
         "hometown": "קריית אונו",
@@ -1473,14 +1473,14 @@
         "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/26eeaa99.jpg",
         "kind": "image",
         "thumb": null,
-        "caption": ""
+        "caption": null
       },
       {
         "id": "3f105717",
         "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/3f105717.mp3",
         "kind": "audio",
         "thumb": null,
-        "caption": ""
+        "caption": null
       }
     ],
     "timeline": [
@@ -1532,7 +1532,7 @@
         "id": "nahal-oz-assault-t2",
         "time": "08:22",
         "endTime": "08:22",
-        "title": "שילה מדווח: \"הותקלנו מלפנים. במספר מחבלים לא ידוע, לשכב מאחורי מחסות\". ",
+        "title": "שילה מדווח: \"הותקלנו מלפנים. במספר מחבלים לא ידוע, לשכב מאחורי מחסות\".",
         "detail": null
       },
       {
@@ -1618,7 +1618,7 @@
   {
     "id": "2w9owqo",
     "slug": "מוקד-מיגונית-הצמ״ה",
-    "title": "מוקד מיגונית הצמ״ה",
+    "title": "מוקד מיגונית הצמ\"ה",
     "kind": "battle",
     "date": "2023-10-07",
     "time": "08:30",
@@ -1628,7 +1628,7 @@
     ],
     "locationName": "מוצב נחל עוז",
     "unit": "גדוד 13, חטיבת גולני",
-    "summary": "",
+    "summary": null,
     "description": "בוקר השבת של ה-7 באוקטובר הפך את מיגונית הצמ\"ה במחנה נחל עוז למעוז עיקש של לחימה והקרבה, בו ניצבו לוחמים ותומכי לחימה בקו המגע מול נחילי מחבלים. בשעה 06:30, עם תחילת המתקפה, חברו למיגונית 11 חיילים – מפקד מחלקה, נהגים ואנשי מערך תומך הלחימה של החטיבה והאוגדה.\n\nבמקביל, ניהל חפ\"ק סגן מפקד הגדוד (\"משנה נשרים\") קרב בלימה אכזרי בדרום-מערב המחנה (עליו מפורט בקרב אחר)\nתחת אש תופת, נפצע סגן מפקד הגדוד באורח אנוש. הלוחמים סמ\"ר נהוראי לוי אמיתי, סמ\"ר ברק יעקב בן-דוד וסמ\"ר סהר מידני חיפו בגופם ובירי רציף על פינויו של הסמג\"ד לעבר מיגונית התאג\"ד.\n במהלך קרב החיפוים המורכב, הטיל רחפן אויב רימון שפצע את ברק באורח קשה ברגלו, ורסיסים פגעו בידו של נהוראי.\nבסביבות השעה 07:00, הגיעו שלושת לוחמי פלוגה ב' (\"גרנט\") אל מיגונית הצמ\"ה בדרגות פציעה שונות. על אף הפציעה בידו, גילה סמל המחלקה סמ\"ר נהוראי לוי אמיתי תושייה ומנהיגות עילאית: הוא לקח פיקוד על כלל השוהים במקום, חילק גזרות לחיפוי, וארגן את הכוח להגנה הקפיית על המיגונית.\nבמשך שעות ארוכות, בין 08:30 ל-12:30, ניהל הכוח המכותר קרב הירואי מתוך המיגונית אל מול גלי מחבלים שניסו לחדור פנימה. בתוך המיגונית, ללא ציוד רפואי מציל חיים ותחת אש רציפה שמנעה הגעת תגבורת, הלך והחמיר מצבו של סמ\"ר ברק בן-דוד כתוצאה מאיבוד דם רב, עד אשר מת מפצעיו בגבורה. במהלך חילופי האש העזים, נפל בלחימה גם לוחם הקומץ, סמל בועז מנשה יוגב, שהשיב אש לעבר האויב עד רגעיו האחרונים.\nהקרב הגיע לשיאו העקוב מדם כאשר מחבלים הסתערו על פתח המיגונית מכיוון דרום. סמ\"ר נהוראי לוי אמיתי התייצב בפרץ, נלחם בעוז, אך נפגע מרימון ומיריית נ\"ט ונפל בקרב. מיד אחריו תפס את מקומו בחזית סמ\"ר סהר מידני, שהמשיך לירות ולהדוף את האויב, עד שנפגע אף הוא מירי נק\"ל ורימונים ונפל על משמרתו.\nבמעשי הגבורה הללו, בלמו לוחמי פלוגה ב' והמפקדה בגופם את חדירת המחבלים לעומק המתחם. לאחר נפילת הלוחמים בפתח, ניצלו יתר השוהים במיגונית, חמקו לחדרים סמוכים וחולצו בשעות אחר הצהריים.\nבקרב קשוח זה נפלו הגיבורים:\nסמ\"ר נהוראי לוי אמיתי ז\"ל\nסמ\"ר ברק יעקב בן-דוד ז\"ל\nסמ\"ר סהר מידני ז\"ל\nסמל בועז מנשה יוגב ז\"ל\nבנחישותם, ברעות הלוחמים ובפיקודם תחת אש, הגנו לוחמי נחל עוז על חבריהם עד טיפת הדם האחרונה, וכתבו פרק מפואר של אומץ לב והקרבה בתולדות מדינת ישראל. יהי זכרם ברוך.",
     "media": [],
     "timeline": [
@@ -1636,8 +1636,8 @@
         "id": "ohbtn50",
         "time": "06:55",
         "endTime": "07:00",
-        "title": "הגעת לוחמי פלוגה ב׳ אל מיגונית הצמ״ה",
-        "detail": "",
+        "title": "הגעת לוחמי פלוגה ב' אל מיגונית הצמ\"ה",
+        "detail": null,
         "path": [
           {
             "time": "06:55",
@@ -1681,14 +1681,14 @@
         "time": "08:30",
         "endTime": "12:30",
         "title": "הכוח מנהל קרב אל מול גלי המחבלים המנסים לחדור פנימה",
-        "detail": ""
+        "detail": null
       }
     ],
     "fallen": [
       {
         "id": "oxtcx29",
         "fullName": "ברק יעקב בן-דוד",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 19,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783940954527-pj4uxm.jpg",
         "hometown": "דימונה",
@@ -1698,7 +1698,7 @@
       {
         "id": "pafbtzv",
         "fullName": "נהוראי לוי אמיתי",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783940866464-r58xju.jpg",
         "hometown": "רינתיה",
@@ -1708,7 +1708,7 @@
       {
         "id": "nlqwwge",
         "fullName": "סהר מידני",
-        "rank": "סמ״ר",
+        "rank": "סמ\"ר",
         "age": 20,
         "photo": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/fallen/1783940911857-huui7l.jpg",
         "hometown": "קריית עקרון",
