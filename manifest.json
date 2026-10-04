@@ -1,0 +1,13 @@
+{
+  "createdAt": "2026-10-04T08:40:51.501Z",
+  "tables": {
+    "battles": 16,
+    "timeline_events": 68,
+    "soldiers": 80,
+    "media": 4
+  },
+  "storage": {
+    "files": 84,
+    "bytes": 3245774
+  }
+}

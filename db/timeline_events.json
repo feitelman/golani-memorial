@@ -1,0 +1,722 @@
+[
+  {
+    "id": "du2o1bw",
+    "battle_id": "dh4hy39",
+    "time": "07:44",
+    "end_time": null,
+    "title": "לחימה עיקשת בכניסה למיגונית בהובלת סרן עדן נימרי ז״לֹ",
+    "detail": "",
+    "path": null
+  },
+  {
+    "id": "erez-camp-t0",
+    "battle_id": "erez-camp",
+    "time": "06:29",
+    "end_time": "06:32",
+    "title": "הכרזת 'גשם סגול' — הלוחמים למרחב המוגן (המטבחון)",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t1",
+    "battle_id": "erez-camp",
+    "time": "06:32",
+    "end_time": "06:40",
+    "title": "'אירוע מורכב' בק.ד 27 — כוח 'כרמל א' יוצא לגדר ומוחזר עם דיווח פשיטה",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t2",
+    "battle_id": "erez-camp",
+    "time": "06:41",
+    "end_time": "07:04",
+    "title": "חדירת מחבלים למעבר ארז; עשרות מחבלים על המחנה",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t3",
+    "battle_id": "erez-camp",
+    "time": "07:04",
+    "end_time": "07:10",
+    "title": "פשיטת כ-20 מחבלים על המחנה; פיצול הכוחות",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t4",
+    "battle_id": "erez-camp",
+    "time": "07:10",
+    "end_time": "07:30",
+    "title": "קרב הבטונדות/המיגוניות — נפילת הרס\"פ סמ\"ר דניאל דנינו, פציעת אריאל ארז ואדיר טהר",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t5",
+    "battle_id": "erez-camp",
+    "time": "07:30",
+    "end_time": "07:45",
+    "title": "נפילת סמל רועי וייזר מאש מטווח קצר",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t6",
+    "battle_id": "erez-camp",
+    "time": "07:45",
+    "end_time": "09:00",
+    "title": "ניסיונות חילוץ אריאל ארז הפצוע ממבנה למבנה; נפילתו בקרב",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t7",
+    "battle_id": "erez-camp",
+    "time": "09:00",
+    "end_time": "16:30",
+    "title": "התבצרות כעשרה לוחמים במטבחון בפיקוד עומרי סילנר — לחימת הגנה ממושכת",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "erez-camp-t8",
+    "battle_id": "erez-camp",
+    "time": "16:30",
+    "end_time": "17:00",
+    "title": "חבירה לכוח החילוץ (ס\"פ 2 ויהלו\"ם), טיהור המחנה וחילוץ הפצועים וההרוגים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "il8eu8g",
+    "battle_id": "dh4hy39",
+    "time": "10:00",
+    "end_time": null,
+    "title": "*בערך - המחבלים חודרים למיגונית",
+    "detail": "",
+    "path": null
+  },
+  {
+    "id": "k2-t0",
+    "battle_id": "k2-defense",
+    "time": "06:30",
+    "end_time": "07:00",
+    "title": "כניסת הלוחמים למרחבים המוגנים; היערכות להגנת המוצב",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "k2-t1",
+    "battle_id": "k2-defense",
+    "time": "07:00",
+    "end_time": "10:00",
+    "title": "לחימת הגנה עיקשת; ירי מרגמות מסיבי על המחבלים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "k2-t2",
+    "battle_id": "k2-defense",
+    "time": "10:00",
+    "end_time": "10:05",
+    "title": "נפילת סמ\"ר ירון זוהר ונפילת סמ\"ר אופיר ירוחין בהגנת המוצב",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-assault-t0",
+    "battle_id": "nahal-oz-assault",
+    "time": "08:16",
+    "end_time": "08:20",
+    "title": "כוח הלוחמים בפיקוד שילה הר אבן יצא להתקפה",
+    "detail": null,
+    "path": [
+      {
+        "time": "08:16",
+        "coordinates": [
+          34.503073,
+          31.477392
+        ]
+      },
+      {
+        "time": "08:17",
+        "coordinates": [
+          34.502572,
+          31.47778
+        ]
+      },
+      {
+        "time": "08:18",
+        "coordinates": [
+          34.502011,
+          31.47778
+        ]
+      },
+      {
+        "time": "08:20",
+        "coordinates": [
+          34.502406,
+          31.478673
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nahal-oz-assault-t1",
+    "battle_id": "nahal-oz-assault",
+    "time": "08:21",
+    "end_time": "08:22",
+    "title": "הכוח נמצא סמוך ל-ש.ג במרחב הבטונדות, הכוח מותקל, שילה מדווח על פצוע בכוח",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-assault-t2",
+    "battle_id": "nahal-oz-assault",
+    "time": "08:22",
+    "end_time": "08:22",
+    "title": "שילה מדווח: \"הותקלנו מלפנים. במספר מחבלים לא ידוע, לשכב מאחורי מחסות\". ",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-assault-t3",
+    "battle_id": "nahal-oz-assault",
+    "time": "08:22",
+    "end_time": "08:26",
+    "title": "ניהול לחימה עם מחבלים רבים באזור הבטונדות בכניסה למוצב.",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-assault-t4",
+    "battle_id": "nahal-oz-assault",
+    "time": "08:26",
+    "end_time": "08:26",
+    "title": "כלל הכוח הרגלי נופל.",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-hamal-t0",
+    "battle_id": "nahal-oz-hamal",
+    "time": "06:29",
+    "end_time": "07:30",
+    "title": "צבע אדום בכלל רחבי הגזרה, איוש מוגבר בחמ\"ל",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-hamal-t1",
+    "battle_id": "nahal-oz-hamal",
+    "time": "07:30",
+    "end_time": "07:48",
+    "title": "ניסיונות מחבלים לחדור לחמ\"ל, לחימה עיקשת בכניסה.",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-hamal-t2",
+    "battle_id": "nahal-oz-hamal",
+    "time": "07:48",
+    "end_time": "11:00",
+    "title": "נופלת התקשורת בחמ\"ל",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-hamal-t3",
+    "battle_id": "nahal-oz-hamal",
+    "time": "11:00",
+    "end_time": "11:30",
+    "title": "נופל החשמל בחמ\"ל",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-hamal-t4",
+    "battle_id": "nahal-oz-hamal",
+    "time": "11:30",
+    "end_time": "12:00",
+    "title": "התחמושת אוזלת, הלוחמים החלו בלחימה בידיים חשופות כנגד המחבלים.",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-hamal-t5",
+    "battle_id": "nahal-oz-hamal",
+    "time": "12:00",
+    "end_time": "14:00",
+    "title": "המחבלים החלו לשרוף את החמ\"ל",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nahal-oz-hamal-t6",
+    "battle_id": "nahal-oz-hamal",
+    "time": "14:00",
+    "end_time": "14:05",
+    "title": "החל מבצע חילוץ בפיקוד קציני חטיבת גולני, שבסופו חולצו שבעה חיילים מהחמ\"ל.",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "niram-t0",
+    "battle_id": "niram-defense",
+    "time": "06:30",
+    "end_time": "07:00",
+    "title": "פלוגה א' נחלצת להגנת היישובים בגזרה",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "niram-t1",
+    "battle_id": "niram-defense",
+    "time": "07:00",
+    "end_time": "09:00",
+    "title": "לחימה במחבלים במרחב קיבוץ ניר עם",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "niram-t2",
+    "battle_id": "niram-defense",
+    "time": "09:00",
+    "end_time": "09:05",
+    "title": "נפילת סמ\"ר מתן אברג'יל בחיפוי על רימון להצלת חבריו",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-migunit-b-t0",
+    "battle_id": "nz-migunit-b",
+    "time": "06:35",
+    "end_time": "07:00",
+    "title": "יציאת המ\"מים והלוחמים לחיזוק העמדות סביב המחנה",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-migunit-b-t1",
+    "battle_id": "nz-migunit-b",
+    "time": "07:00",
+    "end_time": "08:00",
+    "title": "לחימה עיקשת במפנה המערבי והמזרחי; רתנר וסיבוני נפגעים אנוש",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-migunit-b-t2",
+    "battle_id": "nz-migunit-b",
+    "time": "08:01",
+    "end_time": "08:05",
+    "title": "סמ\"ר דוד רתנר וסמ\"ר נאור סיבוני מתו מפצעיהם במיגונית",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-shag-t0",
+    "battle_id": "nz-shag",
+    "time": "06:35",
+    "end_time": "07:00",
+    "title": "עיבוי עמדת הש.ג — שני לוחמים ומ\"כ מפלוגה ב'",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-shag-t1",
+    "battle_id": "nz-shag",
+    "time": "07:00",
+    "end_time": "07:30",
+    "title": "חילופי אש כבדים מול מחבלים ממספר כיוונים, בנשק אישי בלבד",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-shag-t2",
+    "battle_id": "nz-shag",
+    "time": "07:30",
+    "end_time": "07:35",
+    "title": "נפילת סמ\"ר בוגלה, סמ\"ר לזימי וסמ\"ר כרמי — הש.ג נפרץ",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-tanks-t0",
+    "battle_id": "nz-tanks",
+    "time": "06:30",
+    "end_time": "06:45",
+    "title": "פקודת משנה נשרים לטנקים: לעלות לעמדות ולהשמיד את המחבלים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-tanks-t1",
+    "battle_id": "nz-tanks",
+    "time": "06:45",
+    "end_time": "08:50",
+    "title": "הטנקים לוחמים בגדר, בעמדות ובתוך המחנה ובולמים את החדירה",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-tanks-t2",
+    "battle_id": "nz-tanks",
+    "time": "08:53",
+    "end_time": "08:56",
+    "title": "טנק ד' נפגע משני נ\"ט במחנה — נפילת סמל אור אביטל וסמ\"ר יונתן גולן",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "nz-tanks-t3",
+    "battle_id": "nz-tanks",
+    "time": "09:01",
+    "end_time": "09:05",
+    "title": "טנק ג'1 נפגע מנ\"ט ממערב למחנה — נפילת סרן דניאל פרץ, סמ\"ר איתי חן וסמל תומר ליבוביץ",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "oc1ggfh",
+    "battle_id": "2w9owqo",
+    "time": "08:30",
+    "end_time": "12:30",
+    "title": "הכוח מנהל קרב אל מול גלי המחבלים המנסים לחדור פנימה",
+    "detail": "",
+    "path": null
+  },
+  {
+    "id": "ohbtn50",
+    "battle_id": "2w9owqo",
+    "time": "06:55",
+    "end_time": "07:00",
+    "title": "הגעת לוחמי פלוגה ב׳ אל מיגונית הצמ״ה",
+    "detail": "",
+    "path": [
+      {
+        "time": "06:55",
+        "coordinates": [
+          34.500754,
+          31.479943
+        ]
+      },
+      {
+        "time": "06:56",
+        "coordinates": [
+          34.500845,
+          31.480048
+        ]
+      },
+      {
+        "time": "06:57",
+        "coordinates": [
+          34.501017,
+          31.480097
+        ]
+      },
+      {
+        "time": "06:58",
+        "coordinates": [
+          34.501143,
+          31.480067
+        ]
+      },
+      {
+        "time": "06:59",
+        "coordinates": [
+          34.501277,
+          31.480113
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pgah-camp-t0",
+    "battle_id": "pgah-camp",
+    "time": "06:30",
+    "end_time": "06:49",
+    "title": "הכרזת 'גשם סגול'; הלוחמים לנאפ\"ל, עיבוי עמדות בקנים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-camp-t1",
+    "battle_id": "pgah-camp",
+    "time": "06:49",
+    "end_time": "07:10",
+    "title": "ירי ראשוני על חומות המחנה מגבעת סחיף",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-camp-t2",
+    "battle_id": "pgah-camp",
+    "time": "07:10",
+    "end_time": "07:58",
+    "title": "מתקפה על עמדות המחנה; פצועים ראשונים; לחימה בפתחים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-camp-t3",
+    "battle_id": "pgah-camp",
+    "time": "07:58",
+    "end_time": "08:00",
+    "title": "נפילת הקלע סמל איתמר כהן בעמדת המפרם",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-camp-t4",
+    "battle_id": "pgah-camp",
+    "time": "08:00",
+    "end_time": "10:25",
+    "title": "לחימה משותפת עם 'נמ\"ר דייגו', חילוץ פצועים סביב המחנה",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-camp-t5",
+    "battle_id": "pgah-camp",
+    "time": "10:35",
+    "end_time": "10:40",
+    "title": "נפילת מפקד המחנה סרן דקל סויסה וסמל רועי פרי בכניסה",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-camp-t6",
+    "battle_id": "pgah-camp",
+    "time": "11:15",
+    "end_time": "11:35",
+    "title": "חדירת מחבלים והצתת חדר האוכל",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-camp-t7",
+    "battle_id": "pgah-camp",
+    "time": "13:00",
+    "end_time": "13:05",
+    "title": "הסתערות חמשת הלוחמים מחדר האוכל ונפילתם בקרב",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-mortars-t0",
+    "battle_id": "pgah-mortars",
+    "time": "06:29",
+    "end_time": "06:45",
+    "title": "ירי תמ\"ס מסיבי — הלוחמים למיגונית, הכנת הכלים לירי מרגמות",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-mortars-t2",
+    "battle_id": "pgah-mortars",
+    "time": "06:51",
+    "end_time": "06:55",
+    "title": "התקבל אישור ירי; הכוח ערוך ומוכן לירי",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-mortars-t3",
+    "battle_id": "pgah-mortars",
+    "time": "06:55",
+    "end_time": "06:57",
+    "title": "תשעה מחבלים מסתערים על המתחם משני כיוונים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-mortars-t4",
+    "battle_id": "pgah-mortars",
+    "time": "06:57",
+    "end_time": "07:00",
+    "title": "לחימת פנים אל פנים; נפילת סמל חביב קיעאן, פצועים רבים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-mortars-t5",
+    "battle_id": "pgah-mortars",
+    "time": "07:00",
+    "end_time": "07:02",
+    "title": "פינוי פצועים אל הנאפ\"ל שבמחנה 'פגה'",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-mortars-t6",
+    "battle_id": "pgah-mortars",
+    "time": "08:55",
+    "end_time": "09:00",
+    "title": "חילוץ שני הפצועים האחרונים מהמתחם ע\"י 'נמ\"ר דייגו'",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-rescue-t0",
+    "battle_id": "pgah-rescue",
+    "time": "15:00",
+    "end_time": "16:20",
+    "title": "מסוק קרב תוקף את המחבלים שנותרו במוצב",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-rescue-t1",
+    "battle_id": "pgah-rescue",
+    "time": "16:20",
+    "end_time": "16:50",
+    "title": "כוח הלוט\"ר וקציני גולני מטהרים את המוצב ומפנים פצועים והרוגים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-rescue-t2",
+    "battle_id": "pgah-rescue",
+    "time": "18:00",
+    "end_time": "18:10",
+    "title": "פגיעת 'קורנט' ברכב החילוץ; נפילת סמ\"ר דולב אמויאל",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-tanks-t0",
+    "battle_id": "pgah-tanks",
+    "time": "06:33",
+    "end_time": "06:36",
+    "title": "'טנק 2' עולה לעמדה 106; 'טנק 2ב' נע לעמדה 91",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-tanks-t1",
+    "battle_id": "pgah-tanks",
+    "time": "06:42",
+    "end_time": "06:45",
+    "title": "הטנקים פוגעים בעשרות מחבלים בגדר; 'טנק 2' נתקע בע' 106 וצוותו שרד",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-tanks-t2",
+    "battle_id": "pgah-tanks",
+    "time": "06:36",
+    "end_time": "08:06",
+    "title": "'טנק 2ב': עלייה לעמדה 91, פגיעת נ\"ט, ונסיעת הנהג לבדו עד מרחב הנובה",
+    "detail": null,
+    "path": [
+      {
+        "time": "06:36",
+        "coordinates": [
+          34.4705,
+          31.4515
+        ]
+      },
+      {
+        "time": "06:42",
+        "coordinates": [
+          34.4668,
+          31.4498
+        ]
+      },
+      {
+        "time": "06:56",
+        "coordinates": [
+          34.4683,
+          31.4474
+        ]
+      },
+      {
+        "time": "07:20",
+        "coordinates": [
+          34.4725,
+          31.431
+        ]
+      },
+      {
+        "time": "07:45",
+        "coordinates": [
+          34.4718,
+          31.413
+        ]
+      },
+      {
+        "time": "08:06",
+        "coordinates": [
+          34.47168,
+          31.39777
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pgah-tanks-t3",
+    "battle_id": "pgah-tanks",
+    "time": "06:44",
+    "end_time": "06:50",
+    "title": "'טנק 2' נפגע מרחפן-מטיל בעמדה 106 ונתקע (הצוות חולץ מאוחר יותר לצומת סעד)",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-tanks-t4",
+    "battle_id": "pgah-tanks",
+    "time": "06:56",
+    "end_time": "06:57",
+    "title": "'טנק 2ב' נפגע מנ\"ט; נפילת המט\"ק סמ\"ר שי לוינסון, פציעת הצוות",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "pgah-tanks-t5",
+    "battle_id": "pgah-tanks",
+    "time": "08:06",
+    "end_time": "10:00",
+    "title": "נפילת התותחן והטען במרחב הנובה; הנהג נלחם וחולץ פצוע",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "vdqocas",
+    "battle_id": "arfxf1j",
+    "time": "07:40",
+    "end_time": "07:50",
+    "title": "לחימה עיקשת בכניסה למיגונית",
+    "detail": "",
+    "path": null
+  },
+  {
+    "id": "yiftah-t0",
+    "battle_id": "yiftah-defense",
+    "time": "06:30",
+    "end_time": "07:00",
+    "title": "המחנה מותקף; הלוחמים נערכים להגנה בשער ובעמדות",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "yiftah-t1",
+    "battle_id": "yiftah-defense",
+    "time": "07:00",
+    "end_time": "08:00",
+    "title": "לחימה בשער המחנה (ש.ג) מול המחבלים",
+    "detail": null,
+    "path": null
+  },
+  {
+    "id": "yiftah-t2",
+    "battle_id": "yiftah-defense",
+    "time": "08:00",
+    "end_time": "08:05",
+    "title": "נפילת סמ\"ר עילי בר-שדה וסמ\"ר נתנאל יאנג בהגנת השער",
+    "detail": null,
+    "path": null
+  }
+]

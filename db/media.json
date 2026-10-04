@@ -1,0 +1,34 @@
+[
+  {
+    "id": "26eeaa99",
+    "battle_id": "nahal-oz-assault",
+    "kind": "image",
+    "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/26eeaa99.jpg",
+    "thumb": null,
+    "caption": ""
+  },
+  {
+    "id": "3f105717",
+    "battle_id": "nahal-oz-assault",
+    "kind": "audio",
+    "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/3f105717.mp3",
+    "thumb": null,
+    "caption": ""
+  },
+  {
+    "id": "830oou5",
+    "battle_id": "arfxf1j",
+    "kind": "image",
+    "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783517304039-8okxv7.jpg",
+    "thumb": null,
+    "caption": ""
+  },
+  {
+    "id": "ljzy9xq",
+    "battle_id": "dh4hy39",
+    "kind": "image",
+    "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783938620589-nm30cu.jpeg",
+    "thumb": null,
+    "caption": ""
+  }
+]
