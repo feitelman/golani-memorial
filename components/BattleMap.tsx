@@ -11,6 +11,14 @@ import {
 } from "@/lib/types";
 import { MapLocation } from "@/lib/locations";
 import { lightAt, toCss } from "@/lib/daylight";
+import {
+  BORDER,
+  BOUNDARIES,
+  DEPLOYMENT_BOUNDS,
+  POSITION_NOTES,
+  SECTORS,
+  SETTLEMENTS,
+} from "@/lib/deployment";
 import FallbackMap from "./FallbackMap";
 
 /** Timeline events that carry a path, flattened with their parent battle. */
@@ -75,6 +83,9 @@ interface Props {
   spotlightId?: string | null;
   /** tour: play one event's movement by fraction (0→1), decoupled from the clock */
   movePreview?: { eventId: string; t: number } | null;
+  /** opening sequence step (0 story · 1 border · 2 communities · 3 sectors ·
+   *  4 hold · 5 leave); null when not playing */
+  introStep?: number | null;
 }
 
 export default function BattleMap({
@@ -89,6 +100,7 @@ export default function BattleMap({
   cameraTarget = null,
   spotlightId = null,
   movePreview = null,
+  introStep = null,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
@@ -125,6 +137,13 @@ export default function BattleMap({
   tourActiveRef.current = tourActive;
   spotlightRef.current = spotlightId;
   movePreviewRef.current = movePreview;
+  const introStepRef = useRef(introStep);
+  introStepRef.current = introStep;
+  // deployment overlay (opening sequence): DOM labels + pending animations
+  const depMarksRef = useRef<{ el: HTMLElement; marker: mapboxgl.Marker; group: "town" | "sector" | "pos" }[]>([]);
+  const depTimersRef = useRef<(() => void)[]>([]);
+  // base-map labels hidden during the deployment (id → original visibility)
+  const baseLabelsRef = useRef<Map<string, string> | null>(null);
 
   // ── init ──────────────────────────────────────────────
   useEffect(() => {
@@ -275,7 +294,9 @@ export default function BattleMap({
         // into the locations overview. No continuous rotation — the camera
         // holds still once it settles.
         if (containerRef.current) containerRef.current.style.opacity = "1";
-        if (!reduce) {
+        if (introStepRef.current !== null) {
+          applyIntro(map, introStepRef.current); // the opening sequence owns the camera
+        } else if (!reduce) {
           map.easeTo({
             ...overviewCamera(map),
             pitch: OVERVIEW.pitch,
@@ -344,6 +365,246 @@ export default function BattleMap({
       },
     ]);
   }
+
+  // ── opening sequence: the battalion's deployment ─────
+  // Drawn on the real map (lib/deployment.ts): the border, the communities, the
+  // sector boundaries with each company's name, and the battalion's positions.
+  // Each step first settles everything before it, so skipping ahead is safe.
+  function clearDepTimers() {
+    depTimersRef.current.forEach((c) => c());
+    depTimersRef.current = [];
+  }
+  function later(fn: () => void, ms: number) {
+    const id = setTimeout(fn, ms);
+    depTimersRef.current.push(() => clearTimeout(id));
+  }
+  const lineData = (lines: [number, number][][]) => ({
+    type: "FeatureCollection" as const,
+    features: lines.map((coordinates) => ({
+      type: "Feature" as const,
+      properties: {},
+      geometry: { type: "LineString" as const, coordinates },
+    })),
+  });
+  /** Grow a line from its first point to its last over `ms`. */
+  function drawLine(map: mapboxgl.Map, src: string, done: [number, number][][], line: [number, number][], ms: number) {
+    const source = map.getSource(src) as mapboxgl.GeoJSONSource | undefined;
+    if (!source) return;
+    const seg: number[] = [0];
+    for (let i = 1; i < line.length; i++)
+      seg.push(seg[i - 1] + Math.hypot(line[i][0] - line[i - 1][0], line[i][1] - line[i - 1][1]));
+    const total = seg[seg.length - 1] || 1;
+    const t0 = performance.now();
+    let raf = 0;
+    const step = (now: number) => {
+      const p = Math.min(1, (now - t0) / ms);
+      const target = total * (1 - Math.pow(1 - p, 2)); // ease-out
+      const part: [number, number][] = [line[0]];
+      for (let i = 1; i < line.length; i++) {
+        if (seg[i] <= target) part.push(line[i]);
+        else {
+          const k = (target - seg[i - 1]) / (seg[i] - seg[i - 1] || 1);
+          part.push([line[i - 1][0] + (line[i][0] - line[i - 1][0]) * k, line[i - 1][1] + (line[i][1] - line[i - 1][1]) * k]);
+          break;
+        }
+      }
+      source.setData(lineData([...done, part]));
+      if (p < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    depTimersRef.current.push(() => cancelAnimationFrame(raf));
+  }
+
+  function setupDeployment(map: mapboxgl.Map, gl: typeof import("mapbox-gl").default) {
+    if (map.getSource("dep-border")) return;
+    map.addSource("dep-border", { type: "geojson", data: lineData([]) });
+    map.addSource("dep-bounds", { type: "geojson", data: lineData([]) });
+    map.addSource("dep-towns", {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: SETTLEMENTS.map((s) => ({
+          type: "Feature" as const,
+          properties: { r: s.r ?? 1 },
+          geometry: { type: "Point" as const, coordinates: s.at },
+        })),
+      },
+    });
+    map.addLayer({
+      id: "dep-towns",
+      type: "circle",
+      source: "dep-towns",
+      paint: {
+        "circle-color": "#3b82f6",
+        "circle-opacity": 0,
+        "circle-opacity-transition": { duration: 900 },
+        "circle-stroke-color": "#93c5fd",
+        "circle-stroke-width": 1,
+        "circle-stroke-opacity": 0,
+        "circle-stroke-opacity-transition": { duration: 900 },
+        "circle-blur": 0.35,
+        "circle-emissive-strength": 1,
+        "circle-radius": ["interpolate", ["exponential", 2], ["zoom"], 10, ["*", 3, ["get", "r"]], 14, ["*", 40, ["get", "r"]]],
+      },
+    });
+    map.addLayer({
+      id: "dep-border-glow",
+      type: "line",
+      source: "dep-border",
+      layout: { "line-cap": "round", "line-join": "round" },
+      paint: { "line-color": "#ef4444", "line-width": 12, "line-blur": 8, "line-opacity": 0.45, "line-opacity-transition": { duration: 900 }, "line-emissive-strength": 1 },
+    });
+    map.addLayer({
+      id: "dep-border",
+      type: "line",
+      source: "dep-border",
+      layout: { "line-cap": "round", "line-join": "round" },
+      paint: { "line-color": "#ef4444", "line-width": 3.4, "line-opacity": 0.95, "line-opacity-transition": { duration: 900 }, "line-emissive-strength": 1 },
+    });
+    map.addLayer({
+      id: "dep-bounds",
+      type: "line",
+      source: "dep-bounds",
+      layout: { "line-cap": "round", "line-join": "round" },
+      paint: { "line-color": "#e7e5e4", "line-width": 1.8, "line-opacity": 0.85, "line-opacity-transition": { duration: 900 }, "line-emissive-strength": 1 },
+    });
+
+    const mark = (group: "town" | "sector" | "pos", at: [number, number], html: string, anchor: "center" | "bottom" | "top", off: [number, number] = [0, 0], muted = false) => {
+      const el = document.createElement("div");
+      el.className = `dep-mark dep-${group}` + (muted ? " is-muted" : "");
+      el.innerHTML = `<span>${html}</span>`;
+      const marker = new gl.Marker({ element: el, anchor, offset: off }).setLngLat(at).addTo(map);
+      depMarksRef.current.push({ el, marker, group });
+    };
+    SETTLEMENTS.forEach((s) => mark("town", s.at, s.label === false ? "" : s.name, "top", [0, 6]));
+    SECTORS.forEach((s) => mark("sector", s.at, `${s.title}${s.sub ? `<small>${s.sub}</small>` : ""}`, "center", [0, 0], s.muted));
+    // Two positions almost on top of each other (e.g. ניר עם and ק-2): put the
+    // second label under its dot instead of over it.
+    const placed: [number, number][] = [];
+    locations.forEach((l) => {
+      const note = POSITION_NOTES[l.name];
+      const html = `${l.name}${note ? `<small>${note}</small>` : ""}<i></i>`;
+      const crowded = placed.some(([x, y]) => Math.abs(x - l.center[0]) < 0.012 && Math.abs(y - l.center[1]) < 0.01);
+      placed.push(l.center);
+      if (crowded) {
+        mark("pos", l.center, html, "top", [0, 14]);
+        depMarksRef.current[depMarksRef.current.length - 1].el.classList.add("is-below");
+      } else mark("pos", l.center, html, "bottom", [0, -14]);
+    });
+  }
+
+  function showGroup(group: "town" | "sector" | "pos", on: boolean, stagger = 0) {
+    depMarksRef.current
+      .filter((m) => m.group === group)
+      .forEach((m, i) => {
+        if (!on || !stagger) m.el.classList.toggle("is-on", on);
+        else later(() => m.el.classList.add("is-on"), i * stagger);
+      });
+  }
+
+  function deploymentCamera(map: mapboxgl.Map) {
+    const mobile = window.innerWidth < 640;
+    // Fit flat, then lean in: a pitched view shows more ground at the top.
+    const cam = map.cameraForBounds(DEPLOYMENT_BOUNDS, {
+      padding: mobile ? { top: 100, bottom: 120, left: 20, right: 20 } : { top: 110, bottom: 110, left: 80, right: 80 },
+      bearing: -20,
+    });
+    // (a phone is too narrow to lean in — keep the whole sector in the width)
+    return { center: cam?.center ?? CENTER, zoom: (cam?.zoom ?? 11.4) + (mobile ? -0.1 : 0.45) };
+  }
+
+  function applyIntro(map: mapboxgl.Map, step: number) {
+    const gl = glRef.current;
+    if (!gl) return;
+    clearDepTimers();
+    setupDeployment(map, gl);
+    syncLocationPins();
+    const border = map.getSource("dep-border") as mapboxgl.GeoJSONSource;
+    const bounds = map.getSource("dep-bounds") as mapboxgl.GeoJSONSource;
+    const setLayers = (o: number) => {
+      map.setPaintProperty("dep-border", "line-opacity", 0.95 * o);
+      map.setPaintProperty("dep-border-glow", "line-opacity", 0.45 * o);
+      map.setPaintProperty("dep-bounds", "line-opacity", 0.85 * o);
+    };
+    const towns = (on: boolean) => {
+      map.setPaintProperty("dep-towns", "circle-opacity", on ? 0.32 : 0);
+      map.setPaintProperty("dep-towns", "circle-stroke-opacity", on ? 0.8 : 0);
+    };
+    const cam = deploymentCamera(map);
+    // the replay's movement routes would read as part of the deployment — hide them meanwhile
+    if (map.getLayer("event-paths")) map.setLayoutProperty("event-paths", "visibility", step >= 5 ? "visible" : "none");
+    // the base map's own place names duplicate the deployment's labels — hide them meanwhile
+    if (!baseLabelsRef.current) {
+      baseLabelsRef.current = new Map(
+        (map.getStyle().layers ?? [])
+          .filter((l: any) => l.type === "symbol")
+          .map((l: any) => [l.id, (l.layout?.visibility as string) ?? "visible"]),
+      );
+    }
+    baseLabelsRef.current.forEach((vis, id) => {
+      if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", (step >= 5 ? vis : "none") as any);
+    });
+
+    if (step >= 5) {
+      // leave: fade the deployment out and settle on the locations overview
+      setLayers(0);
+      towns(false);
+      (["town", "sector", "pos"] as const).forEach((g) => showGroup(g, false));
+      later(() => {
+        border.setData(lineData([]));
+        bounds.setData(lineData([]));
+      }, 1000);
+      map.flyTo({ ...overviewCamera(map), pitch: OVERVIEW.pitch, bearing: OVERVIEW.bearing, duration: 3200, essential: true });
+      return;
+    }
+
+    setLayers(1);
+    // settle every earlier step instantly (skipping ahead is safe)
+    if (step > 1) border.setData(lineData([BORDER]));
+    towns(step > 2);
+    showGroup("town", step > 2);
+    if (step > 3) {
+      bounds.setData(lineData(BOUNDARIES.map((b) => b.line)));
+      showGroup("sector", true);
+      showGroup("pos", true);
+    }
+
+    if (step === 0) {
+      border.setData(lineData([]));
+      bounds.setData(lineData([]));
+      map.jumpTo({ center: cam.center, zoom: cam.zoom - 0.25, bearing: -38, pitch: 34 });
+    } else if (step === 1) {
+      bounds.setData(lineData([]));
+      drawLine(map, "dep-border", [], BORDER, 2800);
+      // one long, slow drift across the whole sequence
+      map.easeTo({ center: cam.center, zoom: cam.zoom + (window.innerWidth < 640 ? 0.1 : 0.3), bearing: -8, pitch: 54, duration: 24000, easing: (x) => x, essential: true });
+    } else if (step === 2) {
+      towns(true);
+      showGroup("town", true, 90);
+    } else if (step === 3) {
+      bounds.setData(lineData([]));
+      const done: [number, number][][] = [];
+      BOUNDARIES.forEach((b, i) =>
+        later(() => {
+          drawLine(map, "dep-bounds", [...done], b.line, 900);
+          done.push(b.line);
+        }, i * 1000),
+      );
+      later(() => showGroup("sector", true, 450), 600);
+      later(() => showGroup("pos", true, 300), 3200);
+    }
+  }
+
+  // react to opening-sequence steps
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !readyRef.current || introStep === null) {
+      if (introStep === null) syncLocationPins();
+      return;
+    }
+    applyIntro(map, introStep);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [introStep]);
 
   // ── markers ───────────────────────────────────────────
   // Camera that frames every location, kept clear of the HUD (top bar,
@@ -443,6 +704,8 @@ export default function BattleMap({
         "line-width": 2.6,
         "line-opacity": 0.75,
         "line-dasharray": [1.5, 1.5],
+        // self-lit: the 3D daylight (applyLight) would otherwise dim it to gray
+        "line-emissive-strength": 1,
       },
     });
   }
@@ -568,7 +831,7 @@ export default function BattleMap({
   function syncLocationPins() {
     const map = mapRef.current;
     const zoomedIn = map ? map.getZoom() >= LOC_PIN_MAX_ZOOM : false;
-    const hide = tourActiveRef.current || zoomedIn;
+    const hide = tourActiveRef.current || zoomedIn || introStepRef.current !== null;
     locPinsRef.current.forEach((m) => {
       m.getElement().style.display = hide ? "none" : "";
     });

@@ -18,6 +18,7 @@ import TimelineSlider from "./TimelineSlider";
 import AmbientAudio from "./AmbientAudio";
 import MediaMoment, { type Moment } from "./MediaMoment";
 import { KioskClock, KioskLayer, type KioskCard } from "./KioskOverlays";
+import IntroOverlay, { STORY_MS } from "./IntroOverlay";
 
 // Map renders client-only (Mapbox/WebGL touch `window`).
 const BattleMap = dynamic(() => import("./BattleMap"), {
@@ -64,6 +65,26 @@ export default function MapExperience({
     });
     return s;
   }, [battles, minute]);
+
+  // ── opening sequence (/map?intro=1, from the home page) ─
+  // 0 the story · 1 the border · 2 communities · 3 sectors & positions · 4 hold
+  // · 5 leave to the overview. Click / Space / ← advance; Esc or "דלג" skips.
+  const [introStep, setIntroStep] = useState<number | null>(null);
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get("intro") !== "1" || p.get("mode") === "kiosk") return;
+    window.history.replaceState(null, "", "/map"); // a refresh / shared link opens the map directly
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setIntroStep(0);
+  }, []);
+  useEffect(() => {
+    if (introStep === null) return;
+    const ms = [STORY_MS, 3600, 2600, 7600, 5200, 3400][introStep];
+    const id = setTimeout(() => setIntroStep(introStep >= 5 ? null : introStep + 1), ms);
+    return () => clearTimeout(id);
+  }, [introStep]);
+  const nextIntro = () => setIntroStep((s) => (s === null ? null : Math.min(5, s + 1)));
+  const skipIntro = () => setIntroStep((s) => (s === null ? null : 5));
 
   // ── media moments ──────────────────────────────────────
   // Media with a recorded time surfaces as the clock passes that minute.
@@ -188,6 +209,13 @@ export default function MapExperience({
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (kiosk) {
       if (e.key === "Escape") exitKiosk(); // every other key is ignored on a display
+      return;
+    }
+    if (introStep !== null) {
+      if (e.key === "Escape") skipIntro();
+      else if (e.key === " " || e.key === "Enter" || e.key === "ArrowLeft") nextIntro();
+      else return;
+      e.preventDefault();
       return;
     }
     const t = e.target;
@@ -512,6 +540,7 @@ export default function MapExperience({
         cameraTarget={cameraTarget}
         spotlightId={spotlightId}
         movePreview={movePreview}
+        introStep={introStep}
       />
 
       {/* first light: a warm glow from the east (map right, bearing −20°) that
@@ -527,8 +556,13 @@ export default function MapExperience({
       />
 
       {/* top HUD */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 flex items-start justify-between gap-4 p-4 sm:p-6">
-        <nav className={"pointer-events-auto flex flex-wrap items-center gap-2 " + (kiosk ? "invisible" : "")}>
+      <div
+        className={
+          "pointer-events-none absolute inset-x-0 top-0 z-30 flex items-start justify-between gap-4 p-4 transition-opacity duration-700 sm:p-6 " +
+          (introStep !== null ? "opacity-0" : "")
+        }
+      >
+        <nav className={"pointer-events-auto flex flex-wrap items-center gap-2 " + (kiosk || introStep !== null ? "invisible" : "")}>
           <Link
             href="/"
             className="group flex items-center gap-2 border border-line bg-void/80 px-3 py-2 text-sm text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-bone"
@@ -569,7 +603,7 @@ export default function MapExperience({
         </div>
       </div>
 
-      {kiosk ? (
+      {introStep !== null ? null : kiosk ? (
         <KioskClock minute={minute} />
       ) : (
       <TimelineSlider
@@ -615,6 +649,8 @@ export default function MapExperience({
       />
 
       <KioskLayer card={kioskCard} onStart={startKiosk} />
+
+      {introStep !== null && <IntroOverlay step={introStep} onNext={nextIntro} onSkip={skipIntro} />}
     </main>
   );
 }

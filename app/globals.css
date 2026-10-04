@@ -415,5 +415,93 @@ body {
 /* Force true black-and-white on the map tiles only — the canvas, NOT the
    container, so the dark-red DOM markers above it keep their colour. */
 .map-mono .mapboxgl-canvas {
-  filter: grayscale(1) contrast(1.15) brightness(1.5);
+  filter: contrast(1.15) brightness(1.5);
+}
+
+/* ── Opening sequence: the battalion's deployment ("כך נפרס הגדוד") ── */
+.dep-mark {
+  position: absolute; /* Mapbox positions markers via transform from top-left */
+  pointer-events: none;
+}
+.dep-mark > span {
+  display: block;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.dep-mark.is-on > span {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* sector names — large, set in the middle of each sector */
+.dep-sector > span {
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1;
+  color: #e7e5e4;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+.dep-sector small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono, ui-monospace), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #ef4444;
+}
+.dep-sector.is-muted > span {
+  font-size: 16px;
+  color: rgba(231, 229, 228, 0.45);
+}
+/* the battalion's positions */
+.dep-pos > span {
+  position: relative;
+  white-space: nowrap;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #e7e5e4;
+  background: rgba(10, 10, 11, 0.88);
+  border: 1px solid rgba(239, 68, 68, 0.55);
+}
+/* the dot sits on the position itself (the label is offset above it) */
+.dep-pos small {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  color: #a8a29e;
+}
+.dep-pos i {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 9999px;
+  background: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.9);
+}
+@media (max-width: 639px) {
+  .dep-sector > span { font-size: 15px; }
+  .dep-sector small { font-size: 8px; }
+  .dep-sector.is-muted > span { font-size: 12px; }
+  .dep-pos > span { font-size: 9px; padding: 2px 5px; }
+  .dep-pos small { display: none; }
+  .dep-town > span { display: none; } /* too crowded on a phone — the blue dots stay */
+}
+.dep-pos.is-below i {
+  bottom: auto;
+  top: -14px;
+}
+/* communities */
+.dep-town > span {
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  color: #93c5fd;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.95);
 }

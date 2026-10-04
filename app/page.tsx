@@ -104,7 +104,7 @@ export default function Home() {
 
         <div className="intro-cta mt-12 flex flex-col items-center gap-4 sm:flex-row">
           <Link
-            href="/map"
+            href="/map?intro=1"
             className="group relative inline-flex items-center gap-3 border border-line-strong bg-bone px-8 py-4 text-sm font-bold tracking-wide text-void transition-all hover:bg-white"
           >
             <span className="h-2 w-2 animate-pulse-blood rounded-full bg-blood-bright" />
