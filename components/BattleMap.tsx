@@ -700,9 +700,9 @@ export default function BattleMap({
       source: "event-paths",
       layout: { "line-cap": "round", "line-join": "round" },
       paint: {
-        "line-color": "#ef4444",
+        "line-color": "#7dd3fc", // light blue — our forces' movement
         "line-width": 2.6,
-        "line-opacity": 0.75,
+        "line-opacity": 0.8,
         "line-dasharray": [1.5, 1.5],
         // self-lit: the 3D daylight (applyLight) would otherwise dim it to gray
         "line-emissive-strength": 1,

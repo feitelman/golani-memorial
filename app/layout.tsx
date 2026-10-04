@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo, IBM_Plex_Mono } from "next/font/google";
+import { Heebo, IBM_Plex_Mono, Karantina } from "next/font/google";
 import "./globals.css";
 // After globals.css on purpose: Mapbox's own rules (e.g. markers being
 // position:absolute) must win over our same-specificity marker classes.
@@ -10,6 +10,14 @@ const heebo = Heebo({
   subsets: ["hebrew", "latin"],
   weight: ["300", "400", "500", "700", "800", "900"],
   variable: "--font-heebo",
+  display: "swap",
+});
+
+// Condensed display face for the deployment's company names (map opening).
+const display = Karantina({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -44,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${mono.variable}`}>
+    <html lang="he" dir="rtl" className={`${heebo.variable} ${mono.variable} ${display.variable}`}>
       <body className="min-h-dvh bg-void font-sans antialiased">
         {children}
         <Atmosphere />

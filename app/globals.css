@@ -437,9 +437,11 @@ body {
 .dep-sector > span {
   text-align: center;
   white-space: nowrap;
-  font-weight: 900;
-  font-size: 22px;
-  line-height: 1;
+  font-family: var(--font-display), var(--font-heebo), sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
   color: #e7e5e4;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
 }
@@ -453,7 +455,7 @@ body {
   color: #ef4444;
 }
 .dep-sector.is-muted > span {
-  font-size: 16px;
+  font-size: 24px;
   color: rgba(231, 229, 228, 0.45);
 }
 /* the battalion's positions */
@@ -486,9 +488,9 @@ body {
   box-shadow: 0 0 12px rgba(239, 68, 68, 0.9);
 }
 @media (max-width: 639px) {
-  .dep-sector > span { font-size: 15px; }
+  .dep-sector > span { font-size: 22px; }
   .dep-sector small { font-size: 8px; }
-  .dep-sector.is-muted > span { font-size: 12px; }
+  .dep-sector.is-muted > span { font-size: 16px; }
   .dep-pos > span { font-size: 9px; padding: 2px 5px; }
   .dep-pos small { display: none; }
   .dep-town > span { display: none; } /* too crowded on a phone — the blue dots stay */
