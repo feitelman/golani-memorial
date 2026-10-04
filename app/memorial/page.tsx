@@ -1,4 +1,5 @@
 import { fetchBattlesResult } from "@/lib/data";
+import { orderedFallen } from "@/lib/fallen";
 import { BATTLES_REVALIDATE } from "@/lib/supabase";
 import Nav from "@/components/Nav";
 import MemorialWall from "@/components/MemorialWall";
@@ -10,22 +11,12 @@ export default async function MemorialPage() {
   const { battles, source, error } = await fetchBattlesResult();
   // Throw rather than cache an empty wall: Next keeps serving the last good page.
   if (source === "error") throw new Error(`Battle data unavailable: ${error}`);
-  // Cluster the wall by battle: locations with the most fallen first, battles
-  // within a location by time; each battle's fallen are already rank-ordered.
-  const perLocation = new Map<string, number>();
-  for (const b of battles) {
-    perLocation.set(b.locationName, (perLocation.get(b.locationName) ?? 0) + b.fallen.length);
-  }
-  const ordered = [...battles].sort(
-    (a, b) =>
-      perLocation.get(b.locationName)! - perLocation.get(a.locationName)! ||
-      a.locationName.localeCompare(b.locationName, "he") ||
-      a.startMinute - b.startMinute ||
-      a.title.localeCompare(b.title, "he"),
-  );
-  const soldiers = ordered.flatMap((b) =>
-    b.fallen.map((s) => ({ ...s, battle: b.title, battleSlug: b.slug })),
-  );
+  // Clustered by battle (see orderedFallen); each battle's fallen rank-ordered.
+  const soldiers = orderedFallen(battles).map(({ battle, ...s }) => ({
+    ...s,
+    battle: battle.title,
+    battleSlug: battle.slug,
+  }));
 
   return (
     <>

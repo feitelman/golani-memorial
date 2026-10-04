@@ -140,9 +140,23 @@ export default function TimelineSlider({
         {/* RTL row: start (06:29) on the right, end on the left */}
         <div className="mt-1 flex justify-between font-mono text-[10px] text-faint">
           <span className="tnum">{fromMinutes(min)}</span>
+          {/* keyboard hint — desktop only */}
+          <span className="hidden items-center gap-3 sm:flex" aria-hidden>
+            <span><Kbd>רווח</Kbd> הפעלה / עצירה</span>
+            <span><Kbd>←</Kbd><Kbd>→</Kbd> דקה · בסיור: תחנה</span>
+            <span><Kbd>Esc</Kbd> סגירה</span>
+          </span>
           <span className="tnum">{fromMinutes(max)}</span>
         </div>
       </div>
     </div>
+  );
+}
+
+function Kbd({ children }: { children: React.ReactNode }) {
+  return (
+    <kbd className="mx-0.5 inline-block min-w-[1.4em] border border-line px-1 text-center font-mono text-[9px] text-muted">
+      {children}
+    </kbd>
   );
 }

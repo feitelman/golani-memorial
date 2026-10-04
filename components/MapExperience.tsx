@@ -143,6 +143,53 @@ export default function MapExperience({
     }
   }
 
+  // Step back one station (keyboard). The runner re-plays it from the current clock.
+  function previousStation() {
+    if (!tour || tour.index === 0) return;
+    setReading(false);
+    setActiveId(null);
+    setMovePreview(null);
+    setTour({ name: tour.name, index: tour.index - 1 });
+  }
+
+  // ── keyboard shortcuts ─────────────────────────────────
+  // Space  play / pause (in a tour: continue to the next station)
+  // ← / →  time forward / back (Shift = 10 min) — RTL, so ← is later;
+  //        in a tour: next / previous station
+  // Enter  continue the tour · Esc  close the panel / leave the tour
+  const keyRef = useRef<(e: KeyboardEvent) => void>(() => {});
+  keyRef.current = (e: KeyboardEvent) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (t instanceof HTMLElement && (t.closest("input, textarea, select, [contenteditable=true]") || t.tagName === "AUDIO" || t.tagName === "VIDEO")) return;
+    const forward = e.key === "ArrowLeft";
+    const back = e.key === "ArrowRight";
+
+    if (e.key === "Escape") {
+      if (tour) stopTour();
+      setActiveId(null);
+    } else if (tour) {
+      if (e.key === " " || e.key === "Enter" || forward) {
+        if (reading) continueTour();
+      } else if (back) {
+        previousStation();
+      } else return;
+    } else if (e.key === " ") {
+      if (minute >= range[1]) setMinute(range[0]); // replay from the start
+      setPlaying(!playing);
+    } else if (forward || back) {
+      const step = (e.shiftKey ? 10 : 1) * (forward ? 1 : -1);
+      setPlaying(false);
+      setMinute(Math.min(range[1], Math.max(range[0], Math.round(minute) + step)));
+    } else return;
+    e.preventDefault(); // keep Space / arrows from scrolling or re-clicking a button
+  };
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => keyRef.current(e);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   // ── per-station cinematic runner ───────────────────────
   // For the current station: fly the camera in, play its movement (if any) at a
   // controlled pace, then open the panel and pause for reading. Driving the

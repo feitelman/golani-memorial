@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { Soldier } from "@/lib/types";
 
+/** Card for one fallen soldier; links to their personal page. */
 export default function SoldierCard({ s }: { s: Soldier }) {
   const initials = s.fullName
     .split(" ")
@@ -10,7 +12,11 @@ export default function SoldierCard({ s }: { s: Soldier }) {
     .join("");
 
   return (
-    <article className="reticle-frame group flex gap-4 border border-line bg-surface/60 p-4 transition-colors hover:border-line-strong">
+    <Link
+      href={`/fallen/${s.id}`}
+      aria-label={`${s.rank} ${s.fullName} — לדף האישי`}
+      className="reticle-frame group flex gap-4 border border-line bg-surface/60 p-4 transition-colors hover:border-line-strong"
+    >
       <div className="relative h-20 w-16 shrink-0 overflow-hidden border border-line bg-elevated">
         {s.photo ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -40,6 +46,6 @@ export default function SoldierCard({ s }: { s: Soldier }) {
         </p>
         <p className="mt-2 text-sm leading-relaxed text-muted">{s.memorial}</p>
       </div>
-    </article>
+    </Link>
   );
 }
