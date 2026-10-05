@@ -5,7 +5,8 @@
     "kind": "image",
     "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/26eeaa99.jpg",
     "thumb": null,
-    "caption": ""
+    "caption": null,
+    "at_time": null
   },
   {
     "id": "3f105717",
@@ -13,7 +14,8 @@
     "kind": "audio",
     "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/3f105717.mp3",
     "thumb": null,
-    "caption": ""
+    "caption": null,
+    "at_time": null
   },
   {
     "id": "830oou5",
@@ -21,7 +23,8 @@
     "kind": "image",
     "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783517304039-8okxv7.jpg",
     "thumb": null,
-    "caption": ""
+    "caption": null,
+    "at_time": null
   },
   {
     "id": "ljzy9xq",
@@ -29,6 +32,7 @@
     "kind": "image",
     "url": "https://szejkimsbjvdamittwlf.supabase.co/storage/v1/object/public/battle-media/media/1783938620589-nm30cu.jpeg",
     "thumb": null,
-    "caption": ""
+    "caption": null,
+    "at_time": null
   }
 ]
